@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <header th:fragment="navbar">
+            <div class="header-area ">
+                <div id="sticky-header" class="main-header-area ">
+                    <div class="container-fluid p-0">
+                        <div class="row align-items-center justify-content-between no-gutters">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo-img">
+                                    <a href="/">
+                                        <img src="/site/assets/img/logo.png" alt="Tendance">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-8">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" href="/">Acceuil</a></li>
+                                            <li><a th:href="servicessss">Services</a></li>
+        <!--                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>-->
+        <!--                                        <ul class="submenu">-->
+        <!--                                            <li><a href="blog.html">blog</a></li>-->
+        <!--                                            <li><a href="single-blog.html">single-blog</a></li>-->
+        <!--                                        </ul>-->
+        <!--                                    </li>-->
+        <!--                                    <li><a href="#">Services <i class="ti-angle-down"></i></a>-->
+        <!--                                        <ul class="submenu">-->
+        <!--                                            <li><a href="elements.html">elements</a></li>-->
+        <!--                                        </ul>-->
+        <!--                                    </li>-->
+                                            <li><a th:href="event">Evenement</a></li>
+                                            <li><a th:href="contact">Contact</a></li>
+                                            <li><a th:href="about">À Propos</a></li>
+                                            <li><a th:href="faq">FAQ</a></li>
+                                            <li><a th:href="cart">Panier</a> <i class="bi bi-cart"> </i></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 d-block">
+                                <div class="">
+                                    <a data-th-text="${authenticated} ? #{index.account} :
+                                     #{index.login}" th:href="${authenticated} ? 'account' : 'login'" class="boxed-btn-white">Se Connecter</a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </body>
+</html>
