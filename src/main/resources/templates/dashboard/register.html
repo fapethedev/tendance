@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tendance - Register</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- favicons
+  ================================================== -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+
+
+  <link rel="stylesheet" href="/dashboard/assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+       data-sidebar-position="fixed" data-header-position="fixed">
+      <div
+              class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+          <div class="d-flex align-items-center justify-content-center w-100">
+              <div class="row justify-content-center w-100">
+                  <div class="col-md-8 col-lg-6 col-xxl-3">
+                      <div class="card mb-0 shadow-lg">
+                          <div class="card-body">
+                              <h2>
+                                  <a th:href="@{/login}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
+<!--                                      <img src="/dashboard/assets/images/logos/dark-logo.svg" width="180" alt="">-->
+                                      Tendance
+                                  </a>
+                              </h2>
+
+                              <p class="text-center">Inscription</p>
+                              <form action="#" th:action="@{/register/save}" th:object="${user}" method="post">
+                                  <fieldset class="row">
+                                      <div class="col-md-6">
+                                          <div class="input-group mb-3">
+                                              <span id="lstI" class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                                              <div class="form-floating">
+                                                  <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastname}"
+                                                         placeholder="Nom" aria-describedby="lstI lstFeedback" required>
+                                                  <label for="lastname">Nom</label>
+                                              </div>
+                                          </div>
+                                          <div id="lstFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-md-6">
+                                          <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" id="firstname" name="firstname" th:field="*{firstname}"
+                                                     placeholder="Prénom(s)" aria-describedby="fstFeedback" required>
+                                              <label for="firstname" class="">Prénom(s)</label>
+                                          </div>
+                                          <div id="fstFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12">
+                                          <div class="input-group mb-3">
+                                              <span id="emI" class="input-group-text"><i class="bi bi-envelope-at-fill"></i></span>
+                                              <div class="form-floating">
+                                                  <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
+                                                         placeholder="Adresse Email" aria-describedby="emI emFeedback" required>
+                                                  <label for="email" class="">Adresse Email</label>
+                                              </div>
+                                          </div>
+                                          <div id="emFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+                                  </fieldset>
+
+                                  <fieldset class="row">
+                                      <div class="col-md-6">
+                                          <div class="input-group mb-3">
+                                              <span id="cntI" class="input-group-text"><i class="bi bi-globe"></i></span>
+                                              <div class="form-floating">
+                                                  <input type="text" class="form-control" id="country" name="country" th:field="*{country}"
+                                                         placeholder="Pays" aria-describedby="cntI cntFeedback" required>
+                                                  <label for="country" class="">Pays</label>
+                                              </div>
+                                          </div>
+                                          <div id="cntFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('country')}" th:errors="*{country}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" id="city" name="city" th:field="*{city}"
+                                                 placeholder="Ville" aria-describedby="cityFeedback" required>
+                                              <label for="city" class="">Ville</label>
+                                          </div>
+                                          <div id="cityFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12">
+                                          <div class="input-group mb-3">
+                                              <span id="phoneI" class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                              <div class="form-floating">
+                                                  <input type="tel" class="form-control" id="phone" name="" th:field="*{phone}"
+                                                         placeholder="Numéro de téléphone" aria-describedby="phoneI phoneFeedback" required>
+                                                  <label for="phone" class="">Numéro de téléphone</label>
+                                              </div>
+                                          </div>
+                                          <div id="phoneFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+                                  </fieldset>
+
+                                  <fieldset>
+                                      <div class="col-12">
+                                          <div class="input-group mb-3">
+                                              <span id="pwdI" class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+                                              <div class="form-floating">
+                                                  <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
+                                                         placeholder="Mot de Passe" aria-describedby="pwdI pwdFeedback" required>
+                                                  <label for="password" class="">Mot de Passe</label>
+                                              </div>
+                                          </div>
+                                          <div id="pwdFeedback" class="">
+                                              <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="fieldError" class="text-danger small"></p>
+                                          </div>
+                                      </div>
+                                  </fieldset>
+
+                                  <div class="d-flex align-items-start small">
+                                      <p class="text-danger text-danger-emphasis">
+                                          <span class="small">(*)</span>Tous les champs sont obligatoires !
+                                      </p>
+                                  </div>
+
+                                  <button type="submit" class="btn btn-primary d-block w-100 py-8 fs-4 mb-4 rounded-2">S'inscrire</button>
+
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <a href="#" class="btn btn-outline-info w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
+                                         data-bs-title="S'incrire avec Google" data-bs-placement="left">
+                                          <i class="bi bi-google"></i>
+                                      </a>
+                                      <a href="#" class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
+                                         data-bs-title="S'incrire avec Github" data-bs-placement="right">
+                                          <i class="bi bi-github"></i>
+                                      </a>
+                                  </div>
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <p class="fs-4 mb-0 fw-bold">Déja Inscrit?</p>
+                                      <a class="text-primary fw-bold ms-2" th:href="@{/login}">Se Connecter</a>
+                                  </div>
+                              </form>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="/dashboard/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/dashboard/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/dashboard/assets/js/custom.js"></script>
+
+</body>
+
+</html>
