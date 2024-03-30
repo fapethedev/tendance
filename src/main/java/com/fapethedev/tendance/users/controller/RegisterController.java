@@ -2,6 +2,7 @@ package com.fapethedev.tendance.users.controller;
 
 import com.fapethedev.tendance.users.dto.UserDto;
 import com.fapethedev.tendance.users.entities.User;
+import com.fapethedev.tendance.users.services.UserEmailService;
 import com.fapethedev.tendance.users.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,14 @@ public class RegisterController implements WebMvcConfigurer
 {
     private UserService userService;
     private final MessageSource i18n;
+    private final UserEmailService emailService;
 
     @Autowired
-    public RegisterController(UserService userService, MessageSource i18n)
+    public RegisterController(UserService userService, MessageSource i18n, UserEmailService emailService)
     {
         this.userService = userService;
         this.i18n = i18n;
+        this.emailService = emailService;
     }
 
     @GetMapping(path = {"/", "/{id}", "/{id}/"})
@@ -68,10 +71,12 @@ public class RegisterController implements WebMvcConfigurer
 
         User newUser = userService.save(user);
 
-        return "redirect:/register/activate/" + newUser.getId();
+        emailService.sendRegisterConfirmationEmail(newUser);
+
+        return "redirect:/register/success/" + newUser.getId();
     }
 
-    @GetMapping(path = {"/activate/{id}", "/activate/{id}/"})
+    @GetMapping(path = {"/success/{id}", "/success/{id}/"})
     public String showRegisterSuccesPage(Model model, @PathVariable(required = true) final String id)
     {
         User user = userService.findById(UUID.fromString(id));
@@ -79,5 +84,19 @@ public class RegisterController implements WebMvcConfigurer
         model.addAttribute("user", user);
 
         return "site/activate-account";
+    }
+
+    @GetMapping(path = {"/activate/{id}", "/activate/{id}/"})
+    public String activateAccountAndShowDashboardPage(Model model, @PathVariable(required = true) final String id)
+    {
+        User user = userService.findById(UUID.fromString(id));
+
+        user.getAccount().setActive(true);
+
+        user = userService.saveOrUpdate(user);
+
+        model.addAttribute("user", user);
+
+        return "dashboard/index";
     }
 }
