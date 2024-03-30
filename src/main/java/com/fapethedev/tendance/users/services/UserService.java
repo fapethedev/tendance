@@ -10,6 +10,8 @@ public interface UserService
 {
     User save(UserDto user);
 
+    User saveOrUpdate(User user);
+
     User delete(UserDto user);
 
     User findById(UUID id);
