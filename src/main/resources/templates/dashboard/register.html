@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tendance - Register</title>
+  <title th:title="'Tendance - ' + #{dash.register.title}">Tendance</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -32,12 +32,12 @@
                           <div class="card-body">
                               <h2>
                                   <a th:href="@{/login}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
-<!--                                      <img src="/dashboard/assets/images/logos/dark-logo.svg" width="180" alt="">-->
+<!--                                      /*<img src="/dashboard/assets/images/logos/dark-logo.svg" width="180" alt="">*/-->
                                       Tendance
                                   </a>
                               </h2>
 
-                              <p class="text-center">Inscription</p>
+                              <p th:text="#{dash.register.title}" class="text-center">Inscription</p>
                               <form action="#" th:action="@{/register/save}" th:object="${user}" method="post">
                                   <fieldset class="row">
                                       <div class="col-md-6">
@@ -45,8 +45,8 @@
                                               <span id="lstI" class="input-group-text"><i class="bi bi-person-circle"></i></span>
                                               <div class="form-floating">
                                                   <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastname}"
-                                                         placeholder="Nom" aria-describedby="lstI lstFeedback" required>
-                                                  <label for="lastname">Nom</label>
+                                                         th:placeholder="#{dash.register.form.lastname}" aria-describedby="lstI lstFeedback" required>
+                                                  <label for="lastname" th:text="#{dash.register.form.lastname}">Nom</label>
                                               </div>
                                           </div>
                                           <div id="lstFeedback" class="">
@@ -57,8 +57,8 @@
                                       <div class="col-md-6">
                                           <div class="form-floating mb-3">
                                               <input type="text" class="form-control" id="firstname" name="firstname" th:field="*{firstname}"
-                                                     placeholder="Prénom(s)" aria-describedby="fstFeedback" required>
-                                              <label for="firstname" class="">Prénom(s)</label>
+                                                     th:placeholder="#{dash.register.form.firstname}" aria-describedby="fstFeedback" required>
+                                              <label for="firstname" class="" th:text="#{dash.register.form.firstname}">Prénom(s)</label>
                                           </div>
                                           <div id="fstFeedback" class="">
                                               <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" th:errorclass="fieldError" class="text-danger small"></p>
@@ -70,8 +70,8 @@
                                               <span id="emI" class="input-group-text"><i class="bi bi-envelope-at-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
-                                                         placeholder="Adresse Email" aria-describedby="emI emFeedback" required>
-                                                  <label for="email" class="">Adresse Email</label>
+                                                         th:placeholder="#{dash.register.form.email}" aria-describedby="emI emFeedback" required>
+                                                  <label for="email" class="" th:text="#{dash.register.form.email}">Adresse Email</label>
                                               </div>
                                           </div>
                                           <div id="emFeedback" class="">
@@ -86,8 +86,8 @@
                                               <span id="cntI" class="input-group-text"><i class="bi bi-globe"></i></span>
                                               <div class="form-floating">
                                                   <input type="text" class="form-control" id="country" name="country" th:field="*{country}"
-                                                         placeholder="Pays" aria-describedby="cntI cntFeedback" required>
-                                                  <label for="country" class="">Pays</label>
+                                                         th:placeholder="#{dash.register.form.country}" aria-describedby="cntI cntFeedback" required>
+                                                  <label for="country" class="" th:text="#{dash.register.form.country}">Pays</label>
                                               </div>
                                           </div>
                                           <div id="cntFeedback" class="">
@@ -97,8 +97,8 @@
                                       <div class="col-md-6">
                                           <div class="form-floating mb-3">
                                               <input type="text" class="form-control" id="city" name="city" th:field="*{city}"
-                                                 placeholder="Ville" aria-describedby="cityFeedback" required>
-                                              <label for="city" class="">Ville</label>
+                                                 th:placeholder="#{dash.register.form.city}" aria-describedby="cityFeedback" required>
+                                              <label for="city" class="" th:text="#{dash.register.form.city}">Ville</label>
                                           </div>
                                           <div id="cityFeedback" class="">
                                               <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" th:errorclass="fieldError" class="text-danger small"></p>
@@ -110,8 +110,8 @@
                                               <span id="phoneI" class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="tel" class="form-control" id="phone" name="" th:field="*{phone}"
-                                                         placeholder="Numéro de téléphone" aria-describedby="phoneI phoneFeedback" required>
-                                                  <label for="phone" class="">Numéro de téléphone</label>
+                                                         th:placeholder="#{dash.register.form.phone}" aria-describedby="phoneI phoneFeedback" required>
+                                                  <label for="phone" class="" th:text="#{dash.register.form.phone}">Numéro de téléphone</label>
                                               </div>
                                           </div>
                                           <div id="phoneFeedback" class="">
@@ -126,8 +126,8 @@
                                               <span id="pwdI" class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
-                                                         placeholder="Mot de Passe" aria-describedby="pwdI pwdFeedback" required>
-                                                  <label for="password" class="">Mot de Passe</label>
+                                                         th:placeholder="#{dash.register.form.password}" aria-describedby="pwdI pwdFeedback" required>
+                                                  <label for="password" class="" th:text="#{dash.register.form.password}">Mot de Passe</label>
                                               </div>
                                           </div>
                                           <div id="pwdFeedback" class="">
@@ -138,25 +138,25 @@
 
                                   <div class="d-flex align-items-start small">
                                       <p class="text-danger text-danger-emphasis">
-                                          <span class="small">(*)</span>Tous les champs sont obligatoires !
+                                          <span class="small">(*)</span><span th:text="#{dash.form.allFieldsRequired}">Tous les champs sont obligatoires</span> !
                                       </p>
                                   </div>
 
-                                  <button type="submit" class="btn btn-primary d-block w-100 py-8 fs-4 mb-4 rounded-2">S'inscrire</button>
+                                  <button type="submit" class="btn btn-primary d-block w-100 py-8 fs-4 mb-4 rounded-2" th:text="#{dash.form.getRegistration}">S'inscrire</button>
 
                                   <div class="d-flex align-items-center justify-content-center">
                                       <a href="#" class="btn btn-outline-info w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
-                                         data-bs-title="S'incrire avec Google" data-bs-placement="left">
+                                         data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
                                           <i class="bi bi-google"></i>
                                       </a>
                                       <a href="#" class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
-                                         data-bs-title="S'incrire avec Github" data-bs-placement="right">
+                                         data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
                                           <i class="bi bi-github"></i>
                                       </a>
                                   </div>
                                   <div class="d-flex align-items-center justify-content-center">
-                                      <p class="fs-4 mb-0 fw-bold">Déja Inscrit?</p>
-                                      <a class="text-primary fw-bold ms-2" th:href="@{/login}">Se Connecter</a>
+                                      <p class="fs-4 mb-0 fw-bold" th:text="#{dash.form.alreadyRegistered}">Déja Inscrit?</p>
+                                      <a class="text-primary fw-bold ms-2" th:text="#{dash.login.title}" th:href="@{/login}">Se Connecter</a>
                                   </div>
                               </form>
 
