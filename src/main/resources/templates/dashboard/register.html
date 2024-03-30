@@ -1,23 +1,7 @@
 <!doctype html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title th:title="'Tendance - ' + #{dash.register.title}">Tendance</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- favicons
-  ================================================== -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/favicon/site.webmanifest">
-
-
-  <link rel="stylesheet" href="/dashboard/assets/css/styles.min.css" />
-</head>
+<head th:replace="~{dashboard/dash-head :: head (title = ${title})}"><title></title></head>
 
 <body>
   <!--  Body Wrapper -->
@@ -31,13 +15,13 @@
                       <div class="card mb-0 shadow-lg">
                           <div class="card-body">
                               <h2>
-                                  <a th:href="@{/login}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
+                                  <a th:href="@{/}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
 <!--                                      /*<img src="/dashboard/assets/images/logos/dark-logo.svg" width="180" alt="">*/-->
                                       Tendance
                                   </a>
                               </h2>
 
-                              <p th:text="#{dash.register.title}" class="text-center">Inscription</p>
+                              <p th:text="${title}" class="text-center">Inscription</p>
                               <form action="#" th:action="@{/register/save}" th:object="${user}" method="post">
                                   <fieldset class="row">
                                       <div class="col-md-6">
