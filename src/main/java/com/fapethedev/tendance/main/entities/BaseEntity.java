@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class BaseEntity<T extends Serializable> implements Serializable
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected T id;
 
     @Column(nullable = false, updatable = false)
