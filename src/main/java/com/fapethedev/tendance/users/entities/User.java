@@ -79,7 +79,7 @@ public class User extends BaseEntity<UUID> implements UserDetails
 
     @Override
     public boolean isAccountNonLocked() {
-        return account.isActive();
+        return !account.isLocked();
     }
 
     @Override
