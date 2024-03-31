@@ -19,6 +19,7 @@ public class Account extends BaseEntity<UUID>
 {
     public Account() {
         active = false;
+        locked = false;
     }
 
     @Column(name = "profile_pic", nullable = true)
@@ -35,4 +36,7 @@ public class Account extends BaseEntity<UUID>
 
     @Column(name = "isActive", nullable = false)
     private boolean active;
+
+    @Column(name = "isLocked", nullable = false)
+    private boolean locked;
 }
