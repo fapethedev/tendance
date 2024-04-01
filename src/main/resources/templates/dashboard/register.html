@@ -7,25 +7,22 @@
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
        data-sidebar-position="fixed" data-header-position="fixed">
-      <div
-              class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
           <div class="d-flex align-items-center justify-content-center w-100">
               <div class="row justify-content-center w-100">
                   <div class="col-md-8 col-lg-6 col-xxl-3">
                       <div class="card mb-0 shadow-lg">
                           <div class="card-body">
-                              <h2>
-                                  <a th:href="@{/}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
-<!--                                      /*<img src="/dashboard/assets/images/logos/dark-logo.svg" width="180" alt="">*/-->
-                                      Tendance
-                                  </a>
-                              </h2>
+                              <a th:href="@{/}" class="text-center text-nowrap text-black logo-img text-center d-block py-3 w-100">
+                                  <img src="/assets/images/logo.png" width="180" alt="">
+                              </a>
 
-                              <p th:text="${title}" class="text-center">Inscription</p>
+                              <p th:text="${title}" class="text-center text-dark">Inscription</p>
+
                               <form action="#" th:action="@{/register/save}" th:object="${user}" method="post">
                                   <fieldset class="row">
                                       <div class="col-md-6">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-3 shadow-sm">
                                               <span id="lstI" class="input-group-text"><i class="bi bi-person-circle"></i></span>
                                               <div class="form-floating">
                                                   <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastname}"
@@ -39,7 +36,7 @@
                                       </div>
 
                                       <div class="col-md-6">
-                                          <div class="form-floating mb-3">
+                                          <div class="form-floating mb-3 shadow-sm">
                                               <input type="text" class="form-control" id="firstname" name="firstname" th:field="*{firstname}"
                                                      th:placeholder="#{dash.register.form.firstname}" aria-describedby="fstFeedback" required>
                                               <label for="firstname" class="" th:text="#{dash.register.form.firstname}">Prénom(s)</label>
@@ -50,7 +47,7 @@
                                       </div>
 
                                       <div class="col-12">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-3 shadow-sm">
                                               <span id="emI" class="input-group-text"><i class="bi bi-envelope-at-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="email" class="form-control" id="email" name="email" th:field="*{email}"
@@ -66,7 +63,7 @@
 
                                   <fieldset class="row">
                                       <div class="col-md-6">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-3 shadow-sm">
                                               <span id="cntI" class="input-group-text"><i class="bi bi-globe"></i></span>
                                               <div class="form-floating">
                                                   <input type="text" class="form-control" id="country" name="country" th:field="*{country}"
@@ -79,7 +76,7 @@
                                           </div>
                                       </div>
                                       <div class="col-md-6">
-                                          <div class="form-floating mb-3">
+                                          <div class="form-floating mb-3 shadow-sm">
                                               <input type="text" class="form-control" id="city" name="city" th:field="*{city}"
                                                  th:placeholder="#{dash.register.form.city}" aria-describedby="cityFeedback" required>
                                               <label for="city" class="" th:text="#{dash.register.form.city}">Ville</label>
@@ -90,7 +87,7 @@
                                       </div>
 
                                       <div class="col-12">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-3 shadow-sm">
                                               <span id="phoneI" class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="tel" class="form-control" id="phone" name="" th:field="*{phone}"
@@ -106,7 +103,7 @@
 
                                   <fieldset>
                                       <div class="col-12">
-                                          <div class="input-group mb-3">
+                                          <div class="input-group mb-3 shadow-sm">
                                               <span id="pwdI" class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
                                               <div class="form-floating">
                                                   <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
@@ -126,14 +123,21 @@
                                       </p>
                                   </div>
 
-                                  <button type="submit" class="btn btn-primary d-block w-100 py-8 fs-4 mb-4 rounded-2" th:text="#{dash.form.getRegistration}">S'inscrire</button>
+                                  <button type="submit" class="btn btn-primary d-block w-100 py-8 fs-4 mb-4 rounded-5 shadow" th:text="#{dash.form.getRegistration}">S'inscrire</button>
+
+                                  <div class="position-relative text-center my-4">
+                                      <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative" style="z-index: 5"
+                                            th:text="#{dash.form.secondChoice}">
+                                          Ou S'inscrire avec
+                                      </p><span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+                                  </div>
 
                                   <div class="d-flex align-items-center justify-content-center">
-                                      <a href="#" class="btn btn-outline-info w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
+                                      <a href="#" class="btn btn-outline-info w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
                                          data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
                                           <i class="bi bi-google"></i>
                                       </a>
-                                      <a href="#" class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-2" data-bs-toggle="tooltip"
+                                      <a href="#" class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
                                          data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
                                           <i class="bi bi-github"></i>
                                       </a>
