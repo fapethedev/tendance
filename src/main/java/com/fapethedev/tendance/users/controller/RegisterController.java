@@ -33,7 +33,7 @@ public class RegisterController implements WebMvcConfigurer
         this.emailService = emailService;
     }
 
-    @GetMapping(path = {"/", "/{id}", "/{id}/"})
+    @GetMapping(path = {"", "/", "/{id}", "/{id}/"})
     public String showRegisterForm(Model model, @PathVariable(required = false) final String id)
     {
         UserDto userDto = new UserDto();
@@ -59,11 +59,6 @@ public class RegisterController implements WebMvcConfigurer
             result.rejectValue("email", "", "Cet Adresse email est déja utilisé");
         }
 
-        if (user.getPassword().length() < 8)
-        {
-            result.rejectValue("password", "", "Le mot de passe doit contenir 8 charactere minimum");
-        }
-
         if (result.hasErrors() || result.hasFieldErrors())
         {
             attr.addFlashAttribute("user", user);
@@ -74,7 +69,7 @@ public class RegisterController implements WebMvcConfigurer
 
         User newUser = userService.save(user);
 
-        emailService.sendRegisterConfirmationEmail(newUser);
+//        emailService.sendRegisterConfirmationEmail(newUser);
 
         return "redirect:/register/success/" + newUser.getId();
     }
@@ -90,7 +85,7 @@ public class RegisterController implements WebMvcConfigurer
     }
 
     @GetMapping(path = {"/activate/{id}", "/activate/{id}/"})
-    public String activateAccountAndShowDashboardPage(Model model, @PathVariable(required = true) final String id)
+    public String activateAccountAndShowDashboardPage(RedirectAttributes attr, @PathVariable(required = true) final String id)
     {
         User user = userService.findById(UUID.fromString(id));
 
@@ -98,8 +93,8 @@ public class RegisterController implements WebMvcConfigurer
 
         user = userService.saveOrUpdate(user);
 
-        model.addAttribute("user", user);
+        attr.addAttribute("user", user);
 
-        return "dashboard/index";
+        return "redirect:/dashboard/";
     }
 }
