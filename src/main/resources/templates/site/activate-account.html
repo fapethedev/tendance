@@ -1,7 +1,7 @@
 <!doctype html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="fr" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{site/site-head :: copy-head}">
+<head th:replace="~{site/site-head :: copy-head (title = 'Activation')}">
     <title></title>
 </head>
 
@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="serction_title_large mb-95">
-                            <h3>
-                                Hello to our new Member
+                            <h3 th:text="#{activate.account.greeting}">
+                                Bienvenue cher nouveau membre
                             </h3>
                         </div>
                     </div>
@@ -22,12 +22,16 @@
                     <div class="col-xl-5 col-md-6">
                         <div th:object="${user}" class="single_speaker">
                             <div class="speaker_name text-center">
-                                <h3 class="text-info">Registration success Message</h3>
-                                <p class="text-dark-emphasis text-dark">
-                                    Mr. <span th:text="*{identity.lastname + ' ' + identity.firstname}"></span> votre compte à été créée avec success.
-                                    Consultez le mail que nous vous avons envoyé à l'adresse <span th:text="*{identity.email}" class="link-dark-light"></span>
-                                    pour activer votre compte et vous connectez directement à ce dernier.
+                                <h3 th:text="#{activate.account.succes}" class="text-info">Message d'inscription réussie</h3>
+                                <p class="text-body text-dark-emphasis text-dark">
+                                    <span th:text="#{activate.account.msg.start}" >Mr/Mme.</span> <span th:text="*{identity.lastname + ' ' + identity.firstname}"></span> <span th:text="#{activate.account.msg.middle}">votre compte à été créée avec success.
+                                    Consultez le mail que nous vous avons envoyé à l'adresse</span> <span th:text="*{identity.email}" class="link-dark-light"></span>
+                                    <span th:text="#{activate.account.msg.end}">pour activer votre compte et vous connectez directement à ce dernier.</span>
                                 </p>
+                                <a class="btn btn-success mt-2" style="
+                                             box-shadow: 0 0.5rem 1rem rgba(90,106,133, 0.15) !important;
+                                             border-radius:2rem !important;"
+                                   th:text="#{activate.account.go}" th:href="@{/register/activate/{id}/(id = *{id})}">Activer mon compte</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +39,5 @@
             </div>
         </div>
     </main>
-
-    <footer class="footer footer_bg_1" th:replace="~{site/site-footer}"></footer>
 </body>
 </html>
