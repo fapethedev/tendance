@@ -22,11 +22,11 @@ public class Role extends BaseEntity<UUID>
 
     public enum Category
     {
-        ADMIN("admin"),
-        STANDARD("standard"),
-        ORGANIZATION("organization"),
-        SERVICEPROVIDER("service_provider"),
-        SPONSOR("sponsor");
+        ROLE_ADMIN("admin"),
+        ROLE_STANDARD("standard"),
+        ROLE_ORGANIZATION("organization"),
+        ROLE_SERVICEPROVIDER("service_provider"),
+        ROLE_SPONSOR("sponsor");
 
         private String name;
 
