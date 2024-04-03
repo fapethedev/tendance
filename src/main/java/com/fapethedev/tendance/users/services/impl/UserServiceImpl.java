@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService
                 .password(passwordEncoder.encode(user.getPassword()))
                 .build();
 
-        Optional<Role> roleOptional = roleService.findByName(Role.Category.STANDARD.name());
+        Optional<Role> roleOptional = roleService.findByName(Role.Category.ROLE_STANDARD.name());
 
         Role role = roleOptional.orElseGet(this::setDefaultRole);
 
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService
     private Role setDefaultRole()
     {
         Role role = new Role();
-        role.setName(Role.Category.STANDARD.name());
+        role.setName(Role.Category.ROLE_STANDARD.name());
         return roleService.save(role);
     }
 }
