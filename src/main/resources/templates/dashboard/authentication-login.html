@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{dashboard/frag-dash-head :: head (title = ${title})}"><title></title></head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0 shadow-lg">
+              <div class="card-body">
+                <a th:href="@{/}" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="/assets/images/logo.png" width="180" alt="">
+                </a>
+
+                <p class="text-center text-dark">Connexion</p>
+
+                <div th:if="${param.error}" class="align-items-center justify-content-center text-center text-capitalize mb-2 text-danger rounded-2">
+                  <p>Nom d'utilisateur ou mot de passe invalide</p>
+                </div>
+		        <div th:if="${param.logout}" class="align-items-center justify-content-center text-center text-capitalize mb-2 text-warning rounded-2">
+                  <p>Vous vous êtes déconnecter</p>
+                </div>
+                <form action="#" th:action="@{/authentication}" th:object="${user}" method="post">
+                  <fieldset>
+                    <div class="col-12">
+                      <div class="input-group mb-3 shadow-sm">
+                        <span id="emI" class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                        <div class="form-floating">
+                          <input type="email" class="form-control" id="username" name="username" th:field="*{username}"
+                                 placeholder="Nom d'Utilisateur" aria-describedby="emI emFeedback" required>
+                          <label for="username" class="">Nom d'Utilisateur</label>
+                        </div>
+                      </div>
+                      <div id="emFeedback" class="">
+                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:errorclass="fieldError" class="text-danger small"></p>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <div class="col-12">
+                      <div class="input-group mb-3 shadow-sm">
+                        <span id="pwdI" class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+                        <div class="form-floating">
+                          <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
+                                 th:placeholder="#{dash.register.form.password}" aria-describedby="pwdI pwdFeedback" required>
+                          <label for="password" class="" th:text="#{dash.register.form.password}">Mot de Passe</label>
+                        </div>
+                      </div>
+                      <div id="pwdFeedback" class="">
+                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="fieldError" class="text-danger small"></p>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="form-check">
+                      <input class="form-check-input primary" name="remember-me" type="checkbox" value="" id="remember-me">
+                      <label class="form-check-label text-dark" for="remember-me">
+                        Restez connectez
+                      </label>
+                    </div>
+                    <a class="text-danger fw-bold" th:href="@{password-forgot}">Mot de passe oublié ?</a>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-5 shadow" th:text="${title}">Se Connecter</button>
+
+                  <div class="position-relative text-center my-4">
+                      <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative" style="z-index: 5">
+                          Ou Se Connecter avec
+                      </p><span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center">
+                    <a th:href="@{/oauth2/authorization/google}"
+                       class="btn btn-outline-info w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                       data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
+                      <i class="bi bi-google"></i>
+                    </a>
+                    <a th:href="@{/oauth2/authorization/github}"
+                       class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                       data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
+                      <i class="bi bi-github"></i>
+                    </a>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="fs-4 mb-0 fw-bold">Nouveau ?</p>
+                    <a class="text-primary fw-bold ms-2" th:href="@{/register}">Créer un compte maintenant</a>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer th:replace="~{dashboard/frag-dash-footer}"></footer>
+  <script src="/dashboard/assets/js/custom.js"></script>
+
+</body>
+
+</html>
