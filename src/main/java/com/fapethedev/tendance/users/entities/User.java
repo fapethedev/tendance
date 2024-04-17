@@ -49,6 +49,10 @@ public class User extends BaseEntity<UUID> implements UserDetails
     @Column
     private String siteWeb;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private UserType type;
+
     @OneToOne(mappedBy = "user")
     private Account account;
 
@@ -90,5 +94,14 @@ public class User extends BaseEntity<UUID> implements UserDetails
     @Override
     public boolean isEnabled() {
         return account.isActive();
+    }
+
+    public enum UserType
+    {
+        ADMIN,
+        STANDARD,
+        ORGANIZER,
+        SERVICES_PROVIDER,
+        SPONSOR
     }
 }
