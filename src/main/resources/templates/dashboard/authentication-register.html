@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{dashboard/dash-head :: head (title = ${title})}"><title></title></head>
+<head th:replace="~{dashboard/frag-dash-head :: head (title = ${title})}"><title></title></head>
 
 <body>
   <!--  Body Wrapper -->
@@ -133,11 +133,11 @@
                                   </div>
 
                                   <div class="d-flex align-items-center justify-content-center">
-                                      <a href="#" class="btn btn-outline-info w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                                      <a th:href="@{/oauth2/authorization/google}" class="btn btn-outline-info w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
                                          data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
                                           <i class="bi bi-google"></i>
                                       </a>
-                                      <a href="#" class="btn btn-outline-dark-light w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                                      <a th:href="@{/oauth2/authorization/github}" class="btn btn-outline-dark w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
                                          data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
                                           <i class="bi bi-github"></i>
                                       </a>
