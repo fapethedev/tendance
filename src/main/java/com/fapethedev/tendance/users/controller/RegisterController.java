@@ -42,7 +42,7 @@ public class RegisterController implements WebMvcConfigurer
 
         model.addAttribute("title", i18n.getMessage("dash.register.title", null, LocaleContextHolder.getLocale()));
 
-        return "dashboard/register";
+        return "/dashboard/authentication-register";
     }
 
     @PostMapping(path = {"/save/", "/save", "/save{id}", "/save{id}/"})
@@ -64,7 +64,7 @@ public class RegisterController implements WebMvcConfigurer
             attr.addFlashAttribute("user", user);
             attr.addFlashAttribute("errors", result.getFieldErrors());
 
-            return "dashboard/register";
+            return "/dashboard/authentication-register";
         }
 
         User newUser = userService.save(user);
