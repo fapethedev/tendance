@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div th:fragment="onload-toast (title, content)" class="toast toast-onload align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-body hstack align-items-start gap-6">
+            <i class="ti ti-alert-circle fs-6"></i>
+            <div>
+              <h5 th:text="${title}" class="text-white fs-3 mb-1">Welcome to Modernize</h5>
+              <h6 th:text="${content}" class="text-white fs-2 mb-0">Easy to costomize the Template!!!</h6>
+            </div>
+            <button type="button" class="btn-close btn-close-white fs-2 m-0 ms-auto shadow-none" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+
+        <div th:fragment="preloader" class="preloader">
+            <img src="/assets/images/logo.png" alt="loader" class="lds-ripple img-fluid" />
+        </div>
+
+        <div th:fragment="on-load (title, content)">
+            <!-- Preloader -->
+<!--            <div th:replace="~{:: preloader}"></div>-->
+            <!-- Toast -->
+            <div th:replace="~{:: onload-toast (${title}, ${content})}"></div>
+        </div>
+    </div>
+</body>
+</html>

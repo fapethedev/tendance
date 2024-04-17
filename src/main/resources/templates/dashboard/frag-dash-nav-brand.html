@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div th:fragment="nav-brand" class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="index.html" class="text-nowrap logo-img">
+            <img
+              src="/assets/images/logo.png"
+              class="dark-logo"
+              alt="Logo-Dark"
+              width="128"
+              height="32"
+            />
+            <img
+              src="/assets/images/logo.png"
+              class="light-logo"
+              alt="Logo-light"
+              width="128"
+              height="32"
+            />
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+    </div>
+</body>
+</html>
