@@ -387,7 +387,7 @@
                       </div>
                     </div>
                     <div class="message-body">
-                      <a th:href="@{/}" href="#" class="py-8 px-7 mt-8 d-flex align-items-center">
+                      <a th:href="@{profile}" href="#" class="py-8 px-7 mt-8 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
                           <img src="/dashboard/assets/images/svgs/icon-account.svg" alt="" width="24" height="24"/>
                         </span>
@@ -405,9 +405,9 @@
                           <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
                         </div>
                       </a>
-                      <a th:href="@{/}" href="#" class="py-8 px-7 d-flex align-items-center">
+                      <a th:href="@{settings}" href="#" class="py-8 px-7 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                          <i class="icon ti ti-settings"></i>
+                          <img src="/dashboard/assets/images/svgs/icon-tasks.svg" alt="" width="24" height="24"/>
                         </span>
                         <div class="w-75 d-inline-block v-middle ps-3">
                           <h6 class="mb-1 fs-3 fw-semibold lh-base">Paramètre</h6>
@@ -433,7 +433,7 @@
                           </div>
                         </div>
                       </div>
-                      <a th:href="@{/logout}" class="btn btn-outline-primary">Se Deconnecter</a>
+                      <a th:href="@{/logout}" class="btn btn-outline-danger">Se Deconnecter</a>
                     </div>
                   </div>
                 </div>
@@ -1335,36 +1335,31 @@
             />
           </span>
                        <div class="w-75 d-inline-block v-middle ps-3">
-                         <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
-                         <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
-                       </div>
+                          <h6 class="mb-1 fs-3 fw-semibold lh-base">Ma Boîte</h6>
+                          <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
+                        </div>
                      </a>
-                     <a href="app-notes.html" class="py-8 px-7 d-flex align-items-center">
-          <span
-                  class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6"
-          >
-            <img
-                    src="/dashboard/assets/images/svgs/icon-tasks.svg"
-                    alt=""
-                    width="24"
-                    height="24"
-            />
-          </span>
+                     <a th:href="@{settings}" href="" class="py-8 px-7 d-flex align-items-center">
+                       <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
+                         <img
+                                 src="/dashboard/assets/images/svgs/icon-tasks.svg"
+                                 alt=""
+                                 width="24"
+                                 height="24"/>
+                       </span>
                        <div class="w-75 d-inline-block v-middle ps-3">
-                         <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
-                         <span class="fs-2 d-block text-body-secondary">To-do and Daily Tasks</span>
-                       </div>
+                          <h6 class="mb-1 fs-3 fw-semibold lh-base">Paramètre</h6>
+                          <span class="fs-2 d-block text-body-secondary">Personaliser</span>
+                        </div>
                      </a>
                    </div>
                    <div class="d-grid py-4 px-7 pt-8">
-                     <div
-                             class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9"
-                     >
+                     <div class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
                        <div class="row">
                          <div class="col-6">
-                           <h5 class="fs-4 mb-3 fw-semibold">Unlimited Access</h5>
-                           <button class="btn btn-primary">Upgrade</button>
-                         </div>
+                            <h5 class="fs-4 mb-3 fw-semibold">Acces Complet</h5>
+                            <button class="btn btn-primary">S'abonner</button>
+                          </div>
                          <div class="col-6">
                            <div class="m-n4 unlimited-img">
                              <img
@@ -1376,9 +1371,7 @@
                          </div>
                        </div>
                      </div>
-                     <a href="authentication-login.html" class="btn btn-outline-primary"
-                     >Log Out</a
-                     >
+                     <a th:href="@{/logout}" class="btn btn-outline-danger">Se Deconnecter</a>
                    </div>
                  </div>
 
