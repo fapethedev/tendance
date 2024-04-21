@@ -45,18 +45,19 @@ public class UserEmailServiceImpl implements UserEmailService
         Context context = new Context();
         context.setVariable("user", user);
 
-        String text = engine.process("mail/activate-email", context);
+        String text = engine.process("mail/register-email", context);
+
+        log.info("Sending subscription success message");
 
         try
         {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom(appMailSender);
             helper.setTo(user.getIdentity().getEmail());
-            helper.setSubject("Inscription Réussie");
+            helper.setSubject("Inscription - Tendance");
             helper.setText(text, true);
 
             mailSender.send(message);
-            log.info("Sent subscription success message");
         }
         catch (MessagingException e)
         {
