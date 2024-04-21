@@ -1,5 +1,6 @@
 package com.fapethedev.tendance.users.dto;
 
+import com.fapethedev.tendance.users.entities.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class UserDto
     private String email;
 
     @NotNull
-    @NotBlank(message = "Le nom ne doit pas être laissez vide")
+    @NotBlank(message = "Le mot de passe ne doit pas être laissez vide")
     @Length(min = 8, max = 255, message = "Le mot de passe doit contenier au minimum 8 caractere")
     private String password;
 
@@ -39,7 +40,7 @@ public class UserDto
     @NotNull
     private String country;
 
-    private String nomOrganistion;
+    private String nomOrganisation;
 
     private String emailOrganisation;
 
@@ -48,4 +49,12 @@ public class UserDto
     private String description;
 
     private String siteWeb;
+
+    private String picture;
+
+    private String bio;
+
+    private String idProof;
+
+    private User.UserType type;
 }
