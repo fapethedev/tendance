@@ -4,6 +4,9 @@
 <head th:replace="~{dashboard/frag-dash-head :: head (title = ${title})}"><title></title></head>
 
 <body>
+
+<div th:replace="~{dashboard/frag-dash-onload :: preloader}"></div>
+
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
        data-sidebar-position="fixed" data-header-position="fixed">
