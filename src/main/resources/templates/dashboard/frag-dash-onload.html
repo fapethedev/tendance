@@ -23,7 +23,7 @@
 
         <div th:fragment="on-load (title, content)">
             <!-- Preloader -->
-<!--            <div th:replace="~{:: preloader}"></div>-->
+            <div th:replace="~{:: preloader}"></div>
             <!-- Toast -->
             <div th:replace="~{:: onload-toast (${title}, ${content})}"></div>
         </div>
