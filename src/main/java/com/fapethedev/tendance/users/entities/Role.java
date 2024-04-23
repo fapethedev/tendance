@@ -4,6 +4,7 @@ import com.fapethedev.tendance.main.entities.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Entity
 @Getter @Setter
+@Table(name = "roles")
 public class Role extends BaseEntity<UUID>
 {
     @Column(nullable = false, unique = true)
