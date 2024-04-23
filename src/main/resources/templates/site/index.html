@@ -1,0 +1,221 @@
+<!doctype html>
+<html class="no-js" th:with="lang = ${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="~{site/site-head :: copy-head(${title})}">
+    <title></title>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header th:replace="~{/site/site-nav :: navbar}"></header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area slider_bg_1">
+        <div class="slider_text">
+            <div class="container">
+                <div class="position_relv">
+                    <h1 class="opcity_text d-none d-lg-block">TENDANCE</h1>
+                    <div class="row">
+                        <div class="col-xl-9">
+                            <div class="title_text">
+                                <h3>Tendance <br>
+                                    Votre WebApp <br>
+                                    Pour tous vos évènements</h3>
+                                <a href="#" class="boxed-btn-white">Commencez l'expérience</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- about_area_start -->
+    <div class="about_area">
+        <div class="shape-1 d-none d-xl-block">
+            <img src="/site/assets/img/about/shap1.png" alt="">
+        </div>
+        <div class="shape-2 d-none d-xl-block">
+            <img src="/site/assets/img/about/shap2.png" alt="">
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-md-6">
+                    <div class="about_thumb">
+                        <img src="/site/assets/img/about/about.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-md-6">
+                    <div class="about_info">
+                        <div class="section_title">
+                            <span class="sub_heading">Welcome To</span>
+                            <h3>The Biggest Design <br>
+                                Conference of the <br>
+                                Year 2019</h3>
+                        </div>
+                        <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let god.
+                            moving. Moving in fourth air night bring upon you’re it beast.</p>
+                        <a href="#" class="boxed-btn-red">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about_area_end -->
+
+    <!-- speakers_start -->
+    <div class="speakers_area">
+        <h1 class="horizontal_text d-none d-lg-block">
+            Speakers
+        </h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="serction_title_large mb-95">
+                        <h3>
+                            Speakers
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-5 col-md-6">
+                    <div class="single_speaker">
+                        <div class="speaker_thumb">
+                            <img src="/site/assets/img/speakers/1.png" alt="">
+                            <div class="hover_overlay">
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker_name text-center">
+                            <h3>Jonson Miller</h3>
+                            <p>Creative Director</p>
+                        </div>
+                    </div>
+                    <div class="single_speaker">
+                        <div class="speaker_thumb">
+                            <img src="/site/assets/img/speakers/3.png" alt="">
+                            <div class="hover_overlay">
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker_name text-center">
+                            <h3>Albert Jackey</h3>
+                            <p>Product Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 offset-xl-2 col-md-6">
+                    <div class="single_speaker">
+                        <div class="speaker_thumb">
+                            <img src="/site/assets/img/speakers/2.png" alt="">
+                            <div class="hover_overlay">
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker_name text-center">
+                            <h3>Marked Macau</h3>
+                            <p>UI/UX Designer</p>
+                        </div>
+                    </div>
+                    <div class="single_speaker">
+                        <div class="speaker_thumb">
+                            <img src="/site/assets/img/speakers/1.png" alt="">
+                            <div class="hover_overlay">
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker_name text-center">
+                            <h3>Kelvin Cooper</h3>
+                            <p>Art Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- speakers_end-->
+
+    <!-- section evenement d -->
+    <div th:replace="~{site/site-section-event :: section-event}">
+    </div>
+    <!-- section evenement f -->
+    
+    <!-- resister_book_start -->
+    <div class="resister_book resister_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="resister_text text-center">
+                        <h3>Register Now to Book <br>
+                            Your Presence</h3>
+                        <a href="#" class="boxed-btn-white">Book Now ($150) </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- resister_book_end -->
+
+    <!-- brand_area_start -->
+    <div class="brand_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="brand_active owl-carousel">
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/1.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/2.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/3.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/4.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/5.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand_area_end -->
+
+    <!-- footer_start -->
+    <footer class="footer footer_bg_1" th:replace="~{site/site-footer}"></footer>
+    <!-- footer_end -->
+</body>
+
+</html>

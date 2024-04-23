@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" th:with="lang = ${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="~{site/site-head :: copy-head(${title})}">
+    <title></title>
+</head>
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header th:replace="~{/site/site-nav :: navbar}"></header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area slider_bg_1">
+        <div class="slider_text">
+            <div class="container">
+                <div class="position_relv">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="title_text title_text2 ">
+                                <h3>Tendance | FAQ</h3>
+                                <a href="#" class="boxed-btn-white">Add to your Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- faq_area_Start -->
+    <div class="faq_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="serction_title_large mb-95">
+                        <h3>
+                            Frequently Ask
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+                                        <img src="/site/assets/img/barnd/info.png" alt=""> Is WordPress hosting worth it?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion"
+                                style="">
+                                <div class="card-body">
+                                    Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        <img src="/site/assets/img/barnd/info.png" alt="">What are the advantages <span>of WordPress
+                                            hosting over shared?</span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordion" style="">
+                                <div class="card-body">
+                                    Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <img src="/site/assets/img/barnd/info.png" alt=""> Where the Venue?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordion" style="">
+                                <div class="card-body">
+                                    Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="heading_4">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse"
+                                        data-target="#collapse_4" aria-expanded="false" aria-controls="collapse_4">
+                                        <img src="/site/assets/img/barnd/info.png" alt=""> How can I attend <span>the Event from
+                                            Asia?</span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse_4" class="collapse" aria-labelledby="heading_4" data-parent="#accordion"
+                                style="">
+                                <div class="card-body">
+                                    Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- faq_area_end -->
+    
+    <!-- footer_start -->
+    <footer class="footer footer_bg_1" th:replace="~{site/site-footer}"></footer>
+    <!-- footer_end -->
+    <script type="application/javascript">
+        document.getElementById("accueil").className = "";
+        document.getElementById("faq").className = "active";
+    </script>
+    
+    </body>
+    
+    </html>

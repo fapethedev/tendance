@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" th:with="lang = ${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="~{site/site-head :: copy-head(${title})}">
+    <title></title>
+</head>
+
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header th:replace="~{/site/site-nav :: navbar}"></header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area slider_bg_1">
+        <div class="slider_text">
+            <div class="container">
+                <div class="position_relv">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="title_text title_text2 ">
+                                <h3>Tendance | Services</h3>
+                                <a href="#" class="boxed-btn-white">Add to your Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- event_area_start -->
+    <div class="event_area plus_padding">
+        <h1 class="vr_text d-none d-lg-block">Event Schedule</h1>
+        <div class="container">
+            <div class="double_line">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="date">
+                            <h3>08 Sep 2019</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9">
+                        <div class="single_speaker">
+                            <img src="/site/assets/img/speakers/seaker1.png" alt="">
+                            <div class="speaker-name">
+                                <div class="heading d-flex justify-content-between align-items-center">
+                                    <span>Jonson Miller</span>
+                                    <div class="time">
+                                        10-11 am
+                                    </div>
+                                </div>
+                                <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let
+                                    god moving.
+                                    Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                            </div>
+                        </div>
+                        <div class="single_speaker">
+                            <img src="/site/assets/img/speakers/seaker2.png" alt="">
+                            <div class="speaker-name">
+                                <div class="heading d-flex justify-content-between align-items-center">
+                                    <span>Albert Jackey</span>
+                                    <div class="time">
+                                        12-1.00 pm
+                                    </div>
+                                </div>
+                                <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let
+                                    god moving.
+                                    Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                            </div>
+                        </div>
+                        <div class="single_speaker">
+                            <img src="/site/assets/img/speakers/seaker3.png" alt="">
+                            <div class="speaker-name">
+                                <div class="heading d-flex justify-content-between align-items-center">
+                                    <span>Alvi Nourin</span>
+                                    <div class="time">
+                                        2.30-4.00 pm
+                                    </div>
+                                </div>
+                                <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let
+                                    god moving.
+                                    Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3">
+                    <div class="date">
+                        <h3>09 Sep 2019</h3>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9">
+                    <div class="single_speaker">
+                        <img src="/site/assets/img/speakers/seaker4.png" alt="">
+                        <div class="speaker-name">
+                            <div class="heading d-flex justify-content-between align-items-center">
+                                <span>Marked Macau</span>
+                                <div class="time">
+                                    10-11 am
+                                </div>
+                            </div>
+                            <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let
+                                god moving.
+                                Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                        </div>
+                    </div>
+                    <div class="single_speaker">
+                        <img src="/site/assets/img/speakers/seaker5.png" alt="">
+                        <div class="speaker-name">
+                            <div class="heading d-flex justify-content-between align-items-center">
+                                <span>Jonson Miller</span>
+                                <div class="time">
+                                    12-1.00 pm
+                                </div>
+                            </div>
+                            <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let
+                                god moving.
+                                Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                        </div>
+                    </div>
+                    <div class="single_speaker">
+                        <img src="/site/assets/img/speakers/seaker6.png" alt="">
+                        <div class="speaker-name">
+                            <div class="heading d-flex justify-content-between align-items-center">
+                                <span>Jonson Miller</span>
+                                <div class="time">
+                                    2.30-4.00 pm
+                                </div>
+                            </div>
+                            <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let
+                                god moving.
+                                Moving in fourth air night bring upon you’re it beast let you dominion </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- event_area_end -->
+
+    <!--/* brand_area_start */-->
+    <div class="brand_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="brand_active owl-carousel">
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/1.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/2.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/3.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/4.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/5.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand_area_end -->
+
+    <!-- footer_start -->
+    <footer class="footer footer_bg_1" th:replace="~{site/site-footer}"></footer>
+    <!-- footer_end -->
+    <script type="application/javascript">
+        document.getElementById("accueil").className = "";
+        document.getElementById("services").className = "active";
+    </script>
+
+</body>
+
+</html>

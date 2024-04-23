@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" th:with="lang = ${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="~{site/site-head :: copy-head(${title})}">
+    <title></title>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header th:replace="~{/site/site-nav :: navbar}"></header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area slider_bg_1">
+        <div class="slider_text">
+            <div class="container">
+                <div class="position_relv">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="title_text title_text2 ">
+                                <h3>Tendance | À Propos</h3>
+                                <a href="#" class="boxed-btn-white">Add to your Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">À Propos</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- brand_area_start -->
+    <div class="brand_area dec_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="brand_active owl-carousel">
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/1.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/2.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/3.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/4.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/5.png" alt="">
+                        </div>
+                        <div class="single_brand text-center">
+                            <img src="/site/assets/img/barnd/6.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand_area_end -->
+
+    <!-- footer_start -->
+    <footer class="footer footer_bg_1" th:replace="~{site/site-footer}"></footer>
+    <!-- footer_end -->
+    <script type="application/javascript">
+        document.getElementById("accueil").className = "";
+        document.getElementById("about").className = "active";
+    </script>
+
+    </body>
+    
+    </html>
