@@ -105,6 +105,11 @@ public class UserServiceImpl implements UserService
         return userRepository.findAll();
     }
 
+    @Override
+    public boolean existByEmail(String email) {
+        return userRepository.countByEmail(email) > 0;
+    }
+
     private Role setDefaultRole()
     {
         Role role = new Role();
