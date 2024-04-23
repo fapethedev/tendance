@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.users.controller;
+package com.fapethedev.tendance.security.controller;
 
 import com.fapethedev.tendance.users.dto.UserDto;
 import com.fapethedev.tendance.users.entities.User;
