@@ -1,7 +1,7 @@
 package com.fapethedev.tendance.users.controller;
 
+import com.fapethedev.tendance.security.dto.PasswordDto;
 import com.fapethedev.tendance.security.manager.UserLoginManager;
-import com.fapethedev.tendance.users.dto.PasswordDto;
 import com.fapethedev.tendance.users.dto.UserDto;
 import com.fapethedev.tendance.users.entities.User;
 import com.fapethedev.tendance.users.services.UserEmailService;
@@ -97,12 +97,12 @@ public class UserController implements WebMvcConfigurer
             attr.addFlashAttribute("passwordUpdate", passwordDto);
             attr.addFlashAttribute("errors", result.getFieldErrors());
 
-            return "redirect:dashboard/settings/";
+            return "redirect:/dashboard/settings/";
         }
 
         userLoginManager.changePassword(currentPassword, newPassword);
 
-        return "dashboard/page-account-settings";
+        return "redirect:/dashboard/settings/";
     }
 
 }
