@@ -39,4 +39,7 @@ public class Account extends BaseEntity<UUID>
 
     @Column(name = "isLocked", nullable = false)
     private boolean locked;
+
+    @Column(name = "isEmail_Verified", nullable = false)
+    private boolean emailVerified;
 }
