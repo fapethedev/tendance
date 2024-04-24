@@ -15,23 +15,7 @@
     <!-- header-end -->
 
     <!-- slider_area_start -->
-    <div class="slider_area slider_bg_1">
-        <div class="slider_text">
-            <div class="container">
-                <div class="position_relv">
-                    <div class="row">
-                            <div class="col-xl-8 col-lg-8">
-                                <div class="title_text title_text2 ">
-                                    <h3>Tendance | Contact</h3>
-                                    <a href="#" class="boxed-btn-white">Add to your Calendar</a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
-        </div>
+    <div th:replace="~{site/site-sections :: site-section-slider-area(${title})}" class="slider_area slider_bg_1">
     </div>
     <!-- slider_area_end -->
 
@@ -41,34 +25,35 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="contact-title">Mis en Contact</h2>
+                        <h2 class="contact-title">Mise en Contact</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" th:action="@{/contact/process}" action="#" th:object="${contact}"
+                              method="post" id="contactForm" novalidate="novalidate">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre message'" placeholder=" Name"></textarea>
+                                        <textarea class="form-control w-100 rounded" name="message" id="message" th:field="*{message}" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre message'" placeholder="Entrer votre message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre nom'" placeholder="Entrer votre nom">
+                                        <input class="form-control valid rounded" name="name" id="name" type="text" th:field="*{name}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre nom'" placeholder="Entrer votre nom">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre adresse email'" placeholder="Entrer votre adresse email">
+                                        <input class="form-control valid rounded" name="email" id="email" type="email" th:field="*{email}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre adresse email'" placeholder="Entrer votre adresse email">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer le suject'" placeholder="Entrer le suject">
+                                        <input class="form-control rounded" name="subject" id="subject" type="text" th:field="*{subject}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer le suject'" placeholder="Entrer le suject">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                <button type="submit" class="button button-contactForm boxed-btn">Envoyer</button>
                             </div>
                         </form>
                     </div>
