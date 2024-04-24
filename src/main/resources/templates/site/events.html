@@ -14,23 +14,7 @@
     <!-- header-end -->
 
     <!-- slider_area_start -->
-    <div class="slider_area slider_bg_1">
-        <div class="slider_text">
-            <div class="container">
-                <div class="position_relv">
-                    <div class="row">
-                        <div class="col-xl-8">
-                            <div class="title_text title_text2 ">
-                                <h3>Tendance | Evènements</h3>
-                                <a href="#" class="boxed-btn-white">Add to your Calendar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="countDOwn_area" th:replace="~{site/site-section-countdown}">
-        </div>
+    <div th:replace="~{site/site-sections :: site-section-slider-area(${title})}" class="slider_area slider_bg_1">
     </div>
     <!-- slider_area_end -->
 
