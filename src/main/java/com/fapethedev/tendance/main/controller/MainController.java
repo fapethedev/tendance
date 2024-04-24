@@ -1,17 +1,20 @@
 package com.fapethedev.tendance.main.controller;
 
+import com.fapethedev.tendance.main.dto.ContactDto;
 import com.fapethedev.tendance.security.dto.LoginDto;
 import com.fapethedev.tendance.users.entities.User;
 import com.fapethedev.tendance.users.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -51,6 +54,7 @@ public class MainController implements WebMvcConfigurer
     public String showContactPage(Model model)
     {
         model.addAttribute("title", "Contact");
+        model.addAttribute("contact", new ContactDto());
         return "site/contact";
     }
 
@@ -95,5 +99,15 @@ public class MainController implements WebMvcConfigurer
         model.addAttribute("title", "Dashboard");
 
         return "dashboard/index";
+    }
+
+
+    @PostMapping(path = {"/contact/process", "/contact/process/", "contact/process/", "contact/process"})
+    public String processContact(@Valid @ModelAttribute("contact") ContactDto contactDto,
+                           final BindingResult result,
+                           @PathVariable(required = false) final String id,
+                           final RedirectAttributes attr) {
+
+        return "redirect:/contact";
     }
 }
