@@ -15,35 +15,12 @@
 	<description>Event management webapp</description>
 	<properties>
 		<java.version>21</java.version>
-<!--		<spring-cloud-azure.version>5.9.1</spring-cloud-azure.version>-->
-<!--		<spring-cloud-gcp.version>5.0.3</spring-cloud-gcp.version>-->
-<!--		<spring-cloud.version>2023.0.0</spring-cloud.version>-->
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-amqp</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-r2dbc</artifactId>-->
-<!--		</dependency>-->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
@@ -52,14 +29,6 @@
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
 <!--		</dependency>-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-integration</artifactId>
@@ -92,71 +61,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-web-services</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-webflux</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-websocket</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.azure.spring</groupId>-->
-<!--			<artifactId>spring-cloud-azure-starter</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.azure.spring</groupId>-->
-<!--			<artifactId>spring-cloud-azure-starter-actuator</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.azure.spring</groupId>-->
-<!--			<artifactId>spring-cloud-azure-starter-integration-storage-queue</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.azure.spring</groupId>-->
-<!--			<artifactId>spring-cloud-azure-starter-jdbc-mysql</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.azure.spring</groupId>-->
-<!--			<artifactId>spring-cloud-azure-starter-storage</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.google.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-gcp-starter</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.google.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-gcp-starter-pubsub</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.google.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-gcp-starter-storage</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>3.0.6</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-config-server</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-config</artifactId>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-rest-hal-explorer</artifactId>
-		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-amqp</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-http</artifactId>
@@ -173,14 +82,6 @@
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-mail</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-r2dbc</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-redis</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-security</artifactId>
@@ -192,23 +93,6 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.17.2</version>
 		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-stomp</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-webflux</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-websocket</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-ws</artifactId>-->
-<!--		</dependency>-->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.session</groupId>-->
 <!--			<artifactId>spring-session-data-redis</artifactId>-->
@@ -240,26 +124,6 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.oracle.database.jdbc</groupId>-->
-<!--			<artifactId>ojdbc11</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.oracle.database.r2dbc</groupId>-->
-<!--			<artifactId>oracle-r2dbc</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>io.asyncer</groupId>-->
-<!--			<artifactId>r2dbc-mysql</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>io.r2dbc</groupId>-->
-<!--			<artifactId>r2dbc-h2</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -310,11 +174,6 @@
 			<artifactId>elasticsearch</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.testcontainers</groupId>-->
-<!--			<artifactId>gcloud</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
@@ -329,47 +188,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		<!--		<dependency>-->
-<!--			<groupId>org.testcontainers</groupId>-->
-<!--			<artifactId>oracle-free</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.testcontainers</groupId>-->
-<!--			<artifactId>r2dbc</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.testcontainers</groupId>-->
-<!--			<artifactId>rabbitmq</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
 	</dependencies>
-<!--	<dependencyManagement>-->
-<!--		<dependencies>-->
-<!--			<dependency>-->
-<!--				<groupId>org.springframework.cloud</groupId>-->
-<!--				<artifactId>spring-cloud-dependencies</artifactId>-->
-<!--				<version>${spring-cloud.version}</version>-->
-<!--				<type>pom</type>-->
-<!--				<scope>import</scope>-->
-<!--			</dependency>-->
-<!--			<dependency>-->
-<!--				<groupId>com.google.cloud</groupId>-->
-<!--				<artifactId>spring-cloud-gcp-dependencies</artifactId>-->
-<!--				<version>${spring-cloud-gcp.version}</version>-->
-<!--				<type>pom</type>-->
-<!--				<scope>import</scope>-->
-<!--			</dependency>-->
-<!--			<dependency>-->
-<!--				<groupId>com.azure.spring</groupId>-->
-<!--				<artifactId>spring-cloud-azure-dependencies</artifactId>-->
-<!--				<version>${spring-cloud-azure.version}</version>-->
-<!--				<type>pom</type>-->
-<!--				<scope>import</scope>-->
-<!--			</dependency>-->
-<!--		</dependencies>-->
-<!--	</dependencyManagement>-->
 
 	<build>
 		<plugins>
