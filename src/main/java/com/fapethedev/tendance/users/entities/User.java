@@ -50,6 +50,9 @@ public class User extends BaseEntity<UUID> implements UserDetails
     private String siteWeb;
 
     @Column
+    private String provider;
+
+    @Column
     @Enumerated(EnumType.STRING)
     private UserType type;
 
