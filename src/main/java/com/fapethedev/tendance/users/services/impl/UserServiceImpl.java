@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService
                         .builder()
                         .phone(user.getPhone())
                         .city(user.getCity())
-                        .country(user.getCity())
+                        .country(user.getCountry())
                         .build())
                 .password(passwordEncoder.encode(user.getPassword()))
                 .build();
@@ -54,6 +54,8 @@ public class UserServiceImpl implements UserService
         Role role = roleOptional.orElseGet(this::setDefaultRole);
 
         nUser.setRoles(Collections.singletonList(role));
+
+        nUser.setType(User.UserType.STANDARD);
 
         nUser = userRepository.save(nUser);
 
