@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * {@code IService} is the top interface in service layer, and it's provides a set of methods
+ * {@code IService} is the top interface in service layer, and it provides a set of methods
  * for interacting witch repository in the controller layer <br/>
  *
  * @param <ENTITY> the entity type of the service
  * @param <ID> the entity id type
- * @param <DTO> the corresponding dto object for the entity
+ * @param <FORM> the corresponding form object for the entity
  */
-public interface IService <ENTITY extends Serializable, ID extends Serializable, DTO>
+public interface IService <ENTITY extends Serializable, ID extends Serializable, FORM>
 {
     /**
      * Create or Update an entity from an existing entity <br/>
@@ -23,11 +23,11 @@ public interface IService <ENTITY extends Serializable, ID extends Serializable,
     ENTITY save(ENTITY entity);
 
     /**
-     * Create a new entity from a dto object
-     * @param form the corresponding dto object for the entity
+     * Create a new entity from a form object
+     * @param form the corresponding form object for the entity
      * @return the newly created entity
      */
-    ENTITY save(DTO form);
+    ENTITY save(FORM form);
 
     /**
      * Delete an entity
