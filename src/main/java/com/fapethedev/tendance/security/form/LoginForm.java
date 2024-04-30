@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.users.dto;
+package com.fapethedev.tendance.security.form;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
  */
 @Data
 @ToString
-public class UserLoginDto
+public class LoginForm
 {
     @NotNull
     @NotBlank(message = "Le nom d'utilisateur ne doit pas être laissé vide")

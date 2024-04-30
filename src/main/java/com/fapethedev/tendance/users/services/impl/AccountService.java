@@ -1,7 +1,7 @@
 package com.fapethedev.tendance.users.services.impl;
 
-import com.fapethedev.tendance.users.dto.AccountDto;
 import com.fapethedev.tendance.users.entities.Account;
+import com.fapethedev.tendance.users.form.AccountForm;
 import com.fapethedev.tendance.users.repositories.AccountRepository;
 import com.fapethedev.tendance.users.services.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.util.Optional;
  * @version 1.0
  *
  * A service layer class for doing crud operations
- * on Account entity by using AccountDto
+ * on Account entity by using AccountForm
  */
 @Service
-public class AccountService implements CrudService<Account, AccountDto>
+public class AccountService implements CrudService<Account, AccountForm>
 {
     private final AccountRepository accountRepository;
 
@@ -28,34 +28,34 @@ public class AccountService implements CrudService<Account, AccountDto>
     }
 
     @Override
-    public Account save(AccountDto accountDto)
+    public Account save(AccountForm accountForm)
     {
         Account account = Account.builder()
-                .picture(accountDto.getPicture())
-                .idProof(accountDto.getIdProof())
-                .bio(accountDto.getBio())
-                .user(accountDto.getUser())
-                .active(accountDto.isActive())
+                .picture(accountForm.getPicture())
+                .idProof(accountForm.getIdProof())
+                .bio(accountForm.getBio())
+                .user(accountForm.getUser())
+                .active(accountForm.isActive())
                 .build();
 
-        if (accountDto.getId() != null)
-            account.setId(accountDto.getId());
+        if (accountForm.getId() != null)
+            account.setId(accountForm.getId());
 
         return accountRepository.save(account);
     }
 
     @Override
-    public Account delete(AccountDto accountDto)
+    public Account delete(AccountForm accountForm)
     {
         Account account = Account.builder()
-                .picture(accountDto.getPicture())
-                .idProof(accountDto.getIdProof())
-                .bio(accountDto.getBio())
-                .user(accountDto.getUser())
-                .active(accountDto.isActive())
+                .picture(accountForm.getPicture())
+                .idProof(accountForm.getIdProof())
+                .bio(accountForm.getBio())
+                .user(accountForm.getUser())
+                .active(accountForm.isActive())
                 .build();
 
-        account.setId(accountDto.getId());
+        account.setId(accountForm.getId());
 
         accountRepository.delete(account);
 
@@ -63,9 +63,9 @@ public class AccountService implements CrudService<Account, AccountDto>
     }
 
     @Override
-    public Account findById(AccountDto accountDto)
+    public Account findById(AccountForm accountForm)
     {
-        Optional<Account> optionalAccount = accountRepository.findById(accountDto.getId());
+        Optional<Account> optionalAccount = accountRepository.findById(accountForm.getId());
 
         return null;
     }

@@ -1,8 +1,8 @@
 package com.fapethedev.tendance.users.services.impl;
 
-import com.fapethedev.tendance.users.dto.UserDto;
 import com.fapethedev.tendance.users.entities.*;
 import com.fapethedev.tendance.users.exceptions.UserNotFoundException;
+import com.fapethedev.tendance.users.form.UserForm;
 import com.fapethedev.tendance.users.repositories.AccountRepository;
 import com.fapethedev.tendance.users.repositories.UserRepository;
 import com.fapethedev.tendance.users.services.RoleService;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public User save(UserDto user)
+    public User save(UserForm user)
     {
         User nUser = User.builder()
                 .identity(UserIdentity
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public User delete(UserDto user)
+    public User delete(UserForm user)
     {
         return null;
     }

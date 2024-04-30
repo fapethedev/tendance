@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.users.dto;
+package com.fapethedev.tendance.users.form;
 
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.validation.constraints.Email;
@@ -8,7 +8,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-public class UserDto 
+public class UserForm
 {
     @NotNull
     @NotBlank(message = "Le nom ne doit pas être laissez vide")

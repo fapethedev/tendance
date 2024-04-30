@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.users.dto;
+package com.fapethedev.tendance.users.form;
 
 import com.fapethedev.tendance.users.entities.User;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Data @Builder @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto
+public class AccountForm
 {
     private UUID id;
     private String picture;

@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.main.dto;
+package com.fapethedev.tendance.main.form;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +11,7 @@ import lombok.Data;
  * @since 1.0
  */
 @Data
-public class ContactDto
+public class ContactForm
 {
     @NotNull
     @NotBlank(message = "Veuillez spécifier le contenu de votre message")
