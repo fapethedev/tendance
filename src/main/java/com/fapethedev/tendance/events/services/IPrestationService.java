@@ -12,5 +12,5 @@ import java.util.UUID;
  * @since 1.0
  * @see com.fapethedev.tendance.main.services.IService
  */
-public interface IServicePrestation extends IService<Prestation, UUID, PrestationForm> {
+public interface IPrestationService extends IService<Prestation, UUID, PrestationForm> {
 }
