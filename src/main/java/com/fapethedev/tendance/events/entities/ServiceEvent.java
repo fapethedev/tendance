@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -46,9 +47,19 @@ public class ServiceEvent extends BaseEntity<UUID>
     private String currency;
 
     /**
+     * The poster is like the picturesque representation of the service
+     */
+    @Column(nullable = false)
+    private String poster;
+
+    /**
      * The user owning the service
      */
     @JoinColumn
     @ManyToOne
     private User user;
+
+    @JoinColumn
+    @OneToMany
+    private List<Prestation> prestations;
 }
