@@ -1,9 +1,8 @@
-package com.fapethedev.tendance.users.services.impl;
+package com.fapethedev.tendance.users.services;
 
 import com.fapethedev.tendance.users.entities.Account;
 import com.fapethedev.tendance.users.form.AccountForm;
 import com.fapethedev.tendance.users.repositories.AccountRepository;
-import com.fapethedev.tendance.users.services.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
