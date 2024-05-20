@@ -125,6 +125,6 @@ public class WebSecurityConfiguration
     }
 
     private Customizer<ExceptionHandlingConfigurer<HttpSecurity>> exceptionHandling() {
-        return c -> c.accessDeniedPage("/403");
+        return c -> c.accessDeniedPage("/error");
     }
 }
