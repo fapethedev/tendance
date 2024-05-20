@@ -18,19 +18,19 @@ import lombok.NoArgsConstructor;
         @AttributeOverride(
                 name = "phone",
                 column = @Column(
-                        name = "phone", nullable = false
+                        name = "phone", nullable = true
                 )
         ),
         @AttributeOverride(
                 name = "city",
                 column = @Column(
-                        name = "city", nullable = false
+                        name = "city", nullable = true
                 )
         ),
         @AttributeOverride(
                 name = "country",
                 column = @Column(
-                        name = "country", nullable = false
+                        name = "country", nullable = true
                 )
         ),
 })

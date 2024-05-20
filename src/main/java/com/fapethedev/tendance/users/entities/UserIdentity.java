@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
         @AttributeOverride(
                 name = "lastname",
                 column = @Column(
-                        name = "lastname", nullable = false
+                        name = "lastname", nullable = true
                 )
         ),
         @AttributeOverride(
                 name = "firstname",
                 column = @Column(
-                        name = "firstname", nullable = false
+                        name = "firstname", nullable = true
                 )
         ),
         @AttributeOverride(
