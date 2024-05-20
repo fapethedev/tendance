@@ -107,6 +107,7 @@ public class WebSecurityConfiguration
     private Customizer<LogoutConfigurer<HttpSecurity>> logout()
     {
         return c -> c.logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID" ,"RMBCOOKIE")
