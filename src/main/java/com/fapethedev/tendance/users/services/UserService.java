@@ -1,12 +1,12 @@
-package com.fapethedev.tendance.users.services.impl;
+package com.fapethedev.tendance.users.services;
 
 import com.fapethedev.tendance.users.entities.*;
 import com.fapethedev.tendance.users.exceptions.UserNotFoundException;
 import com.fapethedev.tendance.users.form.UserForm;
 import com.fapethedev.tendance.users.repositories.AccountRepository;
 import com.fapethedev.tendance.users.repositories.UserRepository;
-import com.fapethedev.tendance.users.services.RoleService;
-import com.fapethedev.tendance.users.services.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,75 +15,80 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * The implementation of the {@link IUserService}
+ * @author Fapethedev
+ * @since 1.0
+ * @see com.fapethedev.tendance.users.services.IUserService
+ */
 @Service
-public class UserServiceImpl implements UserService
+@Slf4j
+@RequiredArgsConstructor
+public class UserService implements IUserService
 {
     private final AccountRepository accountRepository;
     private final UserRepository userRepository;
-    private final RoleService roleService;
+    private final IRoleService IRoleService;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(AccountRepository accountRepository, UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
-        this.accountRepository = accountRepository;
-        this.userRepository = userRepository;
-        this.roleService = roleService;
-        this.passwordEncoder = passwordEncoder;
-    }
-
     @Override
-    public User save(UserForm user)
+    public User save(UserForm userForm)
     {
-        User nUser = User.builder()
+        User user = User.builder()
                 .identity(UserIdentity
                         .builder()
-                        .lastname(user.getLastname())
-                        .firstname(user.getFirstname())
-                        .email(user.getEmail())
+                        .lastname(userForm.getLastname())
+                        .firstname(userForm.getFirstname())
+                        .email(userForm.getEmail())
                         .build())
                 .adress(UserAdress
                         .builder()
-                        .phone(user.getPhone())
-                        .city(user.getCity())
-                        .country(user.getCountry())
+                        .phone(userForm.getPhone())
+                        .city(userForm.getCity())
+                        .country(userForm.getCountry())
                         .build())
-                .password(passwordEncoder.encode(user.getPassword()))
+                .password(passwordEncoder.encode(userForm.getPassword()))
                 .build();
 
-        Optional<Role> roleOptional = roleService.findByName(Role.Category.ROLE_STANDARD.name());
+        Optional<Role> roleOptional = IRoleService.findByName(Role.Category.ROLE_STANDARD.name());
 
         Role role = roleOptional.orElseGet(this::setDefaultRole);
 
-        nUser.setRoles(Collections.singletonList(role));
+        user.setRoles(Collections.singletonList(role));
 
-        nUser.setType(User.UserType.STANDARD);
+        user.setType(User.UserType.STANDARD);
 
-        nUser = userRepository.save(nUser);
+        user = userRepository.save(user);
 
         Account account = Account.builder()
-                .user(nUser)
+                .user(user)
                 .build();
 
         accountRepository.save(account);
 
-        nUser.setAccount(account);
+        user.setAccount(account);
 
-        return nUser;
+        return user;
     }
 
     @Override
-    public User saveOrUpdate(User user)
+    public User delete(User user) {
+        return null;
+    }
+
+    @Override
+    public User deleteById(UUID uuid) {
+        return null;
+    }
+
+    @Override
+    public User save(User user)
     {
         User nUser = userRepository.save(user);
 
         accountRepository.save(nUser.getAccount());
 
         return nUser;
-    }
-
-    @Override
-    public User delete(UserForm user)
-    {
-        return null;
     }
 
     @Override
@@ -97,13 +102,12 @@ public class UserServiceImpl implements UserService
     @Override
     public User findUserByEmail(String email)
     {
-        Optional<User> userOptional = userRepository.findByEmail(email);
-
-        return userOptional.orElse(null);
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("No user with the given email is found"));
     }
 
     @Override
-    public List<User> findAllUsers() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
@@ -116,6 +120,6 @@ public class UserServiceImpl implements UserService
     {
         Role role = new Role();
         role.setName(Role.Category.ROLE_STANDARD.name());
-        return roleService.save(role);
+        return IRoleService.save(role);
     }
 }
