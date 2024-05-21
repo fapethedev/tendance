@@ -1,9 +1,9 @@
 package com.fapethedev.tendance.main.controller;
 
-import com.fapethedev.tendance.main.dto.ContactDto;
-import com.fapethedev.tendance.security.dto.LoginDto;
+import com.fapethedev.tendance.main.form.ContactForm;
+import com.fapethedev.tendance.security.form.LoginForm;
 import com.fapethedev.tendance.users.entities.User;
-import com.fapethedev.tendance.users.services.UserService;
+import com.fapethedev.tendance.users.services.IUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -21,10 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MainController implements WebMvcConfigurer
 {
     private final MessageSource i18n;
-    private final UserService userService;
+    private final IUserService userService;
 
     @Autowired
-    public MainController(MessageSource i18n, UserService userService) {
+    public MainController(MessageSource i18n, IUserService userService) {
         this.i18n = i18n;
         this.userService = userService;
     }
@@ -54,7 +54,7 @@ public class MainController implements WebMvcConfigurer
     public String showContactPage(Model model)
     {
         model.addAttribute("title", "Contact");
-        model.addAttribute("contact", new ContactDto());
+        model.addAttribute("contact", new ContactForm());
         return "site/contact";
     }
 
@@ -79,7 +79,7 @@ public class MainController implements WebMvcConfigurer
     }
 
     @GetMapping(path = {"/login", "/login/"})
-    public String showLoginPage(Model title, LoginDto user)
+    public String showLoginPage(Model title, LoginForm user)
     {
         title.addAttribute("title", i18n.getMessage("dash.login.title", null, LocaleContextHolder.getLocale()));
         title.addAttribute("user", user);
@@ -103,7 +103,7 @@ public class MainController implements WebMvcConfigurer
 
 
     @PostMapping(path = {"/contact/process", "/contact/process/", "contact/process/", "contact/process"})
-    public String processContact(@Valid @ModelAttribute("contact") ContactDto contactDto,
+    public String processContact(@Valid @ModelAttribute("contact") ContactForm contactForm,
                            final BindingResult result,
                            @PathVariable(required = false) final String id,
                            final RedirectAttributes attr) {
