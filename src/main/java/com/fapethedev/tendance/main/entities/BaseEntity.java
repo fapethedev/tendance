@@ -23,6 +23,9 @@ public class BaseEntity<T extends Serializable> implements Serializable
     @Column(nullable = false, updatable = true)
     protected LocalDateTime updatedAt;
 
+    @Column(nullable = false, updatable = true)
+    protected Boolean deleted;
+
     @Version
     private Long version;
 
@@ -37,5 +40,6 @@ public class BaseEntity<T extends Serializable> implements Serializable
     {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = createdAt;
+        this.deleted = false;
     }
 }
