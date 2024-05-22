@@ -11,6 +11,7 @@ import lombok.Setter;
  *
  * @see com.fapethedev.tendance.main.publisher.AbstractApplicationBaseEvent
  * @see UserRegisterCompleteEvent
+ *
  * @author Fapethedev
  * @version 1.0
  */
