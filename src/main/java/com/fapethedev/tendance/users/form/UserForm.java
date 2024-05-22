@@ -56,5 +56,5 @@ public class UserForm
 
     private String idProof;
 
-    private User.UserType type;
+    private User.Type type;
 }
