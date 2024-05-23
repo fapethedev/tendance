@@ -5,6 +5,9 @@ package com.fapethedev.tendance.settings.entities;
  * <br/>
  * It could take value like LTR(Left To Right) or RTL(Right To Left).
  * <p/>
+ *
+ * @author Fapethedev
+ * @version 1.0
  */
 public enum Direction
 {
