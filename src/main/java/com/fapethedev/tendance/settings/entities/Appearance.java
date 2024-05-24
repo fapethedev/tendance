@@ -49,7 +49,10 @@ public class Appearance extends BaseEntity<UUID>
     @Enumerated(EnumType.STRING)
     private Card card;
 
-    @Column
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "id"
+    )
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }
