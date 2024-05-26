@@ -12,15 +12,17 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Event service entity created by user with type {@link User.UserType} Service Provider
- * @author Fapethedev
- * @since 1.0
+ * <p>Representation of service prestation or sponsoring service.
+ * User like service provider or sponsor are concerned.</p>
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Entity
-@Table(name = "services")
+@Table(name = "deliveries")
 @Getter @Setter @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceEvent extends BaseEntity<UUID>
+public class Delivery extends BaseEntity<UUID>
 {
     /**
      * The service name
@@ -47,19 +49,22 @@ public class ServiceEvent extends BaseEntity<UUID>
     private String currency;
 
     /**
-     * The poster is like the picturesque representation of the service
+     * <p>The poster is like the picturesque representation of the service.</p>
      */
     @Column(nullable = false)
     private String poster;
 
     /**
-     * The user owning the service
+     * <p>The user that's creates the delivery.</p>
      */
     @JoinColumn
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    /**
+     * <p>All prestations where this delivery feature.</p>
+     */
     @JoinColumn
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Prestation> prestations;
 }
