@@ -1,11 +1,10 @@
 package com.fapethedev.tendance.events.form;
 
+import com.fapethedev.tendance.events.entities.Delivery;
 import com.fapethedev.tendance.events.entities.Event;
-import com.fapethedev.tendance.events.entities.ServiceEvent;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,18 +12,24 @@ import java.time.LocalDateTime;
 
 /**
  * {@code PrestationForm} is the form class for
- * {@link com.fapethedev.tendance.events.entities.Prestation}
+ * {@link com.fapethedev.tendance.events.entities.Prestation}.
  * <br/>
  * It's the class the use when a user with type
- * {@code User.UserType.SERVICE_PROVIDER} will perform a
- * successful request for service prestation
- * @author Fapethedev
- * @since 1.0
+ * {@code User.Type.SERVICE_PROVIDER} will perform a
+ * successful request for service prestation.
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Data
 @Builder
 public class PrestationForm
 {
+    /**
+     * (Optional) the description of the service prestation.
+     */
+    private String description;
+
     /**
      * The start date and time which the prestation will be start to perform at
      * the event.
@@ -61,11 +66,17 @@ public class PrestationForm
      * The service which will be the subject of the prestation.
      */
     @NotNull
-    private ServiceEvent serviceEvent;
+    private Delivery delivery;
+
+    /**
+     * The event owner
+     */
+    @NotNull
+    private User eventUser;
 
     /**
      * The service provider
      */
-    @Null
-    private User user;
+    @NotNull
+    private User deliveryUser;
 }
