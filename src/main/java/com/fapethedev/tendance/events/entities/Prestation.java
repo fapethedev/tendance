@@ -14,6 +14,9 @@ import java.util.UUID;
 /**
  * Service prestation at an event entity <br/>
  * Used to keep trace of Service Provider activities
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Entity
 @Table(name = "prestations")
@@ -21,6 +24,12 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Prestation extends BaseEntity<UUID>
 {
+    /**
+     * (Optional) the description of the prestations
+     */
+    @Column(nullable = true)
+    private String description;
+
     /**
      * The date and the time which the prestation will be start received
      */
@@ -34,14 +43,6 @@ public class Prestation extends BaseEntity<UUID>
     private LocalDateTime endDateTime;
 
     /**
-     * The user that create the {@code ServiceEvent}
-     * which will be the object of the prestation
-     */
-    @JoinColumn
-    @ManyToOne
-    private User user;
-
-    /**
      * The event where the prestation will occur
      */
     @JoinColumn
@@ -53,5 +54,29 @@ public class Prestation extends BaseEntity<UUID>
      */
     @JoinColumn
     @ManyToOne
-    private ServiceEvent serviceEvent;
+    private Delivery delivery;
+
+    /**
+     * The user that create the {@code Delivery}
+     * which will be the object of the prestation
+     */
+    @JoinColumn(
+            nullable = false,
+            name = "event_user_id",
+            referencedColumnName = "id"
+    )
+    @ManyToOne
+    private User eventUser;
+
+    /**
+     * The user that create the {@code Delivery}
+     * which will be the object of the prestation
+     */
+    @JoinColumn(
+            nullable = false,
+            name = "delivery_user_id",
+            referencedColumnName = "id"
+    )
+    @ManyToOne
+    private User deliveryUser;
 }
