@@ -51,7 +51,7 @@ public class Delivery extends BaseEntity<UUID>
     /**
      * <p>The poster is like the picturesque representation of the service.</p>
      */
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String poster;
 
     /**

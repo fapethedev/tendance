@@ -51,14 +51,9 @@ public class DeliveryForm
     private String currency;
 
     /**
-     * <p>Scope is used to know if an event is public or not, nothing more.</p>
-     * <br/>
-     * <p>Depending on the value of this attribute, certain information about an
-     * event will be displayed and other information will not.</p>
+     * <p>The image that will serve as display for the event.</p>
      */
-    @NotNull
-    @NotBlank
-    private String scope;
+    private String poster;
 
     /**
      * <p>The creator of the service. By default, a user with the type
