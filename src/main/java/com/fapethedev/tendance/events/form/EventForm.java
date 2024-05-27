@@ -4,18 +4,21 @@ import com.fapethedev.tendance.events.entities.EventImages;
 import com.fapethedev.tendance.events.entities.EventState;
 import com.fapethedev.tendance.events.entities.EventVideos;
 import com.fapethedev.tendance.users.entities.User;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 /**
- * {@code EventForm} is an object that serve as event form on the frontend
- * <br/>
- * Event form utility is to create and sometimes update an {@link com.fapethedev.tendance.events.entities.Event}
- * @author Fapethedev
- * @since 1.0
+ * <p>{@code EventForm} is an object that serve as event form on the frontend.<br/>
+ * Event form utility is to create and sometimes update an {@code Event}.</p>
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Data @Builder
 public class EventForm
@@ -30,7 +33,7 @@ public class EventForm
     private String name;
 
     /**
-     * The descripion of the event in the {@code EventForm} is mandatory
+     * The description of the event in the {@code EventForm} is mandatory
      * <br/>
      * This field shouldn't be null or an empty string
      */
@@ -92,7 +95,7 @@ public class EventForm
      * event will be displayed and other information will not.
      */
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String scope;
 
     /**
@@ -101,7 +104,7 @@ public class EventForm
      * Although this field is mandatory, it is left as null when submitting
      * the form.
      */
-    @Null
+    @NotNull
     private User user;
 }
 
