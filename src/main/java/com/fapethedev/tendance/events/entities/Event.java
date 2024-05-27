@@ -3,6 +3,8 @@ package com.fapethedev.tendance.events.entities;
 import com.fapethedev.tendance.main.entities.BaseEntity;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -63,6 +65,13 @@ public class Event extends BaseEntity<UUID>
     @Column
     @Enumerated(EnumType.STRING)
     private EventState state;
+
+    /**
+     * <p>The scope of the event as it can be public or private.</p>
+     */
+    @NotNull
+    @NotBlank
+    private String scope;
 
     /**
      * The user who creates the event <br/>
