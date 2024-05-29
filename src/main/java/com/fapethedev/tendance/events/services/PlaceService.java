@@ -3,7 +3,7 @@ package com.fapethedev.tendance.events.services;
 import com.fapethedev.tendance.events.entities.Place;
 import com.fapethedev.tendance.events.form.PlaceForm;
 import com.fapethedev.tendance.events.repository.PlaceRepository;
-import com.fapethedev.tendance.main.exception.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,16 +12,22 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * @author Fapethedev
- * @since 1.0
- * @see com.fapethedev.tendance.events.services.IPlaceService
+ * <p>Service layer class that's implements {@code IPlaceService}.</p>
+ *
  * @see com.fapethedev.tendance.main.services.IService
+ * @see com.fapethedev.tendance.events.services.IPlaceService
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class PlaceService implements IPlaceService
 {
+    /**
+     * <p>Place database layer interface.</p>
+     */
     private final PlaceRepository placeRepository;
 
     @Override
