@@ -3,10 +3,7 @@ package com.fapethedev.tendance.events.entities;
 import com.fapethedev.tendance.main.entities.BaseEntity;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -20,8 +17,8 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "prestations")
-@Getter @Setter @AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @Builder
+@AllArgsConstructor @NoArgsConstructor
 public class Prestation extends BaseEntity<UUID>
 {
     /**

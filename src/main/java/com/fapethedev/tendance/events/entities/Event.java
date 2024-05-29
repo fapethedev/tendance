@@ -5,10 +5,7 @@ import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,8 +16,8 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "events")
-@Getter @Setter @AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter @Builder
+@AllArgsConstructor @NoArgsConstructor
 public class Event extends BaseEntity<UUID>
 {
     /**
