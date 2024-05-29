@@ -2,9 +2,11 @@ package com.fapethedev.tendance.events.services;
 
 
 import com.fapethedev.tendance.events.entities.Prestation;
+import com.fapethedev.tendance.events.entities.PrestationRequest;
 import com.fapethedev.tendance.events.form.PrestationForm;
 import com.fapethedev.tendance.events.repository.PrestationRepository;
-import com.fapethedev.tendance.main.exception.EntityNotFoundException;
+import com.fapethedev.tendance.users.entities.User;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,17 +15,23 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * {@code PrestationService} an implementation of {@link IPrestationService}
- * @author Fapethedev
- * @since 1.0
+ * <p>{@code PrestationService} an implementation of
+ * {@link IPrestationService}.</p>
+ *
  * @see com.fapethedev.tendance.events.services.IPrestationService
  * @see com.fapethedev.tendance.main.services.IService
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class PrestationService implements IPrestationService
 {
+    /**
+     * <p>Prestation repository.</p>
+     */
     private final PrestationRepository prestationRepository;
 
     @Override
@@ -39,13 +47,17 @@ public class PrestationService implements IPrestationService
     {
         log.info("Creating new Prestation with PrestationForm");
 
-        var prestation = new Prestation(prestationForm.getStartDateTime(),
-                prestationForm.getEndDateTime(),
-                prestationForm.getUser(),
-                prestationForm.getEvent(),
-                prestationForm.getServiceEvent());
-
-        return prestationRepository.save(prestation);
+        return prestationRepository.save(
+                new Prestation(
+                        prestationForm.getDescription(),
+                        prestationForm.getStartDateTime(),
+                        prestationForm.getEndDateTime(),
+                        prestationForm.getEvent(),
+                        prestationForm.getDelivery(),
+                        prestationForm.getEventUser(),
+                        prestationForm.getDeliveryUser()
+                )
+        );
     }
 
     @Override
@@ -79,5 +91,29 @@ public class PrestationService implements IPrestationService
         log.info("Finding all prestations...");
 
         return prestationRepository.findAll();
+    }
+
+    @Override
+    public Prestation createPrestationFromRequest(PrestationRequest request)
+    {
+        log.info("Creating prestation from request " + request.getId());
+        
+        var eventUser = request.getReceiver().getType() == User.Type.ORGANIZER ?
+                request.getReceiver() : request.getSender();
+
+        var deliveryUser = request.getReceiver().getType() != User.Type.ORGANIZER ?
+                request.getReceiver() : request.getSender();
+
+        return save(
+                new Prestation(
+                        request.getMessage(),
+                        request.getStartDateTime(),
+                        request.getEndDateTime(),
+                        request.getEvent(),
+                        request.getDelivery(),
+                        eventUser,
+                        deliveryUser
+                )
+        );
     }
 }
