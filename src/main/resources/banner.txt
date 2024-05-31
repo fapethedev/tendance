@@ -6,3 +6,4 @@
 
 ${application.title} ${application.version}
 Powered by Spring Boot ${spring-boot.version}
+Maintained by Fapethedev https://github.com/fapethedev
