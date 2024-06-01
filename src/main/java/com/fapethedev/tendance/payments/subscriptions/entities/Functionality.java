@@ -38,7 +38,10 @@ public class Functionality extends BaseEntity<UUID>
     )
     private String designation;
 
-    @Column(nullable = false)
+    @Column(
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String description;
 
     /**
