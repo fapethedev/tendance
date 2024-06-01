@@ -1,14 +1,13 @@
 package com.fapethedev.tendance.payments.subscriptions.entities;
 
 import com.fapethedev.tendance.main.entities.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -55,4 +54,29 @@ public class SubscriptionPlan extends BaseEntity<UUID>
      */
     @Column(nullable = false)
     private Boolean isAvailable;
+
+    /**
+     * <p>List of functionalities that's feature on the plan.</p>
+     */
+    @JoinTable(
+            name = "plans_on_functionalities",
+            joinColumns = @JoinColumn(
+                    name = "plan_id",
+                    referencedColumnName = "id",
+                    table = "subscriptions_plans"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "functionality_id",
+                    referencedColumnName = "id",
+                    table = "functionalities"
+            ),
+            foreignKey = @ForeignKey(
+                    name = "FK_subscriptions_plans_id"
+            ),
+            inverseForeignKey = @ForeignKey(
+                    name = "FK_subscriptions_plans_functionality_id"
+            )
+    )
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Functionality> functionalities;
 }
