@@ -4,6 +4,7 @@ import com.fapethedev.tendance.main.entities.BaseEntity;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,6 +17,7 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "functionality_use_histories")
+@RedisHash(value = "functionality_use_histories")
 @Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class UseHistory extends BaseEntity<UUID>
