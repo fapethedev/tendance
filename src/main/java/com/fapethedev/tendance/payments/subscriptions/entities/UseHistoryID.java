@@ -10,6 +10,9 @@ import java.util.UUID;
 /**
  * <p>The id of {@code UseHistory} entity as it's a join column
  * from functionalities and users.</p>
+ *
+ * @author <a href="www.github.com/fapethedev/">Fapethedev</a>
+ * @version 1.0
  */
 @Data
 @Embeddable

@@ -10,6 +10,9 @@ import java.util.UUID;
 
 /**
  * <p>Keeps eyes on how user uses functionalities.</p>
+ *
+ * @author <a href="www.github.com/fapethedev/">Fapethedev</a>
+ * @version 1.0
  */
 @Entity
 @Table(name = "functionality_use_histories")
