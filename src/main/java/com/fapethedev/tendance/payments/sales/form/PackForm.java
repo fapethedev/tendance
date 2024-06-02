@@ -4,6 +4,8 @@ import com.fapethedev.tendance.payments.sales.entities.Pass;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  * @version 1.0
  */
 @Builder
+@Getter @Setter
 public class PackForm extends PassForm
 {
     /**
