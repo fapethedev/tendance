@@ -1,9 +1,7 @@
 package com.fapethedev.tendance.payments.subscriptions.entities;
 
 import com.fapethedev.tendance.main.entities.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,5 +45,7 @@ public class Functionality extends BaseEntity<UUID>
     /**
      * <p>The nature of the functionalities.</p>
      */
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private FunctionalityType type;
 }
