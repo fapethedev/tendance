@@ -1,8 +1,8 @@
 package com.fapethedev.tendance.payments.sales.services;
 
 import com.fapethedev.tendance.main.services.IService;
-import com.fapethedev.tendance.payments.sales.entities.Pass;
-import com.fapethedev.tendance.payments.sales.form.PassForm;
+import com.fapethedev.tendance.payments.sales.entities.PassPack;
+import com.fapethedev.tendance.payments.sales.form.PackForm;
 
 import java.util.UUID;
 
@@ -14,5 +14,5 @@ import java.util.UUID;
  * @author <a href="www.github.com/fapethedev/">Fapethedev</a>
  * @version 1.0
  */
-public interface IPackService extends IService<Pass, UUID, PassForm> {
+public interface IPackService extends IService<PassPack, UUID, PackForm> {
 }
