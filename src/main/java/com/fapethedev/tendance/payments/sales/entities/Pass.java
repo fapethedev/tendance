@@ -28,37 +28,37 @@ public class Pass extends BaseEntity<UUID>
             nullable = true,
             unique = true
     )
-    private String logo;
+    protected String logo;
 
     /**
      * <p>The ticket price.</p>
      */
     @Column(nullable = false)
-    private Double price;
+    protected Double price;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private CurrencyCode currency;
+    protected CurrencyCode currency;
 
     /**
      * <p>The available quantity of ticket.</p>
      */
     @Column(nullable = false)
-    private Integer stock;
+    protected Integer stock;
 
     /**
      * <p>The state of the ticket.</p>
      */
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PassState passState;
+    protected PassState passState;
 
     /**
      * <p>The type of the ticket.</p>
      */
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PassType passType;
+    protected PassType passType;
 
     /**
      * <p>The event which is used the ticket.</p>
@@ -70,5 +70,5 @@ public class Pass extends BaseEntity<UUID>
             foreignKey = @ForeignKey(name = "FK_tickets_events_id")
     )
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Event event;
+    protected Event event;
 }

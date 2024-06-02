@@ -23,7 +23,7 @@ public class PassForm
     /**
      * <p>The logo field in the form.</p>
      */
-    private String logo;
+    protected String logo;
 
     /**
      * <p>The ticket price field in the form, should be non null
@@ -31,13 +31,13 @@ public class PassForm
      */
     @NotNull(message = "Le prix du ticket ne peut pas être null")
     @Positive(message = "Le prix du ticket doit être supérieur à 0.00")
-    private Double price;
+    protected Double price;
 
     /**
      * <p>The currency code field.</p>
      */
     @NotNull(message = "La devise du ticket ne doit pas être null")
-    private CurrencyCode currency;
+    protected CurrencyCode currency;
 
     /**
      * <p>The available quantity of ticket, should be a non value and
@@ -45,23 +45,23 @@ public class PassForm
      */
     @NotNull(message = "La quantité en stock du ticket ne peut pas être null")
     @PositiveOrZero(message = "La quantité en stock du ticket doit être supérieur ou égale à zéro")
-    private Integer stock;
+    protected Integer stock;
 
     /**
      * <p>The state of the ticket field in the form.</p>
      */
     @NotNull(message = "L'état du ticket ne peut pas être null")
-    private PassState passState;
+    protected PassState passState;
 
     /**
      * <p>The type of the ticket field in the form.</p>
      */
     @NotNull(message = "Le type du ticket ne peut pas être null")
-    private PassType passType;
+    protected PassType passType;
 
     /**
      * <p>The event which is used the ticket field in the form.</p>
      */
     @NotNull(message = "L'évènement du ticket ne peut pas être null")
-    private Event event;
+    protected Event event;
 }
