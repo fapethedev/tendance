@@ -1,7 +1,11 @@
 package com.fapethedev.tendance.payments.sales.entities;
 
+import com.fapethedev.tendance.events.entities.Event;
+import com.fapethedev.tendance.main.constants.CurrencyCode;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -17,10 +21,15 @@ import java.util.List;
  */
 @Entity
 @Table(name = "packs")
-@Getter @Setter @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor
 public class PassPack extends Pass
 {
+    public PassPack(String logo, Double price, CurrencyCode currency, Integer stock, PassState passState, PassType passType, Event event, List<Pass> passes) {
+        super(logo, price, currency, stock, passState, passType, event);
+        this.passes = passes;
+    }
+
     /**
      * <p>The list of all passes that the pack contain.</p>
      */
