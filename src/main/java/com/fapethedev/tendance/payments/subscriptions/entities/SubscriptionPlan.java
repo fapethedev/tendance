@@ -71,10 +71,10 @@ public class SubscriptionPlan extends BaseEntity<UUID>
                     table = "functionalities"
             ),
             foreignKey = @ForeignKey(
-                    name = "FK_subscriptions_plans_id"
+                    name = "FK_plans_on_functionalities_subscriptions_plans_id"
             ),
             inverseForeignKey = @ForeignKey(
-                    name = "FK_subscriptions_plans_functionality_id"
+                    name = "FK_plans_on_functionalities_functionalities_id"
             )
     )
     @ManyToMany(fetch = FetchType.LAZY)
