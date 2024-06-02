@@ -47,5 +47,5 @@ public interface IUseHistoryService
      *
      * @return All the functionality use histories for the specified user
      */
-    List<UseHistory> getHistoriesByUser(UUID userId);
+    List<UseHistory> getHistoriesByUserId(UUID userId);
 }
