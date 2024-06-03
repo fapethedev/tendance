@@ -11,6 +11,8 @@ import lombok.Setter;
  * <p>The pack item is a cart item linked with a ticket</p>
  *
  * @see CartItem
+ * @see com.fapethedev.tendance.payments.core.entities.SubscriptionPlanItem
+ * @see com.fapethedev.tendance.payments.core.entities.TicketItem
  *
  * @author <a href="www.github.com/fapethedev/">Fapethedev</a>
  * @version 1.0
@@ -49,7 +51,7 @@ public class PackItem extends CartItem
     /**
      * <p>Evaluated the price with the pack item price.</p>
      *
-     * @return the price of the pack in the cart
+     * @return the price of the pack in the cart following his quantity
      */
     @Override
     public double getPrice()
