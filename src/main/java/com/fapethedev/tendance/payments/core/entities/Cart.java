@@ -1,5 +1,6 @@
 package com.fapethedev.tendance.payments.core.entities;
 
+import com.fapethedev.tendance.main.constants.CurrencyCode;
 import com.fapethedev.tendance.main.entities.BaseEntity;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
@@ -28,6 +29,16 @@ public class Cart extends BaseEntity<UUID>
     private boolean isValidated;
 
     /**
+     * <p>The code of the currency used for the items in the cart.</p>
+     */
+    @Column(
+            name = "currency_code",
+            nullable = false
+    )
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode currency;
+
+    /**
      * <p>The list of all the items inside the cart.</p>
      */
     @OneToMany(
@@ -42,7 +53,7 @@ public class Cart extends BaseEntity<UUID>
      *
      * @return the price of all items
      */
-    @Column
+    @Column(name = "total_price")
     public double getTotalPrice()
     {
         return items.stream()

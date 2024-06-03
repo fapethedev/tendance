@@ -1,6 +1,7 @@
 package com.fapethedev.tendance.payments.core.entities;
 
 
+import com.fapethedev.tendance.main.constants.CurrencyCode;
 import com.fapethedev.tendance.main.entities.BaseEntity;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
@@ -27,6 +28,16 @@ public class Order extends BaseEntity<UUID>
      */
     @Column(name = "total_cost", nullable = false)
     private Double totalCost;
+
+    /**
+     * <p>The code of the currency used in the order.</p>
+     */
+    @Column(
+            name = "currency_code",
+            nullable = false
+    )
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode currency;
 
     /**
      * <p>The cart that is validated.</p>
