@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 /**
+ * <p> Data transfer object for account entity.</p>
+ *
  * @author Fapethedev
  * @version 1.0
- *
- * Data transfer object for account entity
  */
 
 @Data @Builder @AllArgsConstructor

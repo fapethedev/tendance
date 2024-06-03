@@ -16,7 +16,7 @@ public interface ISecurityEmailService
     void sendPasswordResetEmail(User user);
 
     /**
-     * <p>Send email to the user after he successfully reset his password.<br/
+     * <p>Send email to the user after he successfully reset his password.<br/>
      * This method could be use if a user manually changes his password.
      * </p>
      * @param user who confirm his password reset action from the reset password

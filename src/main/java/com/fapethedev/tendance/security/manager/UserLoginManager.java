@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
+ * <p>Login manager class service.</p>
+ *
  * @author Fapethedev
  * @version 1.0
  */

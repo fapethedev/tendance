@@ -14,7 +14,6 @@ import java.util.UUID;
  * @author <a href="https://github.com/fapethedev">Fapethedev</a>
  * @version 1.0
  *
- * @implSpec {@link JpaRepository} for query methods
  */
 @Repository
 public interface PrestationRequestRepository extends JpaRepository<PrestationRequest, UUID> {

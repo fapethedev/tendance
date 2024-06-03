@@ -3,8 +3,8 @@ package com.fapethedev.tendance.users.services;
 import com.fapethedev.tendance.users.entities.User;
 
 /**
- * <p>Service layer for define differents email that will be send to a
- * user according user relative action like registring and others</p
+ * <p>Service layer for define different email that will be send to a
+ * user according user relative action like registering and others</p>
  * @author Fapethedev
  * @version 1.0
  */

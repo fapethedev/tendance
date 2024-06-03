@@ -25,7 +25,7 @@ public interface IUserEventPublisher
      * <p>This method will be use to publish the right event after an user complete his registration.</p>
      * <p>When users are registered they need to activate their account. <br/>
      * The account activation can be done with many manner like a link in email, web page
-     * or an otp.<p/>
+     * or an otp.</p>
      *
      * @param user the user who will complete the registration and seen his account activated
      */

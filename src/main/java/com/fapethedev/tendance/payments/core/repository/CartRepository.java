@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 /**
- * Cart database layer interface.</p>
+ * <p>Cart database layer interface.</p>
  *
  * @author <a href="www.github.com/fapethedev/">Fapethedev</a>
  * @version 1.0

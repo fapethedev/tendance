@@ -28,7 +28,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 /**
  * <p>Security configuration class.All the configurations and beans required for
- * security are inside this class.<p/>
+ * security are inside this class.</p>
  * <p>Configuration like login with form, oauth2login or remember me and more (future features)
  * are implements here</p>
  *

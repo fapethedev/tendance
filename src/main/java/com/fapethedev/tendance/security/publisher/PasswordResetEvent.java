@@ -17,7 +17,7 @@ public class PasswordResetEvent extends AbstractApplicationBaseEvent
 {
     /**
      * <p>Creates a new event for reset a user-forgotten
-     * password.<p/>
+     * password.</p>
      *
      * @param user the user who's trying to reset his password
      */

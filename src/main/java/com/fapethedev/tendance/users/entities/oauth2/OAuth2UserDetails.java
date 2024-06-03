@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * <p>This class will serve for Spring Security authentication
  * by implementing {@code UserDetails} spring security will use
- * the given username, password, the granted authorities and more.<p/>
+ * the given username, password, the granted authorities and more.</p>
  *
  * <p>The {@code OAuth2UserDetails} will be return as {@code OAuth2User}
  * when the OAuth2UserService loadUser method with OAuth2UserRequest in paremeter

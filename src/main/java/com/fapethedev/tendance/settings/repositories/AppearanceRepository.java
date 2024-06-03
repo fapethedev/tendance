@@ -21,7 +21,7 @@ public interface AppearanceRepository<T> extends JpaRepository<Appearance, UUID>
 {
     /**
      * <p>Retrieving an Appearance with the id of the user that
-     * user the appearance.<p/>
+     * user the appearance.</p>
      *
      * @param userId the id of the appearance user
      * @return Appearance wrapped in Optional

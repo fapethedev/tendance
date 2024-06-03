@@ -12,7 +12,6 @@ import java.util.UUID;
  * table from the database using {@code JpaRepository} methods
  * @author Fapethedev
  * @since 1.0
- * @implSpec {@link JpaRepository} for query methods
  */
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, UUID>

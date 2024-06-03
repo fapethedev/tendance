@@ -18,7 +18,7 @@ import java.util.UUID;
 public interface IPrestationService extends IService<Prestation, UUID, PrestationForm>
 {
     /**
-     * <p>Creates a new prestation from an accepted prestation request.<</p>
+     * <p>Creates a new prestation from an accepted prestation request.</p>
      *
      * @param request the prestation request with the status accepted
      * @return a valid prestation
