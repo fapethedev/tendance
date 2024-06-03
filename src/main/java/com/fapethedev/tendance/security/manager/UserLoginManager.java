@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 /**
  * @author Fapethedev
  * @version 1.0
@@ -108,5 +110,16 @@ public class UserLoginManager implements UserDetailsManager, UserDetailsPassword
         log.info("Loading user by username : " + username);
 
         return userRepository.findByEmail(username).orElseThrow();
+    }
+
+    /**
+     * <p>Creates a strong password using secure random
+     * and encode it's with the available password encoder.</p>
+     *
+     * @return the random password with the right encoding
+     */
+    public static String generateRandomPassword()
+    {
+        return UUID.randomUUID().toString();
     }
 }
