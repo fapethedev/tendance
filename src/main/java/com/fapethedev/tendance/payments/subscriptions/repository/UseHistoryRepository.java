@@ -4,6 +4,7 @@ import com.fapethedev.tendance.payments.subscriptions.entities.UseHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,6 +17,6 @@ import java.util.UUID;
  * @version 1.0
  */
 @Repository
-public interface UseHistoryRepository<T> extends JpaRepository<UseHistory, UUID> {
+public interface UseHistoryRepository<T extends Serializable> extends JpaRepository<UseHistory, UUID> {
     List<UseHistory> findAllByUserId(T user_id);
 }

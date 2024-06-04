@@ -4,6 +4,7 @@ import com.fapethedev.tendance.settings.entities.Appearance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ import java.util.UUID;
  * @version 1.0
  */
 @Repository
-public interface AppearanceRepository<T> extends JpaRepository<Appearance, UUID>
+public interface AppearanceRepository<T extends Serializable> extends JpaRepository<Appearance, UUID>
 {
     /**
      * <p>Retrieving an Appearance with the id of the user that
