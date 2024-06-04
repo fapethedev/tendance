@@ -4,6 +4,6 @@
    |  |  \   --.|  ||  |\ `-' |\ '-'  ||  ||  \ `--.\   --.
    `--'   `----'`--''--' `---'  `--`--'`--''--'`---' `----'
 
-${application.title} ${application.version}
-Powered by Spring Boot ${spring-boot.version}
+${spring.application.name} : (v${application.version})
+Powered by Spring Boot ${spring-boot.formatted-version}
 Maintained by Fapethedev https://github.com/fapethedev
