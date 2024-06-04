@@ -6,7 +6,6 @@ import com.fapethedev.tendance.users.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,7 +45,7 @@ public class Cart extends BaseEntity<UUID>
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<CartItem> items = new ArrayList<>();
+    private List<CartItem> items;
 
     /**
      * <p>Get to value of the cart by summing all the cart item price.</p>
