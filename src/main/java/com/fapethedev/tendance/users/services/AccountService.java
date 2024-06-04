@@ -18,7 +18,7 @@ import java.util.UUID;
  *
  * @see com.fapethedev.tendance.main.services.IService
  *
- * @author Fapethedev
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
  * @version 1.0
  */
 @Service

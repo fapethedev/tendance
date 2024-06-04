@@ -5,7 +5,8 @@ import com.fapethedev.tendance.users.entities.User;
 /**
  * <p>Service layer for define different email that will be send to a
  * user according user relative action like registering and others</p>
- * @author Fapethedev
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
  * @version 1.0
  */
 public interface IUserEmailService
