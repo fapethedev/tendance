@@ -1,5 +1,7 @@
 HELP.md
 *.env
+redis.conf
+docker-entrypoint-initdb.d/
 config/
 target/
 !.mvn/wrapper/maven-wrapper.jar
