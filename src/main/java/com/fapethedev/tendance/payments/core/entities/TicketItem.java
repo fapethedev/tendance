@@ -4,7 +4,6 @@ package com.fapethedev.tendance.payments.core.entities;
 import com.fapethedev.tendance.payments.sales.entities.Pass;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -20,7 +19,6 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("ticket")
 @Getter @Setter
-@NoArgsConstructor
 public class TicketItem extends CartItem
 {
     /**
@@ -34,6 +32,14 @@ public class TicketItem extends CartItem
     )
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Pass ticket;
+
+    /**
+     * <p>No arg constructor matching super.
+     * A specialized item still an abstract impl.</p>
+     */
+    public TicketItem() {
+        super();
+    }
 
     /**
      * <p>The constructor with the cart, the ticket quantity and the pass.</p>

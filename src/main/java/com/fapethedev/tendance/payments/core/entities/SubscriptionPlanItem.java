@@ -4,7 +4,6 @@ package com.fapethedev.tendance.payments.core.entities;
 import com.fapethedev.tendance.payments.subscriptions.entities.SubscriptionPlan;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -20,7 +19,6 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("subscription_plan")
 @Getter @Setter
-@NoArgsConstructor
 public class SubscriptionPlanItem extends CartItem
 {
     /**
@@ -34,6 +32,14 @@ public class SubscriptionPlanItem extends CartItem
     )
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private SubscriptionPlan plan;
+
+    /**
+     * <p>No arg constructor matching super.
+     * A specialized item still an abstract impl.</p>
+     */
+    public SubscriptionPlanItem() {
+        super();
+    }
 
     /**
      * <p>The constructor matching super with the associated subscription plan.</p>

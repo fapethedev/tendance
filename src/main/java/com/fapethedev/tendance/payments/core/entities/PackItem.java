@@ -4,7 +4,6 @@ package com.fapethedev.tendance.payments.core.entities;
 import com.fapethedev.tendance.payments.sales.entities.PassPack;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -20,7 +19,6 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("pack")
 @Getter @Setter
-@NoArgsConstructor
 public class PackItem extends CartItem
 {
     /**
@@ -35,6 +33,14 @@ public class PackItem extends CartItem
     )
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private PassPack pack;
+
+    /**
+     * <p>No arg constructor matching super.
+     * A specialized item still an abstract impl.</p>
+     */
+    public PackItem() {
+        super();
+    }
 
     /**
      * <p>Constructor matching super with the associated pack</p>

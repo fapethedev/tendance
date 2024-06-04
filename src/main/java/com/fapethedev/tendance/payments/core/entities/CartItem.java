@@ -3,7 +3,8 @@ package com.fapethedev.tendance.payments.core.entities;
 
 import com.fapethedev.tendance.main.entities.BaseEntity;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
@@ -26,8 +27,7 @@ import java.util.UUID;
 @Table(name = "cart_items")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "item_type")
-@Getter @Setter @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Getter @Setter
 public abstract class CartItem extends BaseEntity<UUID>
 {
     /**
@@ -50,6 +50,23 @@ public abstract class CartItem extends BaseEntity<UUID>
     )
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     protected Cart cart;
+
+    /**
+     * <p>Abstract constructor for subclasses.</p>
+     */
+    public CartItem(){}
+
+    /**
+     * <p>Creates a new cart item with elements quantity
+     * and the associated cart.</p>
+     *
+     * @param quantity
+     * @param cart
+     */
+    public CartItem(Integer quantity, Cart cart) {
+        this.quantity = quantity;
+        this.cart = cart;
+    }
 
     /**
      * <p>Get the price of a cart item following the nature of the
