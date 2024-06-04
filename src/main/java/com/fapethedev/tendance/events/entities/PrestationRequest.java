@@ -61,7 +61,7 @@ public class PrestationRequest extends BaseEntity<UUID>
     /**
      * <p>The delivery which is a about the prestation.</p>
      */
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Delivery delivery;
 
