@@ -8,4 +8,4 @@ java -Xms128M \
 	 -XX:NewRatio=3 \
 	 -XX:ParallelGCThreads=8 \
 	 -XX:InitiatingHeapOccupancyPercent=30 \
-	 -jar bot.jar
+	 -jar tendance.jar

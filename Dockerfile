@@ -14,7 +14,7 @@ COPY ./build.sh ./build.sh
 # Build du code
 RUN chmod +x ./build.sh \
     && ./build.sh \
-    && mv ./tendance.jar ./bot.jar
+    && mv ./tendance.jar ./tendance.jar
 
 # Runtime Build Stage
 FROM eclipse-temurin:21.0.2_13-jre AS build-stage
@@ -28,7 +28,6 @@ RUN mkdir /home/tendance \
 WORKDIR /home/tendance
 
 COPY ./entrypoint.sh ./entrypoint.sh
-COPY ./postgresql-ca.crt ./postgresql-ca.crt
 COPY --from=build-stage /usr/src/tendance.jar ./
 RUN chmod +x ./entrypoint.sh
 
