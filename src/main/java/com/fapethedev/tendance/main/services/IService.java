@@ -55,4 +55,15 @@ public interface IService <ENTITY extends Serializable, ID extends Serializable,
      * @return {@code List} of entities
      */
     List<ENTITY> findAll();
+
+    /**
+     * <p>Filter entity list if the entity don't implements
+     * soft delete. Getting all entities and filter with isDeleted field.
+     * </p>
+     *
+     * @param isDeleted whether the entities are deleted or not
+     *
+     * @return liste of the entities deleted or not
+     */
+    default List<ENTITY> findAllByIsDeleted(boolean isDeleted) {return null;}
 }
