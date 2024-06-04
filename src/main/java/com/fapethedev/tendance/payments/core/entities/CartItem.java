@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -28,7 +29,7 @@ import java.util.UUID;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "item_type")
 @Getter @Setter
-public abstract class CartItem extends BaseEntity<UUID>
+public abstract class CartItem extends BaseEntity<UUID> implements Serializable
 {
     /**
      * <p>The quantity of the item in the cart.</p>
