@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "id")
 @MappedSuperclass
 @Getter @Setter
-public class BaseEntity<T extends Serializable> implements Serializable
+public abstract class BaseEntity<T extends Serializable> implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class BaseEntity<T extends Serializable> implements Serializable
     protected LocalDateTime updatedAt;
 
     @Column(nullable = false, updatable = true)
-    protected Boolean deleted;
+    protected boolean isDeleted;
 
     @Version
     private Long version;
@@ -40,6 +40,6 @@ public class BaseEntity<T extends Serializable> implements Serializable
     {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = createdAt;
-        this.deleted = false;
+        this.isDeleted = false;
     }
 }
