@@ -65,8 +65,8 @@ public class ApplicationSecurityConfiguration
                 .authorizeHttpRequests(controllerRequestMatcher())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(formLogin())
-                .oauth2Login(oauth2Login())
                 .rememberMe(rememberMe())
+                .oauth2Login(oauth2Login())
                 .logout(logout())
                 .sessionManagement(sessionManagement())
                 .exceptionHandling(exceptionHandling());
@@ -219,7 +219,7 @@ public class ApplicationSecurityConfiguration
      */
     private Customizer<RememberMeConfigurer<HttpSecurity>> rememberMe()
     {
-        return c -> c.rememberMeCookieName("RMBCOOKIE")
+        return c -> c.rememberMeCookieName("remember-me")
                 .rememberMeParameter("remember-me")
                 .useSecureCookie(true)
                 .tokenValiditySeconds(3600 * 24 * 24)
@@ -237,7 +237,7 @@ public class ApplicationSecurityConfiguration
                 .logoutSuccessUrl("/login?logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .deleteCookies("JSESSIONID" ,"RMBCOOKIE")
+                .deleteCookies("JSESSIONID" ,"remember-me")
                 .permitAll();
     }
 
