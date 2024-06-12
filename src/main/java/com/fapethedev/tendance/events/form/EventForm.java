@@ -8,8 +8,10 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +23,8 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 @Data @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EventForm
 {
     /**
@@ -104,7 +108,7 @@ public class EventForm
      * Although this field is mandatory, it is left as null when submitting
      * the form.
      */
-    @NotNull
+    @Null
     private User user;
 }
 
