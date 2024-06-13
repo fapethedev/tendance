@@ -35,7 +35,7 @@
                 <div th:if="${param.logout}" class="alert bg-warning-subtle text-info alert-dismissible fade show" role="alert">
                   <div class="d-flex align-items-center text-danger">
                     <i class="ti ti-info-circle me-2 fs-4"></i>
-                    Vous vous êtes déconnecter
+                    Vous vous êtes déconnecté
                   </div>
                   <button type="button" class="btn-close" data-bs-dismiss="alert"
                           aria-label="Close"></button>
@@ -50,6 +50,25 @@
                           aria-label="Close"></button>
                 </div>
 
+                <div class="d-flex align-items-center justify-content-center">
+                  <a th:href="@{/oauth2/authorization/google}"
+                       class="btn btn-outline-info w-100 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                       data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
+                    <i class="bi bi-google"></i> Connexion avec Google
+                  </a>
+                  <a th:href="@{/oauth2/authorization/github}"
+                       class="btn btn-outline-dark w-100 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
+                       data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
+                    <i class="bi bi-github"></i> Connexion avec Github
+                  </a>
+                </div>
+
+                <div class="position-relative text-center my-4">
+                  <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative small" style="z-index: 5">
+                    Ou se connecter avec le formulaire
+                  </p><span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+                </div>
+
                 <form action="#" th:action="@{/authentication}" th:object="${user}" method="post">
                   <fieldset>
                     <div class="col-12">
@@ -58,11 +77,8 @@
                         <div class="form-floating">
                           <input type="email" class="form-control" id="username" name="username" th:field="*{username}"
                                  placeholder="Nom d'Utilisateur" aria-describedby="emI emFeedback" required>
-                          <label for="username" class="">Nom d'Utilisateur</label>
+                          <label for="username" class="">Nom d'utilisateur</label>
                         </div>
-                      </div>
-                      <div id="emFeedback" class="">
-                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:errorclass="fieldError" class="text-danger small"></p>
                       </div>
                     </div>
                   </fieldset>
@@ -77,9 +93,6 @@
                           <label for="password" class="" th:text="#{dash.register.form.password}">Mot de Passe</label>
                         </div>
                       </div>
-                      <div id="pwdFeedback" class="">
-                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="fieldError" class="text-danger small"></p>
-                      </div>
                     </div>
                   </fieldset>
 
@@ -90,29 +103,10 @@
                         Restez connectez
                       </label>
                     </div>
-                    <a class="text-danger fw-bold" th:href="@{/login/forgot-password}">Mot de passe oublié ?</a>
+                    <a class="text-danger fw-bold" th:href="@{/login/forgot-password/}">Mot de passe oublié ?</a>
                   </div>
 
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-5 shadow" th:text="${title}">Se Connecter</button>
-
-                  <div class="position-relative text-center my-4">
-                      <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative" style="z-index: 5">
-                          Ou se connecter avec
-                      </p><span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
-                  </div>
-
-                  <div class="d-flex align-items-center justify-content-center">
-                    <a th:href="@{/oauth2/authorization/google}"
-                       class="btn btn-outline-info w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
-                       data-th-title="#{dash.form.googleRegistration}" data-bs-placement="left">
-                      <i class="bi bi-google"></i>
-                    </a>
-                    <a th:href="@{/oauth2/authorization/github}"
-                       class="btn btn-outline-dark w-25 m-2 fs-4 rounded-5 shadow" data-bs-toggle="tooltip"
-                       data-th-title="#{dash.form.githubRegistration}" data-bs-placement="right">
-                      <i class="bi bi-github"></i>
-                    </a>
-                  </div>
 
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Nouveau ?</p>
