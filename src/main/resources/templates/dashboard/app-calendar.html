@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.getDefault()}" lang="fr" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{dashboard/frag-dash-head :: head (title = 'Calendrier')}"><title></title></head>
+
+  <body th:object="${user}">
+
+    <div th:replace="~{dashboard/frag-dash-onload :: on-load ('Haha! ' + *{username}, 'ravie de vous savoir ici')}"></div>
+
+    <div id="main-wrapper">
+
+      <aside class="left-sidebar with-vertical">
+          <div>
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+            <!-- Brand -->
+            <div th:replace="~{dashboard/frag-dash-nav-brand:: nav-brand}"></div>
+
+            <nav th:replace="~{dashboard/frag-dash-navbar:: nav-sidebar}"></nav>
+
+            <div class="fixed-profile p-3 mx-4 mb-2 bg-danger-subtle rounded mt-3">
+              <div class="hstack gap-3">
+                <div class="john-img">
+                  <img th:if="*{account.picture == null}" src="/dashboard/assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt=""/>
+                  <img th:unless="*{account.picture == null}"  th:src="*{account.picture}" class="rounded-circle" width="40" height="40" alt=""/>
+                </div>
+
+                <div class="john-title">
+                  <h6 th:text="*{identity.lastname}" class="mb-0 fs-4 fw-semibold">Mathew</h6>
+                  <span th:text="*{username}" class="fs-2">Designer</span>
+                </div>
+                <button class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                  <i class="ti ti-power fs-6"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+          </div>
+        </aside>
+        <!--  Sidebar End -->
+
+        <div class="page-wrapper">
+          <!--  Header Start -->
+          <header class="topbar">
+            <div class="with-vertical">
+              <!-- ---------------------------------- -->
+              <!-- Start Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: nav-topbar (*{identity.lastname}, *{identity.firstname}, *{username}, *{account.picture}, *{roles.get(0).name})}" class="navbar navbar-expand-lg p-0"></nav>
+              <!-- ---------------------------------- -->
+              <!-- End Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+
+              <!-- ------------------------------- -->
+              <!-- apps Dropdown in Small screen -->
+              <!-- ------------------------------- -->
+              <!--  Mobilenavbar -->
+              <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <nav th:replace="~{dashboard/frag-dash-navbar :: mobile-nav-topbar}"></nav>
+              </div>
+            </div>
+
+            <div class="app-header with-horizontal">
+
+              <nav th:replace="~{dashboard/frag-dash-navbar :: app-header-navbar}"></nav>
+
+            </div>
+          </header>
+          <!--  Header End -->
+          <aside class="left-sidebar with-horizontal">
+            <!-- Sidebar scroll-->
+            <div>
+              <!-- Sidebar navigation-->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: left-nav-sidebar}"></nav>
+              <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+          </aside>
+
+          <div class="body-wrapper">
+            <div class="container-fluid">
+              <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+                <div class="card-body px-4 py-3">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <h4 class="fw-semibold mb-8">Calendrier</h4>
+                      <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" th:href="@{/dashboard}"
+                            >Acceuil</a
+                            >
+                          </li>
+                          <li class="breadcrumb-item" aria-current="page">Calendrier</li>
+                        </ol>
+                      </nav>
+                    </div>
+                    <div class="col-3">
+                      <div class="text-center mb-n5">
+                        <img
+                                src="/dashboard/assets/images/breadcrumb/ChatBc.png"
+                                alt=""
+                                class="img-fluid mb-n4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div>
+                  <div class="row gx-0">
+                    <div class="col-lg-12">
+                      <div class="p-4 calender-sidebar app-calendar">
+                        <div id="calendar"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- BEGIN MODAL -->
+              <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel"
+                   aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="eventModalLabel">
+                        Add / Edit Event
+                      </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div>
+                            <label class="form-label">Event Title</label>
+                            <input id="event-title" type="text" class="form-control"/>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mt-4">
+                          <div><label class="form-label">Event Color</label></div>
+                          <div class="d-flex">
+                            <div class="n-chk">
+                              <div class="form-check form-check-primary form-check-inline">
+                                <input class="form-check-input" type="radio" name="event-level" value="Danger"
+                                       id="modalDanger"/>
+                                <label class="form-check-label" for="modalDanger">Danger</label>
+                              </div>
+                            </div>
+                            <div class="n-chk">
+                              <div class="form-check form-check-warning form-check-inline">
+                                <input class="form-check-input" type="radio" name="event-level" value="Success"
+                                       id="modalSuccess"/>
+                                <label class="form-check-label" for="modalSuccess">Success</label>
+                              </div>
+                            </div>
+                            <div class="n-chk">
+                              <div class="form-check form-check-success form-check-inline">
+                                <input class="form-check-input" type="radio" name="event-level" value="Primary"
+                                       id="modalPrimary"/>
+                                <label class="form-check-label" for="modalPrimary">Primary</label>
+                              </div>
+                            </div>
+                            <div class="n-chk">
+                              <div class="form-check form-check-danger form-check-inline">
+                                <input class="form-check-input" type="radio" name="event-level" value="Warning"
+                                       id="modalWarning"/>
+                                <label class="form-check-label" for="modalWarning">Warning</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 d-none">
+                          <div>
+                            <label class="form-label">Enter Start Date</label>
+                            <input id="event-start-date" type="text" class="form-control"/>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 d-none">
+                          <div>
+                            <label class="form-label">Enter End Date</label>
+                            <input id="event-end-date" type="text" class="form-control"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn bg-danger-subtle text-danger" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-success btn-update-event" data-fc-event-public-id="">
+                        Update changes
+                      </button>
+                      <button type="button" class="btn btn-primary btn-add-event">
+                        Add Event
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END MODAL -->
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div th:replace="~{dashboard/frag-dash-app-settings :: app-settings}"></div>
+      </div>
+
+      <!--  Search Bar -->
+      <div th:replace="~{dashboard/frag-dash-searchbar :: search-bar}"></div>
+      <!--  Shopping Cart -->
+      <div th:replace="~{dashboard/frag-dash-shopping-cart :: shopping-cart}"></div>
+    </div>
+
+    <footer th:replace="~{dashboard/frag-dash-footer :: footer}"></footer>
+  <script src="/dashboard/assets/libs/fullcalendar/index.global.min.js"></script>
+  <script src="/dashboard/assets/js/apps/calendar-init.js"></script>
+</body>
+
+</html>
