@@ -17,9 +17,11 @@ import java.util.UUID;
 
 /**
  * The implementation of the {@link IUserService}
- * @author Fapethedev
- * @since 1.0
+ *
  * @see com.fapethedev.tendance.users.services.IUserService
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
  */
 @Service
 @Slf4j
@@ -27,8 +29,11 @@ import java.util.UUID;
 public class UserService implements IUserService
 {
     private final AccountRepository accountRepository;
+
     private final UserRepository userRepository;
+
     private final IRoleService IRoleService;
+
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -50,13 +55,11 @@ public class UserService implements IUserService
                 .password(passwordEncoder.encode(userForm.getPassword()))
                 .build();
 
-        Optional<Role> roleOptional = IRoleService.findByName(Role.Category.ROLE_STANDARD.name());
-
-        Role role = roleOptional.orElseGet(this::setDefaultRole);
+        Role role = IRoleService.findByName(Role.Category.ROLE_STANDARD.name());
 
         user.setRoles(Collections.singletonList(role));
 
-        user.setType(User.UserType.STANDARD);
+        user.setType(User.Type.STANDARD);
 
         user = userRepository.save(user);
 
@@ -114,12 +117,5 @@ public class UserService implements IUserService
     @Override
     public boolean existByEmail(String email) {
         return userRepository.countByEmail(email) > 0;
-    }
-
-    private Role setDefaultRole()
-    {
-        Role role = new Role();
-        role.setName(Role.Category.ROLE_STANDARD.name());
-        return IRoleService.save(role);
     }
 }
