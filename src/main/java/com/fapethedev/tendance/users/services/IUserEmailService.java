@@ -12,18 +12,27 @@ import com.fapethedev.tendance.users.entities.User;
 public interface IUserEmailService
 {
     /**
-     * Send a registration success message to
-     * a new user to activate his account
-     * @param user the user to activate account
+     * <p>Send a registration success message to
+     * a new user to activate his account.</p>
+     *
+     * @param user the user to activate his account
      */
     void sendRegisterConfirmationEmail(User user);
 
     /**
      * <p>Send an email to a user that's is fully registered in the application.
-     * This is usefull for telling user that their account is successfully activated
+     * This is usefully for telling user that their account is successfully activated
      * even they use oauth2 protocol to register their account.</p>
      *
-     * @param user the user with the account activate and with minimum base setup
+     * @param user the user with the account activates and with minimum base setup
      */
-     void sendRegistrationCompleteEmail(User user);
+    void sendRegistrationCompleteEmail(User user);
+
+    /**
+     * <p>Send an email to inform a user that his no longer a standard user and
+     * his account type has changed.</p>
+     *
+     * @param user the user that saw his type changed
+     */
+    void sendUserTypeChangeEmail(User user);
 }
