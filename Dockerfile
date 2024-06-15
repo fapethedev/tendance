@@ -11,7 +11,7 @@ COPY ./src/main/resources ./src/main/resources
 COPY ./pom.xml ./pom.xml
 
 # Build du code
-RUN mvn clean compile package && mv ./target/tendance-1.0.0.jar ./tendance.jar
+RUN mvn clean compile package -DskipTests && mv ./target/tendance-1.0.0.jar ./tendance-1.0.0.jar
 
 # Runtime Build Stage
 FROM eclipse-temurin:21.0.2_13-jre
