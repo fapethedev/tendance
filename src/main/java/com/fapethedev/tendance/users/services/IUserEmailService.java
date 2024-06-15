@@ -17,4 +17,13 @@ public interface IUserEmailService
      * @param user the user to activate account
      */
     void sendRegisterConfirmationEmail(User user);
+
+    /**
+     * <p>Send an email to a user that's is fully registered in the application.
+     * This is usefull for telling user that their account is successfully activated
+     * even they use oauth2 protocol to register their account.</p>
+     *
+     * @param user the user with the account activate and with minimum base setup
+     */
+     void sendRegistrationCompleteEmail(User user);
 }
