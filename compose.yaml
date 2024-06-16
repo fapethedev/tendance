@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql:8.4.0
+    image: mysql:8.0.37
     container_name: tendance-mysql
     env_file:
       - .env
@@ -41,32 +41,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
 
-#  neo4j:
-#    image: neo4j:5.20-community
-#    container_name: tendance-neo4j
-#    environment:
-#      NEO4J_AUTH: neo4j/${NEO4J_AUTH}
-#    ports:
-#      - "7473:7474"
-#      - "7685:7687"
-#    volumes:
-#      - neo4j_data:/data
-
-#  elasticsearch:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-#    container_name: tendance-elasticsearch
-#    environment:
-#      - discovery.type=single-node
-#    ports:
-#      - "9209:9200"
-#      - "9309:9300"
-#    volumes:
-#      - es_data:/usr/share/elasticsearch/data
-
 volumes:
   mysql_data:
-#  postgres_data:
   redis_data:
-#  neo4j_data:
   mongodb_data:
-#  es_data:
