@@ -1,7 +1,6 @@
 package com.fapethedev.tendance.main.cdn;
 
 import com.fapethedev.tendance.main.configuration.CdnConfiguration;
-import com.fapethedev.tendance.main.exception.CdnException;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 

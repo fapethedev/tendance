@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.main.exception;
+package com.fapethedev.tendance.main.cdn;
 
 /**
  * <p>Cdn relative operation failure exception.</p>
