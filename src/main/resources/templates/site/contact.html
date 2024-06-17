@@ -26,6 +26,9 @@
                 <div class="col-12">
                     <h2 class="contact-title">Mise en Contact</h2>
                 </div>
+                <div class="col-12 mb-2">
+                    <div class="col-12 mb-2 rounded" id="map" style="height: 200px; z-index: -1"></div>
+                </div>
                 <div class="col-lg-8">
                     <form class="form-contact contact_form" th:action="@{contact/process}" action="#" th:object="${contact}"
                           method="post" id="contactForm" novalidate="novalidate">
@@ -90,6 +93,16 @@
     <script type="application/javascript">
         document.getElementById("accueil").className = "";
         document.getElementById("contact").className = "active";
+
+        let map = L.map('map').setView( [6.2332, 1.107], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker( [6.2332, 1.107]).addTo(map)
+            .bindPopup('Notre emplacement actuel.')
+            .openPopup();
     </script>
     
     </body>
