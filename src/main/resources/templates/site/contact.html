@@ -7,8 +7,8 @@
 
 <body>
     <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
 
     <!-- header-start -->
     <header th:replace="~{/site/site-nav :: navbar}"></header>
@@ -21,68 +21,67 @@
 
     <!-- ================ contact section start ================= -->
     <section class="contact-section">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="contact-title">Mise en Contact</h2>
-                    </div>
-                    <div class="col-lg-8">
-                        <form class="form-contact contact_form" th:action="@{/contact/process}" action="#" th:object="${contact}"
-                              method="post" id="contactForm" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control w-100 rounded" name="message" id="message" th:field="*{message}" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre message'" placeholder="Entrer votre message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control valid rounded" name="name" id="name" type="text" th:field="*{name}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre nom'" placeholder="Entrer votre nom">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control valid rounded" name="email" id="email" type="email" th:field="*{email}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre adresse email'" placeholder="Entrer votre adresse email">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input class="form-control rounded" name="subject" id="subject" type="text" th:field="*{subject}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer le suject'" placeholder="Entrer le suject">
-                                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Mise en Contact</h2>
+                </div>
+                <div class="col-lg-8">
+                    <form class="form-contact contact_form" th:action="@{contact/process}" action="#" th:object="${contact}"
+                          method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100 rounded" name="message" id="message" th:field="*{message}" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre message'" placeholder="Entrer votre message"></textarea>
                                 </div>
                             </div>
-                            <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Envoyer</button>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid rounded" name="name" id="name" type="text" th:field="*{name}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre nom'" placeholder="Entrer votre nom">
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-3 offset-lg-1">
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti-home"></i></span>
-                            <div class="media-body">
-                                <h3>Région Maritime, Togo.</h3>
-                                <p>Lomé, Sanguera</p>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid rounded" name="email" id="email" type="email" th:field="*{email}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre adresse email'" placeholder="Entrer votre adresse email">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control rounded" name="subject" id="subject" type="text" th:field="*{subject}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer le suject'" placeholder="Entrer le suject">
+                                </div>
                             </div>
                         </div>
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti ti-tablet"></i></span>
-                            <div class="media-body">
-                                <h3>+228 99 15 72 74</h3>
-                                <p>Lundi à Samedi 8h-18h </p>
-                            </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn">Envoyer</button>
                         </div>
-                        <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti ti-email"></i></span>
-                            <div class="media-body">
-                                <h3>support-team@tendance.com</h3>
-                                <p>contactez nous à tout moment</p>
-                            </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="bi bi-house"></i></span>
+                        <div class="media-body">
+                            <h3>Région Maritime, Togo.</h3>
+                            <p>Lomé, Sanguera</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="bi bi-phone"></i></span>
+                        <div class="media-body">
+                            <h3>+228 99 15 72 74</h3>
+                            <p>Lundi à Samedi 8h-18h </p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="bi bi-envelope-at"></i></span>
+                        <div class="media-body">
+                            <h3>contact@tendance-event.com</h3>
+                            <p>Contactez-nous à tout moment</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     <!-- ================ contact section end ================= -->
     
     <!-- footer_start -->
@@ -95,4 +94,4 @@
     
     </body>
     
-    </html>
+</html>
