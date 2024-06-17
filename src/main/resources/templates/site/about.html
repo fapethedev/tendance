@@ -7,8 +7,8 @@
 
 <body>
     <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
 
     <!-- header-start -->
     <header th:replace="~{/site/site-nav :: navbar}"></header>
@@ -24,6 +24,28 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="contact-title">À Propos</h2>
+                </div>
+                <div class="col-lg-10">
+                    <h3>Qui Sommes-nous ?</h3>
+                    <div>
+                        <p>TheDevJob est une jeune startup togolaise spécialisée dans le domaine informatique, se
+                            concentrant principalement sur le développement de solutions logicielles. En combinant des
+                            technologies de pointe telles que l'IA et le DevOps, TheDevJob propose des logiciels
+                            d’entreprise sur mesure (ERP, CRM), d’application web grand public, des chatbots.</p>
+                    </div>
+                </div>
+                <div class="col-lg-1 offset-lg-1">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-12">
+                    <h4>Vous avez des questions ?</h4>
+                    <div>
+                        <a class="link link-underline-info" th:href="faq">Accéder à notre FAQ.</a>
+                    </div>
                 </div>
             </div>
         </div>
