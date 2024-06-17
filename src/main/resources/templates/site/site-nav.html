@@ -13,35 +13,19 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-8 col-lg-8">
+                            <div class="col-xl-10 col-lg-10">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a id="accueil" class="active" th:href="@{/}">Accueil</a></li>
-                                            <li><a id="services" th:href="servicessss">Services</a></li>
-        <!--                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>-->
-        <!--                                        <ul class="submenu">-->
-        <!--                                            <li><a href="blog.html">blog</a></li>-->
-        <!--                                            <li><a href="single-blog.html">single-blog</a></li>-->
-        <!--                                        </ul>-->
-        <!--                                    </li>-->
-        <!--                                    <li><a href="#">Services <i class="ti-angle-down"></i></a>-->
-        <!--                                        <ul class="submenu">-->
-        <!--                                            <li><a href="elements.html">elements</a></li>-->
-        <!--                                        </ul>-->
-        <!--                                    </li>-->
-                                            <li><a id="event" th:href="event">Evènements</a></li>
+                                            <li><a id="accueil" class="active" href="/">Accueil</a></li>
+                                            <li><a id="event" th:href="events">Évènements</a></li>
                                             <li><a id="contact" th:href="contact">Contact</a></li>
                                             <li><a id="about" th:href="about">À Propos</a></li>
-                                            <li><a id="faq" th:href="faq">FAQ</a></li>
                                             <li><a id="cart" th:href="cart">Panier</a></li>
+                                            <li><a th:href="login">Se Connecter</a></li>
+                                            <li><a th:href="dashboard">Mon Compte</a></li>
                                         </ul>
                                     </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-2 d-none d-lg-block">
-                                <div class="">
-                                    <a data-th-text="${authenticated} ? #{index.account} : #{index.login}" th:href="${authenticated} ? 'dashboard' : 'login'" class="boxed-btn-white">Se Connecter</a>
                                 </div>
                             </div>
                             <div class="col-12">
