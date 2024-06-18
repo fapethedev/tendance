@@ -43,6 +43,9 @@ ENV CLOUDINARY_CDN_KEY fakeurl
 ENV CLOUDINARY_CDN_SECRET fakeurl
 ENV CLOUDINARY_CDN_CLOUDNAME fakeurl
 
+ENV CDN_NAME fakeurl
+ENV CDN_FOLDER fakeurl
+
 RUN mkdir /home/tendance \
     && groupadd tendance \
     && useradd -d /home/tendance -g tendance tendance \
