@@ -2,7 +2,7 @@
 <html th:with="lang = ${#locale.language}" th:lang="${lang}" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme"
       data-layout="vertical" xmlns:th="http://www.thymeleaf.org" lang="aa">
 
-<head th:replace="~{dashboard/frag-dash-head :: head ('403')}"></head>
+<head th:replace="~{dashboard/frag-dash-head :: head ('Error - 403')}"></head>
 
 <body>
 
@@ -15,9 +15,9 @@
           <div class="col-lg-4">
             <div class="text-center">
               <img src="/dashboard/assets/images/backgrounds/403-img.svg" alt="" class="img-fluid" width="500">
-              <h1 class="fw-semibold mb-7 fs-9">Opps!!!</h1>
-              <h4 class="fw-semibold mb-7">Vous n'êtes pas autorisez à acceder à cette page</h4>
-              <a class="btn btn-primary" th:href="@{/}" role="button">Retourner sur le site</a>
+              <h1 class="fw-semibold mb-7 fs-9">Halte! Qui vas là ?</h1>
+              <h4 class="fw-semibold mb-7">Vous n'êtes pas autorisé à accéder à cette page</h4>
+              <a class="btn btn-primary rounded-5" href="/" role="button">Retourner à l'accueil</a>
             </div>
           </div>
         </div>
