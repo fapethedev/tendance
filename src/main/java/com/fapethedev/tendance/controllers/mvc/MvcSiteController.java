@@ -1,4 +1,4 @@
-package com.fapethedev.tendance.main.controller;
+package com.fapethedev.tendance.controllers.mvc;
 
 import com.fapethedev.tendance.main.form.ContactForm;
 import com.fapethedev.tendance.security.form.LoginForm;
@@ -16,15 +16,25 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * <p>Main site controller with the role to show site pages
+ * and all interactions, this controller is different as other has mission to work
+ * on the client and administrator dashboard.</p>
+ *
+ * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 1.0
+ */
 @Controller
 @RequestMapping("/")
-public class MainController implements WebMvcConfigurer
+public class MvcSiteController implements WebMvcConfigurer
 {
     private final MessageSource i18n;
     private final IUserService userService;
 
     @Autowired
-    public MainController(MessageSource i18n, IUserService userService) {
+    public MvcSiteController(MessageSource i18n, IUserService userService) {
         this.i18n = i18n;
         this.userService = userService;
     }
@@ -36,14 +46,7 @@ public class MainController implements WebMvcConfigurer
         return "site/index";
     }
 
-    @GetMapping(path = "/servicessss")
-    public String showServicePage(Model model)
-    {
-        model.addAttribute("title", "Services");
-        return "site/services";
-    }
-
-    @GetMapping(path = "/event")
+    @GetMapping(path = "/events")
     public String showEventPage(Model model)
     {
         model.addAttribute("title", "Evènements");
@@ -59,8 +62,9 @@ public class MainController implements WebMvcConfigurer
     }
 
     @GetMapping(path = "/about")
-    public String showAboutPage()
+    public String showAboutPage(Model model)
     {
+        model.addAttribute("title", "À Propos");
         return "site/about";
     }
 
