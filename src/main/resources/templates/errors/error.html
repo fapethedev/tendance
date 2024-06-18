@@ -2,7 +2,7 @@
 <html th:with="lang = ${#locale.language}" th:lang="${lang}" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme"
       data-layout="vertical" xmlns:th="http://www.thymeleaf.org" lang="aa">
 
-<head th:replace="~{dashboard/frag-dash-head :: head ('Error')}"></head>
+<head th:replace="~{dashboard/frag-dash-head :: head ('Error - 500')}"></head>
 
 <body>
 
@@ -16,14 +16,14 @@
             <div class="text-center">
               <img src="/dashboard/assets/images/backgrounds/maintenance.svg" alt="" class="img-fluid" width="500">
               <h1 class="fw-semibold mb-7 fs-9">
-                Une erreur est servenue au niveau du serveur
+                Une erreur est survenue au niveau du serveur
               </h1>
               <h4 class="fw-semibold mb-7">
                 Essayer de recharger la page.
                 <br>
-                Si l'erreur persiste veuillez contactez les adminstrateurs ou notre equipe technique à l'adresse support-team@tendance.com
+                Si l'erreur persiste, veuillez contacter les administrateurs à l'adresse support@tendance-event.com
               </h4>
-              <a class="btn btn-primary rounded-5 mb-5" th:href="@{/}" role="button">Retounez à l'accueil</a>
+              <a class="btn btn-primary rounded-5 mb-5" href="/" role="button">Retournez à l'accueil</a>
             </div>
           </div>
         </div>
