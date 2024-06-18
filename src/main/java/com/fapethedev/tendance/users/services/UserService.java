@@ -2,6 +2,7 @@ package com.fapethedev.tendance.users.services;
 
 import com.fapethedev.tendance.users.entities.*;
 import com.fapethedev.tendance.users.exceptions.UserNotFoundException;
+import com.fapethedev.tendance.users.form.RegisterForm;
 import com.fapethedev.tendance.users.form.UserForm;
 import com.fapethedev.tendance.users.repositories.AccountRepository;
 import com.fapethedev.tendance.users.repositories.UserRepository;
@@ -37,17 +38,16 @@ public class UserService implements IUserService
     private final PasswordEncoder passwordEncoder;
 
     @Override
+    @Deprecated(forRemoval = true)
     public User save(UserForm userForm)
     {
         User user = User.builder()
-                .identity(UserIdentity
-                        .builder()
+                .identity(UserIdentity.builder()
                         .lastname(userForm.getLastname())
                         .firstname(userForm.getFirstname())
                         .email(userForm.getEmail())
                         .build())
-                .adress(UserAdress
-                        .builder()
+                .adress(UserAddress.builder()
                         .phone(userForm.getPhone())
                         .city(userForm.getCity())
                         .country(userForm.getCountry())
@@ -117,5 +117,42 @@ public class UserService implements IUserService
     @Override
     public boolean existByEmail(String email) {
         return userRepository.countByEmail(email) > 0;
+    }
+
+    @Override
+    public User save(RegisterForm form)
+    {
+        User user = User.builder()
+                .identity(UserIdentity.builder()
+                        .lastname(form.getLastname())
+                        .firstname(form.getFirstname())
+                        .email(form.getEmail())
+                        .build())
+                .adress(UserAddress.builder()
+                        .phone(form.getPhone())
+                        .build())
+                .password(passwordEncoder.encode(form.getPassword()))
+                .roles(Collections.singletonList(
+                        IRoleService.findByName(
+                                Role.Category.ROLE_STANDARD.name())
+                        )
+                )
+                .type(User.Type.STANDARD)
+                .build();
+
+        user = userRepository.save(user);
+
+        Account account = Account.builder()
+                .locked(false)
+                .active(false)
+                .emailVerified(false)
+                .user(user)
+                .build();
+
+        accountRepository.save(account);
+
+        user.setAccount(account);
+
+        return user;
     }
 }
