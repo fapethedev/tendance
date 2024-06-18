@@ -16,9 +16,22 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * <p>Application user entity. This is the central entity in the app
+ * as every action is doing by an user. User is used to authenticated with
+ * username and password so it's implements UserDetails.</p>
+ *
+ * @see org.springframework.security.core.userdetails.UserDetails
+ * @see com.fapethedev.tendance.main.entities.BaseEntity
+ *
+ * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+ * @version 2.0
+ */
 @Entity
 @Table(name = "users")
-@Getter @Setter @AllArgsConstructor @Builder
+@Getter
+@Setter
+@AllArgsConstructor @Builder
 public class User extends BaseEntity<UUID> implements UserDetails
 {
     public User() {
@@ -29,13 +42,13 @@ public class User extends BaseEntity<UUID> implements UserDetails
     private UserIdentity identity;
 
     @Embedded
-    private UserAdress adress;
+    private UserAddress address;
 
     @Column(nullable = false)
     private String password;
 
     @Column
-    private String nomOrganistion;
+    private String nomOrganisation;
 
     @Column
     private String emailOrganisation;
@@ -54,9 +67,9 @@ public class User extends BaseEntity<UUID> implements UserDetails
 
     @Column
     @Enumerated(EnumType.STRING)
-    private UserType type;
+    private Type type;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Account account;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -99,7 +112,14 @@ public class User extends BaseEntity<UUID> implements UserDetails
         return account.isActive();
     }
 
-    public enum UserType
+    /**
+     * <p>{@code Type} is the type of user.</p>
+     * <p>It's start with ADMIN which is the highest type and finish with STANDARD the lowest type</p>
+     *
+     * @author <a href="https://github.com/fapethedev">Fapethedev</a>
+     * @version 1.0
+     */
+    public enum Type
     {
         ADMIN,
         STANDARD,
