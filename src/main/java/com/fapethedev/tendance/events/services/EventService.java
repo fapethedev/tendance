@@ -3,6 +3,8 @@ package com.fapethedev.tendance.events.services;
 import com.fapethedev.tendance.events.entities.Event;
 import com.fapethedev.tendance.events.form.EventForm;
 import com.fapethedev.tendance.events.repository.EventRepository;
+import com.fapethedev.tendance.main.cdn.CdnUploader;
+import com.fapethedev.tendance.users.entities.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,8 @@ public class EventService implements IEventService
      */
     private final EventRepository eventRepository;
 
+    private final CdnUploader uploader;
+
     @Override
     public Event save(Event event)
     {
@@ -42,12 +46,21 @@ public class EventService implements IEventService
     {
         log.info("Saving event with form");
 
+//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
+//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
+//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
+//
+//        uploader.upload(eventForm.getVideoOne(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_tw"));
+//        uploader.upload(eventForm.getVideoTwo(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_one"));
+//        uploader.upload(eventForm.getVideoThree(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_one"));
+
+
+
+
         return eventRepository.save(
                 Event.builder()
                         .name(eventForm.getName())
                         .description(eventForm.getDescription())
-                        .images(eventForm.getImages())
-                        .videos(eventForm.getVideos())
                         .startDateTime(eventForm.getStartDateTime())
                         .endDateTime(eventForm.getEndDateTime())
                         .state(eventForm.getEventState())
@@ -90,5 +103,13 @@ public class EventService implements IEventService
         log.info("Finding all events");
 
         return eventRepository.findAll();
+    }
+
+    @Override
+    public List<Event> findByUser(User user)
+    {
+        log.info("Finding all events for user " + user.getUsername());
+
+        return eventRepository.findByUser(user);
     }
 }
