@@ -42,15 +42,25 @@ public class Prestation extends BaseEntity<UUID>
     /**
      * The event where the prestation will occur
      */
-    @JoinColumn
-    @ManyToOne
+    @JoinColumn(
+            nullable = false,
+            name = "event_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_prestations_events_id")
+    )
+    @ManyToOne(fetch = FetchType.LAZY)
     private Event event;
 
     /**
      * The service which is concerned by the prestation
      */
-    @JoinColumn
-    @ManyToOne
+    @JoinColumn(
+            nullable = false,
+            name = "delivery_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_prestations_deliveries_id")
+    )
+    @ManyToOne(fetch = FetchType.LAZY)
     private Delivery delivery;
 
     /**
@@ -60,9 +70,10 @@ public class Prestation extends BaseEntity<UUID>
     @JoinColumn(
             nullable = false,
             name = "event_user_id",
-            referencedColumnName = "id"
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_prestations_users_event_user_id")
     )
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User eventUser;
 
     /**
@@ -72,8 +83,9 @@ public class Prestation extends BaseEntity<UUID>
     @JoinColumn(
             nullable = false,
             name = "delivery_user_id",
-            referencedColumnName = "id"
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_prestations_users_delivery_user_id")
     )
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User deliveryUser;
 }
