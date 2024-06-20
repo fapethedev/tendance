@@ -1,7 +1,7 @@
-MAINTAINER fapethedev https://github.com/fapethedev mpetrivlin@gmail.com
-
 # Runtime Build Stage
 FROM eclipse-temurin:21.0.2_13-jre
+
+MAINTAINER fapethedev https://github.com/fapethedev mpetrivlin@gmail.com
 
 # Add Env
 ENV REDIS_URL fakeurl
