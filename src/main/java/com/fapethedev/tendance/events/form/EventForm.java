@@ -1,8 +1,6 @@
 package com.fapethedev.tendance.events.form;
 
-import com.fapethedev.tendance.events.entities.EventImages;
 import com.fapethedev.tendance.events.entities.EventState;
-import com.fapethedev.tendance.events.entities.EventVideos;
 import com.fapethedev.tendance.users.entities.User;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -70,12 +69,20 @@ public class EventForm
     /**
      * Poster images of the event.
      */
-    private EventImages images;
+    private MultipartFile imageOne;
+
+    private MultipartFile imageTwo;
+
+    private MultipartFile imageThree;
 
     /**
      * Promotional videos of the event
      */
-    private EventVideos videos;
+    private MultipartFile videoOne;
+
+    private MultipartFile videoTwo;
+
+    private MultipartFile videoThree;
 
     /**
      * Event status. Defaults to PENDING to signify that the event is
@@ -108,7 +115,7 @@ public class EventForm
      * Although this field is mandatory, it is left as null when submitting
      * the form.
      */
-    @NotNull
+    @Null
     private User user;
 }
 
