@@ -51,7 +51,7 @@ public class EventService implements IEventService
                         .startDateTime(eventForm.getStartDateTime())
                         .endDateTime(eventForm.getEndDateTime())
                         .state(eventForm.getEventState())
-//                        .place()
+                        .place(eventForm.getPlace())
                         .scope(eventForm.getScope())
                         .user(eventForm.getUser())
                         .build()
