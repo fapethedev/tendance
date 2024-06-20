@@ -23,7 +23,7 @@ public class Event extends BaseEntity<UUID>
     /**
      * The name of the event
      */
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     /**
@@ -74,18 +74,20 @@ public class Event extends BaseEntity<UUID>
      * The user who creates the event <br/>
      * He should be of type of Organizer
      */
-    @JoinColumn
-    @ManyToOne
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_events_users_id")
+    )
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     /**
      * The place of the event
      */
-    @JoinColumn
-    @ManyToOne
-    private Place place;
+    private String place;
 
     @JoinColumn
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Prestation> prestations;
 }
