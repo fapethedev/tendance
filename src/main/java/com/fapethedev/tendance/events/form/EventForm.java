@@ -90,7 +90,7 @@ public class EventForm
      * Place of the event.
      * Not a mandatory field and can be let null if no place is specified
      */
-    private PlaceForm place;
+    private String place;
 
     /**
      * Scope is used to know if an event is public or not, nothing more.
@@ -108,7 +108,7 @@ public class EventForm
      * Although this field is mandatory, it is left as null when submitting
      * the form.
      */
-    @Null
+    @NotNull
     private User user;
 }
 
