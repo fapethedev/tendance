@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{dashboard/frag-dash-head :: head (title = ${title})}"><title></title></head>
+<head th:replace="~{dashboard/frag-dash-head :: head (title = 'S\'inscrire')}"><title></title></head>
 
 <body>
 
@@ -20,7 +20,7 @@
                                   <img src="/assets/images/logo.png" width="180" alt="">
                               </a>
 
-                              <p th:text="${title}" class="text-center text-dark">Inscription</p>
+                              <p class="text-center text-dark">Inscription</p>
 
 
                               <div class="d-flex align-items-center justify-content-center">
@@ -83,30 +83,6 @@
                                   </fieldset>
 
                                   <fieldset class="row">
-                                      <div class="col-md-6">
-                                          <div class="input-group mb-3 shadow-sm">
-                                              <span id="cntI" class="input-group-text"><i class="bi bi-globe"></i></span>
-                                              <div class="form-floating">
-                                                  <input type="text" class="form-control" id="country" name="country" th:field="*{country}"
-                                                         th:placeholder="#{dash.register.form.country}" aria-describedby="cntI cntFeedback" required>
-                                                  <label for="country" class="" th:text="#{dash.register.form.country}">Pays</label>
-                                              </div>
-                                          </div>
-                                          <div id="cntFeedback" class="">
-                                              <p th:if="${#fields.hasErrors('country')}" th:errors="*{country}" th:errorclass="fieldError" class="text-danger small"></p>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <div class="form-floating mb-3 shadow-sm">
-                                              <input type="text" class="form-control" id="city" name="city" th:field="*{city}"
-                                                 th:placeholder="#{dash.register.form.city}" aria-describedby="cityFeedback" required>
-                                              <label for="city" class="" th:text="#{dash.register.form.city}">Ville</label>
-                                          </div>
-                                          <div id="cityFeedback" class="">
-                                              <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" th:errorclass="fieldError" class="text-danger small"></p>
-                                          </div>
-                                      </div>
-
                                       <div class="col-12">
                                           <div class="input-group mb-3 shadow-sm">
                                               <span id="phoneI" class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
@@ -126,9 +102,8 @@
                                       <div class="col-12">
                                           <div class="input-group mb-3 shadow-sm">
                                               <span id="pwdI" class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
-                                              <div class="form-floating">
-                                                  <input type="password" class="form-control" id="password" name="password" th:field="*{password}"
-                                                         th:placeholder="#{dash.register.form.password}" aria-describedby="pwdI pwdFeedback" required>
+                                              <div class="form-floating" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Le mot de passe doit contenir 1 Majuscule, 1 Minuscule, 1 Chiffre et 1 Caractère spécial">
+                                                  <input type="password" class="form-control" id="password" name="password" th:field="*{password}" th:placeholder="#{dash.register.form.password}" aria-describedby="pwdI pwdFeedback" required>
                                                   <label for="password" class="" th:text="#{dash.register.form.password}">Mot de Passe</label>
                                               </div>
                                           </div>
