@@ -1,0 +1,44 @@
+{
+  "name": "tendance",
+  "engines": {
+    "node": "18.x",
+    "npm": "10.x"
+  },
+  "private": true,
+  "version": "1.0.0",
+  "description": "Event Management App",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fapethedev/tendance.git"
+  },
+  "keywords": [
+    "tendance"
+  ],
+  "author": "fapethedev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fapethedev/tendance/issues"
+  },
+  "homepage": "https://github.com/fapethedev/tendance#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-terser": "^2.1.0",
+    "laravel-mix": "^6.0.49"
+  },
+  "dependencies": {
+    "esri-leaflet": "^3.0.12",
+    "esri-leaflet-geocoder": "^3.1.4",
+    "leaflet": "^1.9.4",
+    "leaflet.locatecontrol": "^0.81.1"
+  }
+}
