@@ -140,10 +140,78 @@
                 </div>
                 <div class="card-body border-top p-4">
                   <h2 class="fs-8 fw-semibold mb-3">Description</h2>
-                  <p class="mb-3" th:text="${event.description}">Description
-                  </p>
-                  <p class="text-dark mb-0"><strong>This is strong text.</strong></p>
-                  <p class="mb-0"><em>This is italic text.</em></p>
+                  <p class="mb-3" th:text="${event.description}">Description</p>
+                </div>
+                <div class="card-body border-top p-4">
+                    <div class="mb-4">
+                      <h5 class="card-title fw-semibold mb-0 lh-sm">Manager Mon évènement : <span th:text="${event.name}"></span></h5>
+                    </div>
+                    <div class="table-responsive shadow mb-4">
+                      <table class="table border text-nowrap mb-0 align-middle">
+                        <thead class="text-dark fs-4">
+                          <tr>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Status</h6>
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Visibilité</h6>
+                          </th>
+                          <th class="text text-decoration-underline">
+                            Action
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Billetterie</h6>
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <select class="select2 form-control block" th:value="${event.state}">
+                                <option class="ti ti-circle fs-3"
+                                        th:each="state : ${T(com.fapethedev.tendance.events.entities.EventState).values()}"
+                                        th:value="${state}"
+                                        th:text="${state}"
+                                ></option>
+                              </select>
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <span class="badge text-bg-primary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'public'}">Public</span>
+                                <span class="badge text-bg-secondary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'privé'}">Privé</span>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="btn-group">
+                                <a th:href="@{/dashboard/events/save/{id}(id=${event.id})}" class="btn btn-outline-warning d-flex align-items-center rounded-start-5 gap-3" href="#">
+                                  <i class="fs-4 ti ti-edit"></i>
+                                  Modifier
+                                </a>
+                                <a th:href="@{/dashboard/events/delete/{id}(id=${event.id})}" class="btn btn-outline-danger d-flex align-items-center rounded-end-5 gap-3" href="#">
+                                  <i class="fs-4 ti ti-trash"></i>
+                                  Supprimer
+                                </a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="btn-group">
+                                <a th:href="@{/dashboard/tickets/save/{id}(id=${event.id})}" class="btn btn-outline-primary d-flex align-items-center rounded-start-5 gap-3" href="#">
+                                  <i class="fs-4 ti ti-eye"></i>
+                                  Voir Tous
+                                </a>
+                                <a th:href="@{/dashboard/tickets/delete/{id}(id=${event.id})}" class="btn btn-outline-secondary d-flex align-items-center rounded-end-5 gap-3" href="#">
+                                  <i class="fs-4 ti ti-plus"></i>
+                                  Ajouter
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="container-fluid row align-content-center align-items-center justify-content-center mt-2">
+                        <button class="btn btn-primary w-25 rounded-5">Valider</button>
+                      </div>
+                    </div>
                 </div>
               </div>
 
