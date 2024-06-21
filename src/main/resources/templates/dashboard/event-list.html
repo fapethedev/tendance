@@ -119,7 +119,7 @@
                   </div>
                 </div>
                 <div class="card-body p-4">
-                  <div class="table-responsive mb-4">
+                  <div class="card table-responsive mb-4">
                     <table class="table border text-nowrap mb-0 align-middle">
                       <thead class="text-dark fs-4">
                       <tr>
@@ -153,21 +153,6 @@
                               </div>
                             </div>
                           </td>
-<!--                          <td th:switch="${event.state}">-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).LIVE}" th:text="${event.state}" class="badge bg-success-subtle rounded-5 text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).PUBLISHED}" th:text="${event.state}" class="badge text-bg-success rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).PENDING}" th:text="${event.state}" class="badge bg-secondary-subtle rounded-5 text-secondary fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).END}" th:text="${event.state}" class="badge text-bg-dark rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).POSTPONED}" th:text="${event.state}" class="badge bg-warning-subtle rounded-5 text-warning fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).ABORT}" th:text="${event.state}" class="badge bg-danger-subtle rounded-5 text-danger fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
-<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
-<!--                            <span th:case="*" class="badge text-bg-light text-dark rounded-5">Unknown</span>-->
-<!--                          </td>-->
                           <td>
                             <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).LIVE.name()}" th:text="${event.state}" class="badge bg-success-subtle rounded-5 text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
                                   class="ti ti-circle fs-3"></i>active</span>
@@ -181,7 +166,6 @@
                                   class="ti ti-circle fs-3"></i>active</span>
                             <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).ABORT.name()}" th:text="${event.state}" class="badge bg-danger-subtle rounded-5 text-danger fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
                                   class="ti ti-circle fs-3"></i>active</span>
-<!--                            <span th:case="*" class="badge text-bg-light text-dark rounded-5">Unknown</span>-->
                           </td>
                           <td>
                             <p th:text="${event.startDateTime}" class="mb-0 fw-normal">olivia@ui.com</p>
