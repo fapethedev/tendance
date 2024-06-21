@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.getDefault()}" lang="fr" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{dashboard/frag-dash-head :: head (title = 'Détail de l\'évènement')}"><title></title></head>
+
+  <body th:object="${user}">
+
+    <div th:replace="~{dashboard/frag-dash-onload :: on-load ('Besoin de consulter! ' + *{username}, 'c\'est un chef d\'oeuvre')}"></div>
+
+    <div id="main-wrapper">
+
+      <aside class="left-sidebar with-vertical">
+          <div>
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+            <!-- Brand -->
+            <div th:replace="~{dashboard/frag-dash-nav-brand:: nav-brand}"></div>
+
+            <nav th:replace="~{dashboard/frag-dash-navbar:: nav-sidebar}"></nav>
+
+            <div class="fixed-profile p-3 mx-4 mb-2 bg-danger-subtle rounded mt-3">
+              <div class="hstack gap-3">
+                <div class="john-img">
+                  <img th:if="*{account.picture == null}" src="/dashboard/assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt=""/>
+                  <img th:unless="*{account.picture == null}"  th:src="*{account.picture}" class="rounded-circle" width="40" height="40" alt=""/>
+                </div>
+
+                <div class="john-title">
+                  <h6 th:text="*{username}" class="mb-0 fs-4 fw-semibold small">Mathew</h6>
+                  <span th:text="*{type}" class="fs-2">Designer</span>
+                </div>
+                <a th:href="logout" class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                  <i class="ti ti-power fs-6"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+          </div>
+        </aside>
+        <!--  Sidebar End -->
+
+        <div class="page-wrapper">
+          <!--  Header Start -->
+          <header class="topbar">
+            <div class="with-vertical">
+              <!-- ---------------------------------- -->
+              <!-- Start Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: nav-topbar (*{identity.lastname}, *{identity.firstname}, *{username}, *{account.picture}, *{roles.get(0).name})}" class="navbar navbar-expand-lg p-0"></nav>
+              <!-- ---------------------------------- -->
+              <!-- End Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+
+              <!-- ------------------------------- -->
+              <!-- apps Dropdown in Small screen -->
+              <!-- ------------------------------- -->
+              <!--  Mobilenavbar -->
+              <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <nav th:replace="~{dashboard/frag-dash-navbar :: mobile-nav-topbar}"></nav>
+              </div>
+            </div>
+
+            <div class="app-header with-horizontal">
+
+              <nav th:replace="~{dashboard/frag-dash-navbar :: app-header-navbar}"></nav>
+
+            </div>
+          </header>
+          <!--  Header End -->
+          <aside class="left-sidebar with-horizontal">
+            <!-- Sidebar scroll-->
+            <div>
+              <!-- Sidebar navigation-->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: left-nav-sidebar}"></nav>
+              <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+          </aside>
+          <div class="body-wrapper">
+            <div class="container-fluid">
+              <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+                <div class="card-body px-4 py-3">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <h4 class="fw-semibold mb-8" th:text="${event.name}">Name</h4>
+                      <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" th:href="@{/dashboard}" href="#"
+                            >Accueil</a
+                            >
+                          </li>
+                          <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" th:href="@{/dashboard/events}"
+                              >Évènements</a>
+                          <li class="breadcrumb-item" aria-current="page">Détail</li>
+                        </ol>
+                      </nav>
+                    </div>
+                    <div class="col-3">
+                      <div class="text-center mb-n5">
+                        <img
+                                src="/dashboard/assets/images/breadcrumb/ChatBc.png"
+                                alt=""
+                                class="img-fluid mb-n4"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card rounded-2 overflow-hidden">
+                <div class="position-relative">
+                  <img src="/dashboard/assets/images/blog/blog-img5.jpg"
+                       class="card-img-top rounded-0 object-fit-cover" alt="..."
+                       height="440">
+                  <span th:text="${event.state}"
+                          class="badge text-bg-light fs-2 rounded-4 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
+                min Read</span>
+                  <img src="/dashboard/assets/images/profile/user-2.jpg" alt=""
+                       class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
+                       height="40"
+                       data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Esther Lindsey">
+                </div>
+                <div class="card-body p-4">
+                  <span class="badge text-bg-light fs-2 rounded-4 py-1 px-2 lh-sm mt-3" th:text="'Evènement ' + ${event.scope}">Scope</span>
+                  <h2 class="fs-9 fw-semibold my-4" th:text="${event.name}">Name</h2>
+                  <div class="d-flex align-items-center gap-4">
+                    <div class="d-flex align-items-center gap-2"><i class="ti ti-eye text-dark fs-5"></i>2252</div>
+                    <div class="d-flex align-items-center gap-2"><i class="ti ti-message-2 text-dark fs-5"></i>3</div>
+                    <div class="d-flex align-items-center fs-2 ms-auto"><i class="ti ti-point text-dark"></i>
+                      <span th:text="${event.startDateTime.dayOfMonth}"></span>, <span th:text="${event.startDateTime.month}"></span>
+                      <span th:text="${event.startDateTime.year}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body border-top p-4">
+                  <h2 class="fs-8 fw-semibold mb-3">Description</h2>
+                  <p class="mb-3" th:text="${event.description}">Description
+                  </p>
+                  <p class="text-dark mb-0"><strong>This is strong text.</strong></p>
+                  <p class="mb-0"><em>This is italic text.</em></p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+
+                <div class="el-card-item pb-3">
+                  <div class="el-card-avatar mb-3 el-overlay-1 w-100 overflow-hidden position-relative text-center ">
+                    <img src="/dashboard/assets/images/blog/blog-img1.jpg" class="d-block position-relative w-100" alt="user">
+                    <div class="el-overlay w-100 overflow-hidden">
+                      <ul class="list-style-none el-info text-white text-uppercase d-inline-block p-0">
+                        <li class="el-item d-inline-block my-0 mx-1">
+                          <a class="btn default btn-outline image-popup-vertical-fit el-link text-white border-white"
+                             href="/dashboard/assets/images/blog/blog-img1.jpg"><i class="ti ti-search"></i></a>
+                        </li>
+                        <li class="el-item d-inline-block my-0 mx-1">
+                          <a class="btn default btn-outline el-link text-white border-white"
+                             href="javascript:void(0);"><i class="ti ti-link"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="el-card-content text-center">
+                    <h4 class="mb-0 fs-5">Project title</h4>
+                    <span class="text-muted">subtitle of project</span>
+                  </div>
+                </div>
+<!--https://tendance-event.onrender.com-->
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center gap-3 mb-4 mt-7 pt-8">
+                    <h4 class="mb-4 fw-semibold">Commentaires</h4>
+                    <span class="badge bg-primary-subtle text-primary fs-4 fw-semibold px-6 py-8 rounded">3</span>
+                  </div>
+                  <div class="position-relative">
+                    <div class="p-4 rounded-2 text-bg-light mb-3">
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="/dashboard/assets/images/profile/user-3.jpg" alt="" class="rounded-circle" width="33"
+                             height="33">
+                        <h6 class="fw-semibold mb-0 fs-4">Don Russell</h6>
+                        <span class="p-1 text-bg-muted rounded-circle d-inline-block"></span>
+                      </div>
+                      <p class="my-3">Es do ujurus nejson imju azgudpi toceztep ji cocicoci bosawrop korze ta.
+                        Casetlu udumej umocu wanaro webmos ijafa ud muli amja softoj ma pijum.
+                      </p>
+                      <div class="d-flex align-items-center gap-2">
+                        <a class="d-flex align-items-center justify-content-center text-bg-primary p-2 fs-4 rounded-circle"
+                           href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top"
+                           data-bs-title="Reply">
+                          <i class="ti ti-arrow-back-up"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="p-4 rounded-2 text-bg-light mb-3 ms-7">
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="/dashboard/assets/images/profile/user-5.jpg" alt="" class="rounded-circle" width="40"
+                             height="40">
+                        <h6 class="fw-semibold mb-0 fs-4">Irene Hanson</h6>
+                        <span class="p-1 text-bg-muted rounded-circle d-inline-block"></span>
+                      </div>
+                      <p class="my-3">Uborofgic be rof lom sedge vapozi ohoinu nutremcuc ro ko atmeg anrov git ve vuj ki
+                        teb
+                        or.
+                        Lohi hafa faddegon horoz ebema kew idful ducam nev rol iga wikkobsu sucdu gud.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Settings -->
+          <div th:replace="~{dashboard/frag-dash-app-settings :: app-settings}"></div>
+        </div>
+
+      <!--  Search Bar -->
+      <div th:replace="~{dashboard/frag-dash-searchbar :: search-bar}"></div>
+      <!--  Shopping Cart -->
+      <div th:replace="~{dashboard/frag-dash-shopping-cart :: shopping-cart}"></div>
+    </div>
+
+    <footer th:replace="~{dashboard/frag-dash-footer :: footer}"></footer>
+    <script src="/dashboard/assets/js/plugins/meg.init.js"></script>
+    <script src="/dashboard/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  </body>
+
+</html>
