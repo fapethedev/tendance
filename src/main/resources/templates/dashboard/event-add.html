@@ -26,12 +26,12 @@
                 </div>
 
                 <div class="john-title">
-                  <h6 th:text="*{identity.lastname}" class="mb-0 fs-4 fw-semibold">Mathew</h6>
-                  <span th:text="*{username}" class="fs-2">Designer</span>
+                  <h6 th:text="*{username}" class="mb-0 fs-4 fw-semibold small">Mathew</h6>
+                  <span th:text="*{type}" class="fs-2">Designer</span>
                 </div>
-                <button class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                <a th:href="logout" class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
                   <i class="ti ti-power fs-6"></i>
-                </button>
+                </a>
               </div>
             </div>
 
@@ -96,7 +96,7 @@
                           </li>
                           <li class="breadcrumb-item">
                             <a class="text-muted text-decoration-none" th:href="@{/dashboard/events}"
-                              >Evènements</a>
+                              >Évènements</a>
                           <li class="breadcrumb-item" aria-current="page">Nouveau</li>
                         </ol>
                       </nav>
@@ -140,7 +140,7 @@
                         </li>
                       </ul>
                       <div class="card-body">
-                        <form action="#" th:action="@{/save}" method="post" th:object="${eventForm}" enctype="multipart/form-data">
+                        <form action="#" th:action="@{/dashboard/events/save/{id}(id=${id})}" method="post" th:object="${eventForm}" enctype="multipart/form-data">
                           <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade active show" id="pills-info" role="tabpanel"
                                  aria-labelledby="pills-personal-info-tab" tabindex="0">
@@ -156,6 +156,10 @@
                                       </span>
                                       <input type="text" class="form-control" id="name" th:field="*{name}"
                                              placeholder="Nom de l'évènement" required>
+                                    </div>
+                                    <div id="lstFeedback" class="">
+                                      <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                         th:errorclass="fieldError" class="text-danger small"></p>
                                     </div>
                                   </div>
                                 </div>
@@ -173,6 +177,10 @@
                                       <textarea class="form-control" id="description" cols="6" th:field="*{description}"
                                                 placeholder="Description de l'évènement" required></textarea>
                                     </div>
+                                    <div class="">
+                                      <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                                         th:errorclass="fieldError" class="text-danger small"></p>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -185,8 +193,12 @@
                                       <span class="input-group-text" id="startDateTimei">
                                         <i class="ti ti-calendar fs-4"></i>
                                       </span>
-                                      <input id="startDateTime" name="startDateTime" aria-describedby="startDateTimei"
+                                      <input id="startDateTime" name="startDateTime" aria-describedby="startDateTimei" th:field="*{startDateTime}"
                                              class="form-control" type="datetime-local" required>
+                                    </div>
+                                    <div class="">
+                                      <p th:if="${#fields.hasErrors('startDateTime')}" th:errors="*{startDateTime}"
+                                         th:errorclass="fieldError" class="text-danger small"></p>
                                     </div>
                                   </div>
                                 </div>
@@ -199,11 +211,12 @@
                                         <i class="ti ti-calendar fs-4"></i>
                                       </span>
                                       <input id="endDateTime" name="endDateTime" aria-describedby="endDateTimei"
-                                             class="form-control" type="datetime-local" required>
+                                             th:field="*{endDateTime}" class="form-control" type="datetime-local" required>
                                     </div>
-<!--                                    <div class="justify-content-end">-->
-<!--                                      <small class="small badge badge-default text-danger bg-danger-subtle form-text">La date & l'heure de fin doit être celle d'aujourd'hui ou d'un jour future.</small>-->
-<!--                                    </div>-->
+                                    <div class="">
+                                      <p th:if="${#fields.hasErrors('endDateTime')}" th:errors="*{endDateTime}"
+                                         th:errorclass="fieldError" class="text-danger small"></p>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -222,6 +235,32 @@
                                   </div>
                                 </div>
                               </div>
+                              <div class="row">
+                                <div class="mb-4 row align-items-center">
+                                  <label for="name"
+                                         class="form-label fw-semibold col-sm-3 col-form-label">Lieu</label>
+                                  <div class="col-sm-9">
+                                    <div class="input-group">
+                                      <span class="input-group-text">
+                                        <i class="bi bi-geo-alt fs-4"></i>
+                                      </span>
+                                      <input type="text" hidden="hidden" class="form-control" id="place" th:field="*{place}">
+                                      <input type="text" class="form-control" th:value="*{place}" id="fplace" placeholder="Utiliser la carte pour spécifier le lieu" disabled>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="mb-4 row align-items-center">
+                                  <label for="name"
+                                         class="form-label fw-semibold col-sm-3 col-form-label"></label>
+                                  <div class="col-sm-9">
+                                    <div id="" class="">
+                                      <div class="rounded-2 shadow-sm" id="map" style="height: 180px"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                             <div class="tab-pane fade" id="pills-logos-file" role="tabpanel"
                                  aria-labelledby="pills-logos-file-tab" tabindex="0">
@@ -235,7 +274,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="images1" th:field="*{images.main}">
+                                      <input class="form-control" type="file" id="images1" th:field="*{imageOne}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
@@ -250,7 +289,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="images2" th:field="*{images.second}">
+                                      <input class="form-control" type="file" id="images2" th:field="*{imageTwo}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
@@ -265,7 +304,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="images3" th:field="*{images.third}">
+                                      <input class="form-control" type="file" id="images3" th:field="*{imageThree}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
@@ -283,7 +322,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="videos1" th:field="*{videos.primary}">
+                                      <input class="form-control" type="file" id="videos1" th:field="*{videoOne}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
@@ -298,7 +337,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="videos2" th:field="*{videos.secondary}">
+                                      <input class="form-control" type="file" id="videos2" th:field="*{videoTwo}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
@@ -313,7 +352,7 @@
                                       <span class="input-group-text">
                                         <i class="ti ti-image fs-4"></i>
                                       </span>
-                                      <input class="form-control" type="file" id="videos3" th:field="*{videos.third}">
+                                      <input class="form-control" type="file" id="videos3" th:field="*{videoThree}" multiple="multiple">
                                     </div>
                                   </div>
                                 </div>
