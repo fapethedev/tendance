@@ -26,12 +26,12 @@
                 </div>
 
                 <div class="john-title">
-                  <h6 th:text="*{identity.lastname}" class="mb-0 fs-4 fw-semibold">Mathew</h6>
-                  <span th:text="*{username}" class="fs-2">Designer</span>
+                  <h6 th:text="*{username}" class="mb-0 fs-4 fw-semibold small">Mathew</h6>
+                  <span th:text="*{type}" class="fs-2">Designer</span>
                 </div>
-                <button class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                <a th:href="logout" class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
                   <i class="ti ti-power fs-6"></i>
-                </button>
+                </a>
               </div>
             </div>
 
@@ -113,7 +113,7 @@
                       <h5 class="card-title fw-semibold mb-0 lh-sm">Liste de tous mes évènements</h5>
                     </div>
                     <div class="col-lg-2">
-                      <a th:href="@{/dashboard/events/create/}" class="align-items-end btn btn-outline-success rounded-5 shadow-sm"><i
+                      <a th:href="@{/dashboard/events/save/}" class="align-items-end btn btn-outline-success rounded-5 shadow-sm"><i
                               class="ti ti-plus"></i>Nouveau</a>
                     </div>
                   </div>
@@ -135,43 +135,75 @@
                         <th>
                           <h6 class="fs-4 fw-semibold mb-0">Date de fin</h6>
                         </th>
-                        <th></th>
+                        <th>
+                          <h6 class="fs-4 fw-semibold mb-0">Visibilité</h6>
+                        </th>
+                        <th class="text text-decoration-underline">Actions</th>
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <img src="../assets/images/profile/user-2.jpg" class="rounded-circle" width="40"
-                                 height="40">
-                            <div class="ms-3">
-                              <h6 class="fs-4 fw-semibold mb-0">Olivia Rhye</h6>
-                              <span class="fw-normal">@rhye</span>
+                        <tr th:each="event : ${events}">
+                          <td>
+                           <div class="d-flex align-items-center">
+                             <a th:href="@{/dashboard/events/detail/{id}(id=${event.id})}" role="button">
+                               <i class="bi bi-eye-fill"></i>
+                             </a>
+                             <div class="ms-3">
+                                <h6 th:text="${event.name}" class="fs-4 fw-semibold mb-0">Olivia Rhye</h6>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class="badge bg-success-subtle text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                          </td>
+<!--                          <td th:switch="${event.state}">-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).LIVE}" th:text="${event.state}" class="badge bg-success-subtle rounded-5 text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).PUBLISHED}" th:text="${event.state}" class="badge text-bg-success rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).PENDING}" th:text="${event.state}" class="badge bg-secondary-subtle rounded-5 text-secondary fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).END}" th:text="${event.state}" class="badge text-bg-dark rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).POSTPONED}" th:text="${event.state}" class="badge bg-warning-subtle rounded-5 text-warning fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="${T(com.fapethedev.tendance.events.entities.EventState).ABORT}" th:text="${event.state}" class="badge bg-danger-subtle rounded-5 text-danger fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i-->
+<!--                                  class="ti ti-circle fs-3"></i>active</span>-->
+<!--                            <span th:case="*" class="badge text-bg-light text-dark rounded-5">Unknown</span>-->
+<!--                          </td>-->
+                          <td>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).LIVE.name()}" th:text="${event.state}" class="badge bg-success-subtle rounded-5 text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
                                   class="ti ti-circle fs-3"></i>active</span>
-                        </td>
-                        <td>
-                          <p class="mb-0 fw-normal">olivia@ui.com</p>
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge text-bg-primary rounded-3 fw-semibold fs-2">Design</span>
-                            <span class="badge text-bg-secondary rounded-3 fw-semibold fs-2">Product</span>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="btn-group">
-                            <a class="btn btn-outline-warning d-flex align-items-center rounded-start-5 gap-3" href="#"><i
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).PUBLISHED.name()}" th:text="${event.state}" class="badge text-bg-success rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).PENDING.name()}" th:text="${event.state}" class="badge bg-secondary-subtle rounded-5 text-secondary fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).END.name()}" th:text="${event.state}" class="badge text-bg-dark rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).POSTPONED.name()}" th:text="${event.state}" class="badge bg-warning-subtle rounded-5 text-warning fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).ABORT.name()}" th:text="${event.state}" class="badge bg-danger-subtle rounded-5 text-danger fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+<!--                            <span th:case="*" class="badge text-bg-light text-dark rounded-5">Unknown</span>-->
+                          </td>
+                          <td>
+                            <p th:text="${event.startDateTime}" class="mb-0 fw-normal">olivia@ui.com</p>
+                          </td>
+                          <td>
+                            <p th:text="${event.endDateTime}" class="mb-0 fw-normal">olivia@ui.com</p>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="badge text-bg-primary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'public'}">Public</span>
+                              <span class="badge text-bg-secondary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'privé'}">Privé</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <a th:href="@{/dashboard/events/save/{id}(id=${event.id})}" class="btn btn-outline-warning d-flex align-items-center rounded-start-5 gap-3" href="#"><i
                                     class="fs-4 ti ti-edit"></i>Modifier</a>
-                            <a class="btn btn-outline-danger d-flex align-items-center rounded-end-5 gap-3" href="#"><i
+                              <a th:href="@{/dashboard/events/delete/{id}(id=${event.id})}" class="btn btn-outline-danger d-flex align-items-center rounded-end-5 gap-3" href="#"><i
                                     class="fs-4 ti ti-trash"></i>Supprimer</a>
-                          </div>
-                        </td>
-                      </tr>
+                            </div>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
