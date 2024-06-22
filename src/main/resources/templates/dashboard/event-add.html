@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html th:lang="${#locale.getDefault()}" lang="fr" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="~{dashboard/frag-dash-head :: head (title = 'Nouvel Evènement')}"><title></title></head>
+  <head th:replace="~{dashboard/frag-dash-head :: head (title = ${title} + ' Evènement')}"><title></title></head>
 
   <body th:object="${user}">
 
@@ -363,7 +363,7 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
                               <div class="d-flex align-items-center gap-6">
-                                <button class="btn btn-primary w-50" type="submit">Créer</button>
+                                <button th:text="${action}" class="btn btn-primary w-50" type="submit">Créer</button>
                               </div>
                             </div>
                           </div>

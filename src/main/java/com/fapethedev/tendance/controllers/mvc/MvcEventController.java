@@ -75,6 +75,17 @@ public class MvcEventController implements WebMvcConfigurer
 
         User user = userService.findUserByEmail(authentication.getName());
 
+        if (StringUtils.isEmptyOrWhitespace(id))
+        {
+            model.addAttribute("title", "Nouveau");
+            model.addAttribute("action", "Créer");
+        }
+        else
+        {
+            model.addAttribute("title", "Modifier");
+            model.addAttribute("action", "Modifier");
+        }
+
         model.addAttribute("user", user);
 
         if (id == null || id.isEmpty())
@@ -128,6 +139,17 @@ public class MvcEventController implements WebMvcConfigurer
             attr.addAttribute("user", user);
             attr.addAttribute("eventForm", form);
             attr.addAttribute("errors", result.getFieldErrors());
+
+            if (StringUtils.isEmptyOrWhitespace(id))
+            {
+                attr.addAttribute("title", "Nouveau");
+                attr.addAttribute("action", "Créer");
+            }
+            else
+            {
+                attr.addAttribute("title", "Modifier");
+                attr.addAttribute("action", "Modifier");
+            }
 
             return "dashboard/event-add";
         }

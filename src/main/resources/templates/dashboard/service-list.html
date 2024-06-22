@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html th:lang="${#locale.getDefault()}" lang="fr" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{dashboard/frag-dash-head :: head (title = 'Services')}"><title></title></head>
+
+  <body th:object="${user}">
+
+    <div th:replace="~{dashboard/frag-dash-onload :: on-load ('Haha! ' + *{username}, 'ravie de vous savoir ici')}"></div>
+
+    <div id="main-wrapper">
+
+      <aside class="left-sidebar with-vertical">
+          <div>
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+            <!-- Brand -->
+            <div th:replace="~{dashboard/frag-dash-nav-brand:: nav-brand}"></div>
+
+            <nav th:replace="~{dashboard/frag-dash-navbar:: nav-sidebar}"></nav>
+
+            <div class="fixed-profile p-3 mx-4 mb-2 bg-danger-subtle rounded mt-3">
+              <div class="hstack gap-3">
+                <div class="john-img">
+                  <img th:if="*{account.picture == null}" src="/dashboard/assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt=""/>
+                  <img th:unless="*{account.picture == null}"  th:src="*{account.picture}" class="rounded-circle" width="40" height="40" alt=""/>
+                </div>
+
+                <div class="john-title">
+                  <h6 th:text="*{identity.lastname}" class="mb-0 fs-4 fw-semibold">Mathew</h6>
+                  <span th:text="*{username}" class="fs-2">Designer</span>
+                </div>
+                <button class="border-0 bg-transparent text-danger ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                  <i class="ti ti-power fs-6"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ---------------------------------- -->
+            <!-- Start Vertical Layout Sidebar -->
+            <!-- ---------------------------------- -->
+          </div>
+        </aside>
+        <!--  Sidebar End -->
+
+        <div class="page-wrapper">
+          <!--  Header Start -->
+          <header class="topbar">
+            <div class="with-vertical">
+              <!-- ---------------------------------- -->
+              <!-- Start Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: nav-topbar (*{identity.lastname}, *{identity.firstname}, *{username}, *{account.picture}, *{roles.get(0).name})}" class="navbar navbar-expand-lg p-0"></nav>
+              <!-- ---------------------------------- -->
+              <!-- End Vertical Layout Header -->
+              <!-- ---------------------------------- -->
+
+              <!-- ------------------------------- -->
+              <!-- apps Dropdown in Small screen -->
+              <!-- ------------------------------- -->
+              <!--  Mobilenavbar -->
+              <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobilenavbar" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <nav th:replace="~{dashboard/frag-dash-navbar :: mobile-nav-topbar}"></nav>
+              </div>
+            </div>
+
+            <div class="app-header with-horizontal">
+
+              <nav th:replace="~{dashboard/frag-dash-navbar :: app-header-navbar}"></nav>
+
+            </div>
+          </header>
+          <!--  Header End -->
+          <aside class="left-sidebar with-horizontal">
+            <!-- Sidebar scroll-->
+            <div>
+              <!-- Sidebar navigation-->
+              <nav th:replace="~{dashboard/frag-dash-navbar :: left-nav-sidebar}"></nav>
+              <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+          </aside>
+
+          <div class="body-wrapper">
+            <div class="container-fluid">
+              <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+                <div class="card-body px-4 py-3">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <h4 class="fw-semibold mb-8">Mes Services</h4>
+                      <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item">
+                            <a class="text-muted text-decoration-none" th:href="@{/dashboard}"
+                              >Accueil</a
+                            >
+                          </li>
+                          <li class="breadcrumb-item" aria-current="page">Services</li>
+                        </ol>
+                      </nav>
+                    </div>
+                    <div class="col-3">
+                      <div class="text-center mb-n5">
+                        <img src="/dashboard/assets/images/breadcrumb/ChatBc.png" alt="" class="img-fluid mb-n4"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-100 position-relative overflow-hidden">
+                <div class="px-4 py-3 border-bottom">
+                  <div class="row">
+                    <div class="col-lg-10">
+                      <h5 class="card-title fw-semibold mb-0 lh-sm">Liste de tous mes services</h5>
+                    </div>
+                    <div class="col-lg-2">
+                      <a th:href="@{/dashboard/deliveries/create/}" class="align-items-end btn btn-outline-success rounded-5 shadow-sm"><i
+                              class="ti ti-plus"></i>Nouveau</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body p-4">
+                  <div class="table-responsive mb-4">
+                    <table class="table border text-nowrap mb-0 align-middle">
+                      <thead class="text-dark fs-4">
+                        <tr>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Nom</h6>
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Status</h6>
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Date de début</h6>
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Date de fin</h6>
+                          </th>
+                          <th>
+                            <h6 class="fs-4 fw-semibold mb-0">Visibilité</h6>
+                          </th>
+                          <th class="text text-decoration-underline">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="event : ${events}">
+                          <td>
+                           <div class="d-flex align-items-center">
+                             <a th:href="@{/dashboard/events/detail/{id}(id=${event.id})}" role="button">
+                               <i class="bi bi-eye-fill"></i>
+                             </a>
+                             <div class="ms-3">
+                                <h6 th:text="${event.name}" class="fs-4 fw-semibold mb-0">Olivia Rhye</h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).LIVE.name()}" th:text="${event.state}" class="badge bg-success-subtle rounded-5 text-success fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).PUBLISHED.name()}" th:text="${event.state}" class="badge text-bg-success rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).PENDING.name()}" th:text="${event.state}" class="badge bg-secondary-subtle rounded-5 text-secondary fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).END.name()}" th:text="${event.state}" class="badge text-bg-dark rounded-5 fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).POSTPONED.name()}" th:text="${event.state}" class="badge bg-warning-subtle rounded-5 text-warning fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                            <span th:if="${event.state.name() == T(com.fapethedev.tendance.events.entities.EventState).ABORT.name()}" th:text="${event.state}" class="badge bg-danger-subtle rounded-5 text-danger fw-semibold fs-2 gap-1 d-inline-flex align-items-center"><i
+                                  class="ti ti-circle fs-3"></i>active</span>
+                          </td>
+                          <td>
+                            <p th:text="${event.startDateTime}" class="mb-0 fw-normal">olivia@ui.com</p>
+                          </td>
+                          <td>
+                            <p th:text="${event.endDateTime}" class="mb-0 fw-normal">olivia@ui.com</p>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <span class="badge text-bg-primary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'public'}">Public</span>
+                              <span class="badge text-bg-secondary rounded-5 fw-semibold fs-2" th:if="${event.scope == 'privé'}">Privé</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="btn-group">
+                              <a th:href="@{/dashboard/events/save/{id}(id=${event.id})}" class="btn btn-outline-warning d-flex align-items-center rounded-start-5 gap-3" href="#"><i
+                                    class="fs-4 ti ti-edit"></i>Modifier</a>
+                              <a th:href="@{/dashboard/events/delete/{id}(id=${event.id})}" class="btn btn-outline-danger d-flex align-items-center rounded-end-5 gap-3" href="#"><i
+                                    class="fs-4 ti ti-trash"></i>Supprimer</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Settings -->
+          <div th:replace="~{dashboard/frag-dash-app-settings :: app-settings}"></div>
+      </div>
+
+      <!--  Search Bar -->
+      <div th:replace="~{dashboard/frag-dash-searchbar :: search-bar}"></div>
+      <!--  Shopping Cart -->
+      <div th:replace="~{dashboard/frag-dash-shopping-cart :: shopping-cart}"></div>
+    </div>
+
+    <footer th:replace="~{dashboard/frag-dash-footer :: footer}"></footer>
+</body>
+
+</html>

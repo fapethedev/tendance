@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.util.UUID;
 
@@ -20,7 +19,6 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "functionalities")
-@RedisHash(value = "functionalities")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class Functionality extends BaseEntity<UUID>

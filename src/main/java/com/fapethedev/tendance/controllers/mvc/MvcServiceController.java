@@ -1,7 +1,7 @@
 package com.fapethedev.tendance.controllers.mvc;
 
 import com.fapethedev.tendance.events.form.EventForm;
-import com.fapethedev.tendance.events.services.IEventService;
+import com.fapethedev.tendance.events.services.IDeliveryService;
 import com.fapethedev.tendance.users.entities.User;
 import com.fapethedev.tendance.users.services.IUserService;
 import jakarta.validation.Valid;
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Slf4j
 public class MvcServiceController implements WebMvcConfigurer
 {
-    private final IEventService eventService;
+    private final IDeliveryService deliveryService;
     private final IUserService userService;
 
     @GetMapping(value = {"", "/"})
@@ -29,11 +29,27 @@ public class MvcServiceController implements WebMvcConfigurer
     {
         if (authentication == null) return "redirect:/login";
 
-        User user = userService.findUserByEmail(authentication.getName());
+        var user = userService.findUserByEmail(authentication.getName());
+        var deliveries = deliveryService.findByUser(user);
 
         model.addAttribute("user", user);
+        model.addAttribute("deliveries", deliveries);
 
         return "dashboard/service-list";
+    }
+
+    @GetMapping(value = {"/detail/{id}", "/detail/{id}"})
+    public String showDetailsPage(Model model, Authentication authentication, @PathVariable(required = true) String id)
+    {
+        if (authentication == null) return "redirect:/login";
+
+        var user = userService.findUserByEmail(authentication.getName());
+//        var event = eventService.findById(UUID.fromString(id));
+
+        model.addAttribute("user", user);
+//        model.addAttribute("event", event);
+
+        return "dashboard/event-detail";
     }
 
     @GetMapping(value = {"create/", "/create/"})

@@ -16,6 +16,12 @@ public interface ISecurityEmailService
     void sendPasswordResetEmail(User user);
 
     /**
+     * <p>Send a password reset confirmation email to the corresponding user.</p>
+     * @param user who will try to reset his account password
+     */
+    void sendPasswordResetConfirmEmail(User user, String password);
+
+    /**
      * <p>Send email to the user after he successfully reset his password.<br/>
      * This method could be use if a user manually changes his password.
      * </p>

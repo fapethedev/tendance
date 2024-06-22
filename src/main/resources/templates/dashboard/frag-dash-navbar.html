@@ -33,23 +33,23 @@
           <span class="hide-menu">Actions</span>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" th:href="@{/}" href="#" aria-expanded="false">
+          <a class="sidebar-link" th:href="@{/dashboard/calendar}" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-calendar"></i>
             </span>
-            <span class="hide-menu">Calendar</span>
+            <span class="hide-menu">Calendrier</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" th:href="@{/}" href="#" aria-expanded="false">
+          <a class="sidebar-link" th:href="@{/dashboard/events}" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-aperture"></i>
             </span>
-            <span class="hide-menu">Mes Evenements</span>
+            <span class="hide-menu">Mes Evènements</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" th:href="@{/}" href="#" aria-expanded="false">
+          <a class="sidebar-link" th:href="@{/dashboard/deliveries}" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-aperture"></i>
             </span>
@@ -57,11 +57,11 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" th:href="@{/}" href="#" aria-expanded="false">
+          <a class="sidebar-link" th:href="@{/dashboard/requests}" href="#" aria-expanded="false">
             <span>
               <i class="ti ti-aperture"></i>
             </span>
-            <span class="hide-menu">Mes Sponsors</span>
+            <span class="hide-menu">Mes Demandes de Prestations</span>
           </a>
         </li>
         <li class="sidebar-item">
@@ -73,13 +73,13 @@
           </a>
           <ul aria-expanded="false" class="collapse first-level">
             <li class="sidebar-item">
-              <a th:href="@{/}" href="#" class="sidebar-link">
+              <a th:href="@{/events}" href="#" class="sidebar-link">
                 <div
                   class="round-16 d-flex align-items-center justify-content-center"
                 >
                   <i class="ti ti-circle"></i>
                 </div>
-                <span class="hide-menu">Evenements</span>
+                <span class="hide-menu">Les Evènements</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -147,7 +147,7 @@
                       <div class="row">
                         <div class="col-6">
                           <div class="position-relative">
-                            <a th:href="@{/}" href="#" class="d-flex align-items-center pb-9 position-relative">
+                            <a th:href="@{/dashboard/events}" href="#" class="d-flex align-items-center pb-9 position-relative">
                               <div
                                 class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
                               >
@@ -161,12 +161,12 @@
                               </div>
                               <div class="d-inline-block">
                                 <h6 class="mb-1 fw-semibold fs-3">
-                                  Mes Evenements
+                                  Mes Evènements
                                 </h6>
-                                <span class="fs-2 d-block text-body-secondary">Gerer vos evenements</span>
+                                <span class="fs-2 d-block text-body-secondary">Gérer vos évènements</span>
                               </div>
                             </a>
-                            <a th:href="@{/}" href="#" class="d-flex align-items-center pb-9 position-relative">
+                            <a th:href="@{/dashboard/deliveries}" href="#" class="d-flex align-items-center pb-9 position-relative">
                               <div
                                 class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center"
                               >
@@ -187,18 +187,18 @@
                         </div>
                         <div class="col-6">
                           <div class="position-relative">
-                            <a th:href="@{/}" href="#" class="d-flex align-items-center pb-9 position-relative">
+                            <a th:href="@{/dashboard/requests}" href="#" class="d-flex align-items-center pb-9 position-relative">
                               <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                 <img src="/dashboard/assets/images/svgs/icon-dd-cart.svg" alt="" class="img-fluid" width="24" height="24"/>
                               </div>
                               <div class="d-inline-block">
                                 <h6 class="mb-1 fw-semibold fs-3">
-                                  Mes Sponsors
+                                  Mes Demandes de Prestations
                                 </h6>
                                 <span class="fs-2 d-block text-body-secondary">Gerer vos differents sponsors</span>
                               </div>
                             </a>
-                            <a th:href="@{/}" href="#" class="d-flex align-items-center pb-9 position-relative">
+                            <a th:href="@{/dashboard/calendar}" href="#" class="d-flex align-items-center pb-9 position-relative">
                               <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                 <img src="/dashboard/assets/images/svgs/icon-dd-date.svg" alt="" class="img-fluid" width="24" height="24"/>
                               </div>
@@ -215,12 +215,12 @@
                     </div>
                     <div class="row align-items-center py-3">
                       <div class="col-8">
-                        <a class="fw-semibold text-dark d-flex align-items-center lh-1" th:href="@{/}" href="#">
+                        <a class="fw-semibold text-dark d-flex align-items-center lh-1" th:href="@{/dashboard/faq}" href="#">
                           <i class="ti ti-help fs-6 me-2"></i>FAQs</a>
                       </div>
                       <div class="col-4">
                         <div class="d-flex justify-content-end pe-4">
-                          <button class="btn btn-primary"><i class="ti ti-checks"></i>Verifier</button>
+                          <button class="btn btn-primary"><i class="ti ti-checks mr-1"></i>Vérifier</button>
                         </div>
                       </div>
                     </div>
@@ -258,8 +258,8 @@
 
         <div class="d-block d-lg-none">
           <a href="index.html" class="text-nowrap logo-img">
-            <img src="/dashboard/assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark"/>
-            <img src="/dashboard/assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light"/>
+            <img src="/assets/images/logo.png" class="dark-logo" alt="Logo-Dark"/>
+            <img src="/assets/images/logo.png" class="light-logo" alt="Logo-light"/>
           </a>
         </div>
 
@@ -420,7 +420,7 @@
                         <div class="row">
                           <div class="col-6">
                             <h5 class="fs-4 mb-3 fw-semibold">Acces Complet</h5>
-                            <button class="btn btn-primary">S'abonner</button>
+                            <a th:href="@{/dashboard/pricing}" href="#" class="btn btn-primary">S'abonner</a>
                           </div>
                           <div class="col-6">
                             <div class="m-n4 unlimited-img">
@@ -433,7 +433,9 @@
                           </div>
                         </div>
                       </div>
-                      <a th:href="@{/logout}" class="btn btn-outline-danger">Se Deconnecter</a>
+                      <form action="#" th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-outline-danger">Se Deconnecter</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -654,7 +656,7 @@
                     <a class="fw-semibold text-dark" href="authentication-register.html">Register Now</a>
                   </li>
                   <li class="sidebar-item py-2">
-                    <a class="fw-semibold text-dark" href="error-404.html">404 Error Page</a>
+                    <a class="fw-semibold text-dark" href="../errors/error-404.html">404 Error Page</a>
                   </li>
                   <li class="sidebar-item py-2">
                     <a class="fw-semibold text-dark" href="app-notes.html">Notes App</a>
@@ -926,7 +928,7 @@
                      <li class="mb-3">
                        <a
                                class="fw-semibold bg-hover-primary"
-                               href="error-404.html"
+                               href="../errors/error-404.html"
                        >404 Error Page</a
                        >
                      </li>
@@ -1358,7 +1360,7 @@
                        <div class="row">
                          <div class="col-6">
                             <h5 class="fs-4 mb-3 fw-semibold">Acces Complet</h5>
-                            <button class="btn btn-primary">S'abonner</button>
+                            <a th:href="@{/dashboard/pricing}" href="#" class="btn btn-primary">S'abonner</a>
                           </div>
                          <div class="col-6">
                            <div class="m-n4 unlimited-img">

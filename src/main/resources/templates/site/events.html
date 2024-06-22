@@ -6,8 +6,8 @@
 </head>
 <body>
     <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
 
     <!-- header-start -->
     <header th:replace="~{/site/site-nav :: navbar}"></header>
@@ -20,11 +20,35 @@
 
     <!-- event_area_start -->
     <div class="event_area plus_padding">
-        <h1 class="vr_text d-none d-lg-block"></h1>
+        <h1 class="vr_text d-none d-lg-block" style="z-index: -1">Évènements</h1>
         <div class="container">
-            <div class="double_line">
-            </div>
-            <div class="row">
+            <div th:each="event : ${events}" class="double_line">
+
+                <div class="row col-xl-12 col-lg-12 col-12">
+                    <article class="blog_item">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded" src="/site/assets/img/blog/single_blog_5.png" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3 th:text="${event.startDateTime.dayOfMonth}">15</h3>
+                                <h3 th:text="${event.startDateTime.month}">Jan</h3>
+                                <p th:text="${event.startDateTime.year}">2025</p>
+                            </a>
+                        </div>
+                        <div class="blog_details rounded">
+                            <a class="d-inline-block" href="#">
+                                <h2 th:text="${event.name}">Google inks pact for new 35-storey office</h2>
+                            </a>
+                            <p th:text="${event.description}">That dominion stars lights dominion divide years for fourth have don't stars is that
+                                he earth it first without heaven in place seed it second morning saying.</p>
+                            <ul class="blog-info-link">
+                                <li><p><i class="fa fa-user"></i> Travel, Lifestyle</p></li>
+                            </ul>
+                            <a class="btn btn-outline-primary rounded" href="#">
+                                <i class="fa fa-cart-plus"></i> Ajouter au panier
+                            </a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
@@ -37,9 +61,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="resister_text text-center">
-                        <h3>Register Now to Book <br>
-                            Your Presence</h3>
-                        <a href="#" class="boxed-btn-white">Book Now ($150) </a>
+                        <h3>Inscrit toi maintenant<br>
+                            Et achète un ticket pour ton évènement favoris</h3>
+                        <a th:href="register" class="boxed-btn-white">S'inscrire maintenant</a>
                     </div>
                 </div>
             </div>

@@ -57,4 +57,14 @@ public class UserEmailService extends AbstractEmailService implements IUserEmail
             log.warn("Failed to send subscription success message", e);
         }
     }
+
+    @Override
+    public void sendRegistrationCompleteEmail(User user) {
+
+    }
+
+    @Override
+    public void sendUserTypeChangeEmail(User user) {
+
+    }
 }

@@ -1,11 +1,12 @@
 package com.fapethedev.tendance.controllers.mvc;
 
+import com.fapethedev.tendance.events.services.IEventService;
 import com.fapethedev.tendance.main.form.ContactForm;
 import com.fapethedev.tendance.security.form.LoginForm;
 import com.fapethedev.tendance.users.entities.User;
 import com.fapethedev.tendance.users.services.IUserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
@@ -28,21 +29,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("/")
+@RequiredArgsConstructor
 public class MvcSiteController implements WebMvcConfigurer
 {
     private final MessageSource i18n;
     private final IUserService userService;
-
-    @Autowired
-    public MvcSiteController(MessageSource i18n, IUserService userService) {
-        this.i18n = i18n;
-        this.userService = userService;
-    }
+    private final IEventService eventService;
 
     @GetMapping
     public String showMainPage(Model model)
     {
         model.addAttribute("title", "Accueil");
+        model.addAttribute("events", eventService.findAll());
         return "site/index";
     }
 
@@ -50,6 +48,7 @@ public class MvcSiteController implements WebMvcConfigurer
     public String showEventPage(Model model)
     {
         model.addAttribute("title", "Evènements");
+        model.addAttribute("events", eventService.findAll());
         return "site/events";
     }
 

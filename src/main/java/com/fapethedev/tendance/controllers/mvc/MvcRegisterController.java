@@ -5,10 +5,10 @@ import com.fapethedev.tendance.users.entities.User;
 import com.fapethedev.tendance.users.form.RegisterForm;
 import com.fapethedev.tendance.users.publisher.UserEventPublisher;
 import com.fapethedev.tendance.users.services.IUserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,7 +61,6 @@ public class MvcRegisterController implements WebMvcConfigurer
 
         if (result.hasErrors() || result.hasFieldErrors())
         {
-            attr.addFlashAttribute("title", i18n.getMessage("dash.register.title", null, LocaleContextHolder.getLocale()));
             attr.addFlashAttribute("user", user);
             attr.addFlashAttribute("errors", result.getFieldErrors());
 
@@ -86,18 +85,19 @@ public class MvcRegisterController implements WebMvcConfigurer
     }
 
     @GetMapping(path = {"/activate/{id}", "/activate/{id}/"})
-    public String activateAccount(RedirectAttributes attr, @PathVariable(required = true) final String id)
+    public String activateAccount(HttpServletRequest req, RedirectAttributes attr, @PathVariable(required = true) final String id)
     {
         User user = userService.findById(UUID.fromString(id));
+        attr.addFlashAttribute("user", user);
+
+        if (user.isEnabled()) return "redirect:/dashboard/";
 
         user.getAccount().setActive(true);
         user.getAccount().setEmailVerified(true);
 
         user = userService.save(user);
 
-        attr.addFlashAttribute("user", user);
-
-        facade.authWithUsernamePassword(user.getUsername(), user.getPassword(), user.getAuthorities());
+        facade.authWithUsernamePassword(user, req);
 
         return "redirect:/dashboard/";
     }

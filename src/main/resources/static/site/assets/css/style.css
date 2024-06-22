@@ -4673,16 +4673,6 @@ h6 {
   margin-bottom: 30px;
 }
 
-/* line 541, C:/Users/SPN Graphics/Desktop/CL September/209/HTML/scss/_blog.scss */
-.blog_details a {
-  color: #ff8b23;
-}
-
-/* line 544, C:/Users/SPN Graphics/Desktop/CL September/209/HTML/scss/_blog.scss */
-.blog_details a:hover {
-  color: #0181F5;
-}
-
 /* line 549, C:/Users/SPN Graphics/Desktop/CL September/209/HTML/scss/_blog.scss */
 .blog_details h2 {
   font-size: 18px;

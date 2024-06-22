@@ -1,6 +1,8 @@
 package com.fapethedev.tendance.events.services;
 
 import com.fapethedev.tendance.events.entities.Event;
+import com.fapethedev.tendance.events.entities.EventImages;
+import com.fapethedev.tendance.events.entities.EventVideos;
 import com.fapethedev.tendance.events.form.EventForm;
 import com.fapethedev.tendance.events.repository.EventRepository;
 import com.fapethedev.tendance.main.cdn.CdnUploader;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,18 +49,7 @@ public class EventService implements IEventService
     {
         log.info("Saving event with form");
 
-//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
-//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
-//        uploader.upload(eventForm.getImageOne(), uploader.getConf().imagePath(), eventForm.getName().concat("img_one"));
-//
-//        uploader.upload(eventForm.getVideoOne(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_tw"));
-//        uploader.upload(eventForm.getVideoTwo(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_one"));
-//        uploader.upload(eventForm.getVideoThree(), uploader.getConf().imagePath(), eventForm.getName().concat("vid_one"));
-
-
-
-
-        return eventRepository.save(
+        var event = eventRepository.save(
                 Event.builder()
                         .name(eventForm.getName())
                         .description(eventForm.getDescription())
@@ -69,12 +61,48 @@ public class EventService implements IEventService
                         .user(eventForm.getUser())
                         .build()
         );
+
+        try
+        {
+            var imgOne = uploader.upload(eventForm.getImageOne().getBytes(), uploader.getConf().imagePath(), event.getId() + "_one");
+            var imgTwo = uploader.upload(eventForm.getImageTwo().getBytes(), uploader.getConf().imagePath(), event.getId() + "_two");
+            var imgThree = uploader.upload(eventForm.getImageThree().getBytes(), uploader.getConf().imagePath(), event.getId() + "_three");
+
+            event.setImages(EventImages.builder()
+                    .main(imgOne)
+                    .second(imgTwo)
+                    .third(imgThree)
+                    .build());
+        }
+        catch (Exception e)
+        {
+            log.warn("Failed to save images on cdn : " + e.getMessage());
+        }
+
+        try
+        {
+            var vidOne = uploader.upload(eventForm.getVideoOne().getBytes(), uploader.getConf().videoPath(), event.getId() + "_one");
+            var vidTwo = uploader.upload(eventForm.getVideoTwo().getBytes(), uploader.getConf().videoPath(), event.getId() + "_two");
+            var vidThree = uploader.upload(eventForm.getVideoThree().getBytes(), uploader.getConf().videoPath(), event.getId() + "_three");
+
+            event.setVideos(EventVideos.builder()
+                            .primary(vidOne)
+                            .secondary(vidTwo)
+                            .third(vidThree)
+                    .build());
+        }
+        catch (Exception e)
+        {
+            log.warn("Failed to save videos on cdn : " + e.getMessage());
+        }
+
+        return event;
     }
 
     @Override
     public Event delete(Event event)
     {
-        log.info("Deleting event");
+        log.info("Deleting event: " + event.getId() + ", name: " + event.getName());
 
         eventRepository.delete(event);
 
@@ -102,7 +130,11 @@ public class EventService implements IEventService
     {
         log.info("Finding all events");
 
-        return eventRepository.findAll();
+        var events = eventRepository.findAll();
+
+        events.sort(Comparator.comparing(Event::getStartDateTime));
+
+        return events;
     }
 
     @Override

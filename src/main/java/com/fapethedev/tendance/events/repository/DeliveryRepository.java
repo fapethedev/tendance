@@ -1,9 +1,11 @@
 package com.fapethedev.tendance.events.repository;
 
 import com.fapethedev.tendance.events.entities.Delivery;
+import com.fapethedev.tendance.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -16,4 +18,5 @@ import java.util.UUID;
  */
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, UUID> {
+    List<Delivery> findAllByUser(User user);
 }

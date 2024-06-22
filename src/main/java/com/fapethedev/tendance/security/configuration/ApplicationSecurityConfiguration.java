@@ -5,9 +5,12 @@ import com.fapethedev.tendance.security.handler.OAuth2AuthenticationSuccessHandl
 import com.fapethedev.tendance.security.manager.OAuth2UserService;
 import com.fapethedev.tendance.security.manager.UserLoginManager;
 import com.fapethedev.tendance.users.entities.Role;
+import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.config.Customizer;
@@ -21,10 +24,13 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 /**
  * <p>Security configuration class.All the configurations and beans required for
@@ -38,8 +44,10 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@Slf4j
 public class ApplicationSecurityConfiguration
 {
+    private final JdbcTemplate template;
     private static final String key = "rmb-app-key";
 
     private final UserLoginManager userLoginManager;
@@ -98,8 +106,12 @@ public class ApplicationSecurityConfiguration
     {
         var tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setCreateTableOnStartup(true);
+        tokenRepository.setJdbcTemplate(template);
 
-        return new PersistentTokenBasedRememberMeServices(key, userLoginManager, tokenRepository);
+        var ptbrms = new PersistentTokenBasedRememberMeServices(key, userLoginManager, tokenRepository);
+        ptbrms.setUseSecureCookie(true);
+        ptbrms.setAlwaysRemember(true);
+        return ptbrms;
     }
 
     /**
@@ -219,11 +231,7 @@ public class ApplicationSecurityConfiguration
      */
     private Customizer<RememberMeConfigurer<HttpSecurity>> rememberMe()
     {
-        return c -> c.rememberMeCookieName("remember-me")
-                .rememberMeParameter("remember-me")
-                .useSecureCookie(true)
-                .tokenValiditySeconds(3600 * 24 * 24)
-                .rememberMeServices(rememberMeServices());
+        return c -> c.rememberMeServices(rememberMeServices());
     }
 
     /**
@@ -235,9 +243,21 @@ public class ApplicationSecurityConfiguration
     {
         return c -> c.logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .deleteCookies("JSESSIONID" ,"remember-me")
+                .addLogoutHandler((request, response, auth) ->
+                {
+                    try
+                    {
+                        request.logout();
+                    }
+                    catch (ServletException e)
+                    {
+                        log.error(e.getMessage());
+                    }
+                })
+                .addLogoutHandler(rememberMeServices())
+                .addLogoutHandler(new CookieClearingLogoutHandler("JSESSIONID" ,"remember-me"))
+                .addLogoutHandler(new SpringSessionRememberMeServices())
+                .addLogoutHandler(new SecurityContextLogoutHandler())
                 .permitAll();
     }
 

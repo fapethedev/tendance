@@ -54,4 +54,16 @@ public class ApplicationWebSocketConfiguration implements WebSocketMessageBroker
         registry.addEndpoint("/chat")
                 .withSockJS();
     }
+
+//    @Override
+//    public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
+//        var resolver = new DefaultContentTypeResolver();
+//        resolver.setDefaultMimeType(MimeTypeUtils.APPLICATION_JSON);
+//        var converter = new MappingJackson2MessageConverter();
+//        converter.setObjectMapper(new ObjectMapper());
+//        converter.setContentTypeResolver(resolver);
+//        messageConverters.add(converter);
+//
+//        return false;
+//    }
 }

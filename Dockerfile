@@ -17,6 +17,10 @@ RUN mvn clean compile package -DskipTests && mv ./target/tendance-1.0.0.jar ./te
 FROM eclipse-temurin:21.0.2_13-jre
 
 # Add Env
+ENV REDIS_USE_SSL fakeurl
+ENV REDIS_TIMEOUT fakeurl
+ENV REDIS_USERNAME fakeurl
+ENV REDIS_PASSWORD fakeurl
 ENV REDIS_URL fakeurl
 
 ENV MONGO_INITDB_ROOT_USERNAME fakeurl

@@ -56,6 +56,11 @@ public class SecurityEmailService extends AbstractEmailService implements ISecur
     }
 
     @Override
+    public void sendPasswordResetConfirmEmail(User user, String password) {
+        return;
+    }
+
+    @Override
     public void sendPasswordChangeEmail(User user)
     {
         MimeMessage message = mailSender.createMimeMessage();

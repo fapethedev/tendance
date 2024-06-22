@@ -3,6 +3,7 @@ package com.fapethedev.tendance.events.services;
 import com.fapethedev.tendance.events.entities.Delivery;
 import com.fapethedev.tendance.events.form.DeliveryForm;
 import com.fapethedev.tendance.events.repository.DeliveryRepository;
+import com.fapethedev.tendance.users.entities.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -87,5 +88,12 @@ public class DeliveryService implements IDeliveryService
         log.info("Finding all deliveries");
 
         return deliveryRepository.findAll();
+    }
+
+    @Override
+    public List<Delivery> findByUser(User user) {
+        log.info("Finding all deliveries from user: " + user.getUsername());
+
+        return deliveryRepository.findAllByUser(user);
     }
 }

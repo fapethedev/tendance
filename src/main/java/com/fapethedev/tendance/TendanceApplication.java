@@ -10,4 +10,25 @@ public class TendanceApplication
 	{
 		SpringApplication.run(TendanceApplication.class, args);
 	}
+
+//	@Bean
+//	@Autowired
+//	public FlywayMigrationStrategy flywayMigrationStrategy(SentryAlertMonitor alertMonitor)
+//	{
+//		return (flywayOld) ->
+//		{
+//			try
+//			{
+//				Flyway flyway = Flyway.configure()
+//						.configuration(flywayOld.getConfiguration())
+//						.load();
+//
+//				flyway.baseline();
+//				flyway.migrate();
+//			}
+//			catch (Exception e) {
+//				alertMonitor.captureException(e);
+//			}
+//		};
+//	}
 }

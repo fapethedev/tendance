@@ -7,11 +7,11 @@
 
 <body>
     <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
 
     <!-- header-start -->
-    <header th:replace="~{/site/site-nav :: navbar}"></header>
+    <header th:replace="~{site/site-nav :: navbar}"></header>
     <!-- header-end -->
 
     <!-- slider_area_start -->
@@ -39,121 +39,19 @@
     </div>
     <!-- slider_area_end -->
 
-    <!-- about_area_start -->
-    <div class="about_area">
-        <div class="shape-1 d-none d-xl-block">
-            <img src="/site/assets/img/about/shap1.png" alt="">
-        </div>
-        <div class="shape-2 d-none d-xl-block">
-            <img src="/site/assets/img/about/shap2.png" alt="">
-        </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-6 col-md-6">
-                    <div class="about_thumb">
-                        <img src="/site/assets/img/about/about.png" alt="">
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-md-6">
-                    <div class="about_info">
-                        <div class="section_title">
-                            <span class="sub_heading">Welcome To</span>
-                            <h3>The Biggest Design <br>
-                                Conference of the <br>
-                                Year 2019</h3>
-                        </div>
-                        <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let god.
-                            moving. Moving in fourth air night bring upon you’re it beast.</p>
-                        <a href="#" class="boxed-btn-red">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- about_area_end -->
 
     <!-- speakers_start -->
     <div class="speakers_area">
         <h1 class="horizontal_text d-none d-lg-block">
-            Speakers
+            Tendance
         </h1>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="serction_title_large mb-95">
                         <h3>
-                            Speakers
+                            Derniers évènements
                         </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-5 col-md-6">
-                    <div class="single_speaker">
-                        <div class="speaker_thumb">
-                            <img src="/site/assets/img/speakers/1.png" alt="">
-                            <div class="hover_overlay">
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker_name text-center">
-                            <h3>Jonson Miller</h3>
-                            <p>Creative Director</p>
-                        </div>
-                    </div>
-                    <div class="single_speaker">
-                        <div class="speaker_thumb">
-                            <img src="/site/assets/img/speakers/3.png" alt="">
-                            <div class="hover_overlay">
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker_name text-center">
-                            <h3>Albert Jackey</h3>
-                            <p>Product Designer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-2 col-md-6">
-                    <div class="single_speaker">
-                        <div class="speaker_thumb">
-                            <img src="/site/assets/img/speakers/2.png" alt="">
-                            <div class="hover_overlay">
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker_name text-center">
-                            <h3>Marked Macau</h3>
-                            <p>UI/UX Designer</p>
-                        </div>
-                    </div>
-                    <div class="single_speaker">
-                        <div class="speaker_thumb">
-                            <img src="/site/assets/img/speakers/1.png" alt="">
-                            <div class="hover_overlay">
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker_name text-center">
-                            <h3>Kelvin Cooper</h3>
-                            <p>Art Director</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -162,7 +60,7 @@
     <!-- speakers_end-->
 
     <!-- section evenement d -->
-    <div th:replace="~{site/site-sections :: section-event}">
+    <div th:replace="~{site/site-sections :: section-event(${events})}">
     </div>
     <!-- section evenement f -->
     
@@ -172,9 +70,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="resister_text text-center">
-                        <h3>Register Now to Book <br>
-                            Your Presence</h3>
-                        <a href="#" class="boxed-btn-white">Book Now ($150) </a>
+                        <h3>Check Les évènements</h3>
+                        <a th:href="events" class="boxed-btn-white">Voir Maintenant </a>
                     </div>
                 </div>
             </div>
